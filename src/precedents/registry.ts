@@ -97,7 +97,7 @@ export function parseFrontMatter(src: string): Record<string, unknown> {
     const kv = line.match(/^(\w+):\s*(.*)$/)
     if (!kv) continue
     const [, key, rawVal] = kv
-    const val = rawVal.replace(/\s+#.*$/, "").trim()
+    const val = stripComment(rawVal)
     if (val === ">" || val === "|") {
       const buf: string[] = []
       while (i + 1 < lines.length && /^\s+\S/.test(lines[i + 1])) buf.push(lines[++i].trim())
@@ -110,7 +110,7 @@ export function parseFrontMatter(src: string): Record<string, unknown> {
       const obj: Record<string, unknown> = {}
       while (i + 1 < lines.length && /^\s+\w+:/.test(lines[i + 1])) {
         const sub = lines[++i].trim().match(/^(\w+):\s*(.*)$/)!
-        obj[sub[1]] = scalar(sub[2].replace(/\s+#.*$/, "").trim())
+        obj[sub[1]] = scalar(stripComment(sub[2]))
       }
       out[key] = obj
     } else {
@@ -118,6 +118,13 @@ export function parseFrontMatter(src: string): Record<string, unknown> {
     }
   }
   return out
+}
+
+// A ` # comment` ends a value — unless the value is quoted, where # is text.
+function stripComment(v: string): string {
+  const t = v.trim()
+  if (/^["']/.test(t)) return t
+  return t.replace(/\s+#.*$/, "").trim()
 }
 
 function parseInlineMap(line: string): Record<string, unknown> {
