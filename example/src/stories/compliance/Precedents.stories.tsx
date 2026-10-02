@@ -160,7 +160,7 @@ function Row({ p }: { p: Precedent }) {
         </TableCell>
         <TableCell>{p.decision}</TableCell>
         <TableCell><Badge variant={statusVariant[p.status] ?? "outline"}>{p.status}</Badge></TableCell>
-        <TableCell>
+        <TableCell className="whitespace-normal">
           <div className="flex flex-wrap items-center gap-1">
             <span className="font-medium">{p.scope}</span>
             {p.subject.story && <Badge variant="outline">{p.subject.story}</Badge>}
@@ -177,8 +177,8 @@ function Row({ p }: { p: Precedent }) {
       {open && (
         <TableRow id={detailsId} className="bg-muted/40 hover:bg-muted/40">
           <TableCell />
-          <TableCell colSpan={6} className="py-4">
-            <dl className="grid max-w-3xl gap-4">
+          <TableCell colSpan={6} className="py-4 whitespace-normal">
+            <dl className="grid max-w-3xl gap-4 break-words">
               <Block title="Finding" hint={`what the rule measured · WCAG ${p.criterion ?? ""}`}>
                 <p className="whitespace-pre-wrap">{p.evidence}</p>
               </Block>
