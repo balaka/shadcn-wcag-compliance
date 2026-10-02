@@ -8,7 +8,9 @@
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { readTokens } from "./theme/read-tokens.ts"
-import { fromTokens } from "./rules/1.4.11-border-contrast.ts"
+import { fromTokens, RULE } from "./rules/1.4.11-border-contrast.ts"
+import { findPrecedent } from "./precedents/registry.ts"
+import { loadPrecedents } from "./precedents/load.ts"
 import { FINDING_FORMAT, type Finding, type Outcome } from "./finding.ts"
 
 const [vitestPath = "example/reports/vitest.json", cssPath = "example/src/index.css"] = process.argv.slice(2)
@@ -82,6 +84,21 @@ const { findings: fromAxe, expectations } = axeFindings(vitest)
 const fromCss = fromTokens(readTokens(readFileSync(cssPath, "utf8")), cssPath)
 const findings = [...fromCss, ...fromAxe]
 
+// Precedents: a failed finding a person has accepted stays failed in the
+// record but is marked, so every reader sees both the number and the decision.
+const precedents = loadPrecedents()
+let acceptedCount = 0
+for (const f of findings) {
+  if (f.outcome !== "failed") continue
+  const tokens = f.rule === RULE.id ? [RULE.borderToken, RULE.backgroundToken] : undefined
+  const p = findPrecedent(f, tokens, precedents)
+  if (p) {
+    acceptedCount++
+    ;(f as Finding & { acceptedBy?: string }).acceptedBy = p.id
+    f.evidence += ` — accepted by ${p.id}`
+  }
+}
+
 const stamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19)
 const run = {
   format: 1,
@@ -111,4 +128,5 @@ const real = rows.filter((r) => r.truth === "fail")
 const missed = real.filter((r) => r.verdict === "MISSED")
 console.log(`\nreal problems: ${real.length}, caught: ${real.length - missed.length}, missed: ${missed.length}`)
 console.log(`css executor: ${fromCss.map((f) => `${f.subject.theme} ${f.outcome} ${f.measured?.ratio}:1`).join(" · ")}`)
+console.log(`precedents: ${precedents.length} on file, ${precedents.filter((p) => p.status === "approved").length} active, ${acceptedCount} finding(s) accepted`)
 console.log(`run written: runs/${stamp}.json (${findings.length} findings)`)

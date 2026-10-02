@@ -17,7 +17,9 @@
 import { appendFileSync, existsSync, mkdirSync, readFileSync } from "node:fs"
 import { join } from "node:path"
 import { readTokens } from "../theme/read-tokens.ts"
-import { fromTokens } from "../rules/1.4.11-border-contrast.ts"
+import { fromTokens, RULE } from "../rules/1.4.11-border-contrast.ts"
+import { findPrecedent } from "../precedents/registry.ts"
+import { loadPrecedents } from "../precedents/load.ts"
 
 const THEME_FILE = /(^|\/)(index|globals)\.css$/
 
@@ -81,13 +83,26 @@ if (call.tool_name === "Write") {
 const was = new Map(fromTokens(readTokens(before), file).map((f) => [f.subject.theme, f]))
 const now = fromTokens(readTokens(after), file)
 
-const regressions = now.filter((f) => f.outcome === "failed" && was.get(f.subject.theme)?.outcome !== "failed")
-const stillFailing = now.filter((f) => f.outcome === "failed" && was.get(f.subject.theme)?.outcome === "failed")
+// A person may have accepted a failing pair knowingly: an active precedent
+// in precedents/ with the same rule, version and tokens. Such a finding
+// stays in the record, marked, and does not block.
+const precedents = loadPrecedents()
+const accepted = new Map<string, string>()
+for (const f of now) {
+  if (f.outcome !== "failed") continue
+  const p = findPrecedent(f, [RULE.borderToken, RULE.backgroundToken], precedents)
+  if (p) {
+    accepted.set(f.subject.theme!, p.id)
+    f.evidence += ` — accepted by ${p.id} (${p.scope}, until ${p.valid_until ?? "revoked"}, approved by ${p.history.find((h) => h.action === "approved")?.by ?? "?"})`
+  }
+}
+const regressions = now.filter((f) => f.outcome === "failed" && !accepted.has(f.subject.theme!) && was.get(f.subject.theme)?.outcome !== "failed")
+const stillFailing = now.filter((f) => f.outcome === "failed" && !accepted.has(f.subject.theme!) && was.get(f.subject.theme)?.outcome === "failed")
 // A pair the rule could not read is not a violation, so it never blocks —
 // but silence would hide it, so it is said and recorded as "unchecked".
 const unchecked = now.filter((f) => f.outcome === "cantTell")
 
-const decision = regressions.length ? "refused" : stillFailing.length ? "noted" : unchecked.length ? "unchecked" : "passed"
+const decision = regressions.length ? "refused" : stillFailing.length ? "noted" : accepted.size ? "accepted" : unchecked.length ? "unchecked" : "passed"
 record(decision, now, file!)
 
 if (regressions.length) {
@@ -99,6 +114,14 @@ if (regressions.length) {
     ].join("\n")
   )
   process.exit(2)
+}
+if (accepted.size) {
+  console.error(
+    [
+      `shadcn-wcag-compliance: 1.4.11-border-contrast fails in ${file}, accepted by precedent — the write goes through:`,
+      ...now.filter((f) => accepted.has(f.subject.theme!)).map((f) => `  ≈ ${f.evidence}`),
+    ].join("\n")
+  )
 }
 if (unchecked.length) {
   console.error(

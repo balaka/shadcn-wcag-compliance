@@ -22,11 +22,12 @@ export const WithLabel: Story = {
   ),
   parameters: {
     expected: {
-      wcag: "pass",
+      wcag: "fail",
       criteria: ["1.4.11 Non-text Contrast"],
       evidence:
-        "the border is the only edge of the field: --input #929292 on white = 3.11:1, needs 3:1",
-      axe: null,
+        "the border is the only edge of the field: --input #e5e5e5 on white = 1.26:1, needs 3:1",
+      // axe itself has no rule for this; our rule rides inside axe and must fire
+      axe: "1.4.11-border-contrast",
     },
   },
 }
@@ -36,30 +37,28 @@ export const WithLabelDark: Story = {
   globals: { theme: "dark" },
   parameters: {
     expected: {
-      wcag: "pass",
+      wcag: "fail",
       criteria: ["1.4.11 Non-text Contrast"],
-      evidence: "--input white/40% over #0a0a0a = #6c6c6c = 3.77:1, needs 3:1",
-      axe: null,
+      evidence: "--input white/15% over #0a0a0a = #2f2f2f = 1.47:1, needs 3:1",
+      axe: "1.4.11-border-contrast",
     },
   },
 }
 
-// Planted breakage: the border from the old shadcn default (--input #e5e5e5),
-// kept here so the rule still has a field it must catch.
-export const WithLabelFaintBorder: Story = {
+// Control: a border that meets 3:1 must NOT fire the rule.
+export const WithLabelFixedBorder: Story = {
   render: () => (
     <div className="grid w-72 gap-2 p-4">
-      <Label htmlFor="email-faint">Email</Label>
-      <Input id="email-faint" type="email" className="border-[#e5e5e5]" />
+      <Label htmlFor="email-fixed">Email</Label>
+      <Input id="email-fixed" type="email" className="border-[#767676]" />
     </div>
   ),
   parameters: {
     expected: {
-      wcag: "fail",
+      wcag: "pass",
       criteria: ["1.4.11 Non-text Contrast"],
-      evidence: "#e5e5e5 on white = 1.26:1, needs 3:1",
-      // axe itself has no rule for this; our rule rides inside axe and must fire
-      axe: "1.4.11-border-contrast",
+      evidence: "#767676 on white = 4.54:1",
+      axe: null,
     },
   },
 }
@@ -93,8 +92,8 @@ export const PlaceholderOnly: Story = {
       wcag: "disputed",
       criteria: ["3.3.2 Labels or Instructions"],
       evidence:
-        "the placeholder gives a name but disappears on typing; a person decides (precedents/2026-10-01-input-placeholder-as-only-label.md)",
-      axe: null,
+        "the placeholder gives a name but disappears on typing; a person decides (precedents/2026-10-01-input-placeholder-as-only-label.md). The default border still fails 1.4.11-border-contrast.",
+      axe: "1.4.11-border-contrast",
     },
   },
 }
