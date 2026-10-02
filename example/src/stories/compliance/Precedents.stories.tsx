@@ -21,15 +21,31 @@ const tone: Record<string, string> = {
   revoked: "bg-red-100 text-red-900 dark:bg-red-900/40 dark:text-red-100",
 }
 
+const RULES = [
+  "A precedent is a person's decision on a case a rule alone could not settle.",
+  "Two kinds: exception — the rule is right, the violation is accepted for a time; interpretation — how a judgement rule is read in a case like this.",
+  "Scope, narrow to wide: story → component → tokens → rule. The narrowest match wins.",
+  "A precedent binds to one rule version. A new version puts it in needs-review.",
+  "The model can only draft. Nothing acts until a person approves — by name, with a date.",
+  "An accepted violation stays in every report, marked with the precedent id. It never disappears.",
+  "Exceptions expire. After valid_until the hook blocks again on its own.",
+  "Source of truth: the files in precedents/. This page only shows them.",
+]
+
 function Register() {
   return (
     <div className="mx-auto max-w-5xl p-6 text-sm">
       <h1 className="text-xl font-semibold">Precedents</h1>
+      <ul className="mt-3 list-disc space-y-1 pl-5 text-muted-foreground">
+        {RULES.map((r) => (
+          <li key={r}>{r}</li>
+        ))}
+      </ul>
+      <h2 className="mt-8 text-base font-semibold">Register</h2>
       <p className="mt-1 text-muted-foreground">
-        Decisions a person made where a rule alone could not settle the case. Source: <code>precedents/</code>.
-        Only <em>approved</em> ones act on checks; the model can only draft.
+        {precedents.filter((p) => p.status === "approved").length} active · {precedents.length} on file
       </p>
-      <table className="mt-6 w-full border-collapse">
+      <table className="mt-3 w-full border-collapse">
         <thead>
           <tr className="border-b text-left text-xs text-muted-foreground">
             <th className="py-2 pr-3">id</th>
@@ -58,6 +74,7 @@ function Row({ p }: { p: Precedent }) {
   const subject = [p.subject.story, p.subject.component, p.subject.tokens?.join(" / "), p.subject.theme, p.subject.file]
     .filter(Boolean)
     .join(" · ")
+  const approved = p.history.find((h) => h.action === "approved")
   return (
     <>
       <tr className="border-b align-top">
@@ -70,18 +87,37 @@ function Row({ p }: { p: Precedent }) {
         <td className="py-2 pr-3">{p.valid_until ?? "—"}</td>
       </tr>
       <tr className="border-b bg-muted/40">
-        <td colSpan={7} className="px-3 py-2">
-          <div className="text-muted-foreground"><span className="font-medium text-foreground">evidence</span> {p.evidence}</div>
-          <div className="mt-1 text-muted-foreground"><span className="font-medium text-foreground">reason</span> {p.reason}</div>
-          <ol className="mt-2 space-y-0.5 font-mono text-xs">
-            {p.history.map((h, i) => (
-              <li key={i}>
-                {h.at} · {h.action}
-                {h.by ? ` · by ${h.by}` : ""}
-                {h.why ? ` · ${h.why}` : ""}
-              </li>
-            ))}
-          </ol>
+        <td colSpan={7} className="px-3 py-3">
+          <div className="grid gap-4 md:grid-cols-3">
+            <section>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Finding</h3>
+              <p className="mt-1">{p.evidence}</p>
+              <p className="mt-1 text-xs text-muted-foreground">what the rule measured — WCAG {p.criterion}</p>
+            </section>
+            <section>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Decision</h3>
+              <p className="mt-1">
+                <span className="font-medium">{p.decision}</span>
+                {approved ? ` — ${approved.by}, ${approved.at.slice(0, 10)}` : " — not approved yet"}
+              </p>
+              <p className="mt-1 text-muted-foreground">{p.reason}</p>
+            </section>
+            <section>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">History</h3>
+              <ol className="mt-1 space-y-1">
+                {p.history.map((h, i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="w-28 shrink-0 font-mono text-xs text-muted-foreground">{h.at.replace("T", " ")}</span>
+                    <span>
+                      <span className="font-medium">{h.action}</span>
+                      {h.by ? <span className="text-muted-foreground"> · {h.by}</span> : null}
+                      {h.why ? <div className="text-xs text-muted-foreground">{h.why}</div> : null}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          </div>
         </td>
       </tr>
     </>
