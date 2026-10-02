@@ -1,6 +1,6 @@
 import * as React from "react"
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { ChevronRightIcon } from "lucide-react"
+import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
 
 import { parsePrecedent, type Precedent } from "../../../../src/precedents/registry"
 import { Badge } from "@/components/ui/badge"
@@ -139,6 +139,17 @@ function Filter({ id, label, value, onChange, options }: { id: string; label: st
   )
 }
 
+// A link that leaves Storybook: marked with an icon and said to screen readers.
+function ExternalLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a className="inline-flex items-center gap-1 underline underline-offset-4 hover:text-foreground" href={href} target="_blank" rel="noreferrer">
+      {children}
+      <ExternalLinkIcon className="size-3" aria-hidden="true" />
+      <span className="sr-only">(opens in a new tab)</span>
+    </a>
+  )
+}
+
 const SHOWN_TOKENS = 2
 
 function Scope({ p }: { p: Precedent }) {
@@ -219,16 +230,10 @@ function Row({ p }: { p: Precedent }) {
                     ))}
                   </ol>
                   <p className="mt-3 text-muted-foreground">
-                    Rule applied:{" "}
-                    <a className="underline underline-offset-4 hover:text-foreground" href={`${REPO}/rules/own/${p.rule}.md`} target="_blank" rel="noreferrer">
-                      {p.rule} v{p.rule_version}
-                    </a>
+                    Rule applied: <ExternalLink href={`${REPO}/rules/own/${p.rule}.md`}>{p.rule} v{p.rule_version}</ExternalLink>
                     {p.criterion ? (
                       <>
-                        {" "}· WCAG{" "}
-                        <a className="underline underline-offset-4 hover:text-foreground" href={`https://www.w3.org/TR/WCAG22/#${CRITERION_ANCHOR[p.criterion] ?? ""}`} target="_blank" rel="noreferrer">
-                          {p.criterion}
-                        </a>
+                        {" "}· WCAG <ExternalLink href={`https://www.w3.org/TR/WCAG22/#${CRITERION_ANCHOR[p.criterion] ?? ""}`}>{p.criterion}</ExternalLink>
                       </>
                     ) : null}
                   </p>
