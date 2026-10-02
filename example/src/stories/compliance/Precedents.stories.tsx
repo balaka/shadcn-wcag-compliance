@@ -1,25 +1,34 @@
+import * as React from "react"
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import { ChevronRightIcon } from "lucide-react"
 
 import { parsePrecedent, type Precedent } from "../../../../src/precedents/registry"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 // The precedent register, as a page in Storybook: the same files from
 // precedents/, read at build time by Vite, nothing copied. Decisions are
 // made in the files (and only by a person); this page only shows them.
+// Built from the design system's own components, so the page itself goes
+// through the same checks as everything else in here.
 
 const files = import.meta.glob("../../../../precedents/*.md", { query: "?raw", import: "default", eager: true }) as Record<string, string>
 
-const precedents: Precedent[] = Object.entries(files)
+const fromFiles: Precedent[] = Object.entries(files)
   .filter(([path]) => !path.endsWith("README.md"))
   .map(([path, text]) => parsePrecedent(text, path.split("/").pop()!))
   .filter((p): p is Precedent => !!p)
   .sort((a, b) => b.id.localeCompare(a.id))
-
-const tone: Record<string, string> = {
-  approved: "bg-green-100 text-green-900 dark:bg-green-900/40 dark:text-green-100",
-  drafted: "bg-amber-100 text-amber-900 dark:bg-amber-900/40 dark:text-amber-100",
-  expired: "bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300",
-  revoked: "bg-red-100 text-red-900 dark:bg-red-900/40 dark:text-red-100",
-}
 
 const RULES = [
   "A precedent is a person's decision on a case a rule alone could not settle.",
@@ -32,7 +41,31 @@ const RULES = [
   "Source of truth: the files in precedents/. This page only shows them.",
 ]
 
-function Register() {
+const statusVariant: Record<string, React.ComponentProps<typeof Badge>["variant"]> = {
+  approved: "default",
+  drafted: "secondary",
+  expired: "outline",
+  revoked: "destructive",
+}
+
+const approver = (p: Precedent) => p.history.find((h) => h.action === "approved")
+const uniq = (xs: (string | undefined)[]) => [...new Set(xs.filter((x): x is string => !!x))].sort()
+
+function Register({ precedents }: { precedents: Precedent[] }) {
+  const [rule, setRule] = React.useState("")
+  const [status, setStatus] = React.useState("")
+  const [person, setPerson] = React.useState("")
+  const [since, setSince] = React.useState("")
+
+  const shown = precedents.filter(
+    (p) =>
+      (!rule || p.rule === rule) &&
+      (!status || p.status === status) &&
+      (!person || approver(p)?.by === person) &&
+      (!since || (approver(p)?.at ?? p.history[0]?.at ?? "") >= since)
+  )
+  const dates = uniq(precedents.map((p) => (approver(p)?.at ?? p.history[0]?.at)?.slice(0, 10)))
+
   return (
     <div className="mx-auto max-w-5xl p-6 text-sm">
       <h1 className="text-xl font-semibold">Precedents</h1>
@@ -41,96 +74,193 @@ function Register() {
           <li key={r}>{r}</li>
         ))}
       </ul>
+
       <h2 className="mt-8 text-base font-semibold">Register</h2>
       <p className="mt-1 text-muted-foreground">
         {precedents.filter((p) => p.status === "approved").length} active · {precedents.length} on file
+        {shown.length !== precedents.length ? ` · ${shown.length} shown` : ""}
       </p>
-      <table className="mt-3 w-full border-collapse">
-        <thead>
-          <tr className="border-b text-left text-xs text-muted-foreground">
-            <th className="py-2 pr-3">id</th>
-            <th className="py-2 pr-3">status</th>
-            <th className="py-2 pr-3">kind</th>
-            <th className="py-2 pr-3">rule</th>
-            <th className="py-2 pr-3">scope · subject</th>
-            <th className="py-2 pr-3">decision</th>
-            <th className="py-2 pr-3">until</th>
-          </tr>
-        </thead>
-        <tbody>
-          {precedents.map((p) => (
+
+      <div className="mt-4 flex flex-wrap items-end gap-3">
+        <Filter id="f-rule" label="Rule" value={rule} onChange={setRule} options={uniq(precedents.map((p) => p.rule))} />
+        <Filter id="f-status" label="Status" value={status} onChange={setStatus} options={uniq(precedents.map((p) => p.status))} />
+        <Filter id="f-person" label="Approved by" value={person} onChange={setPerson} options={uniq(precedents.map((p) => approver(p)?.by))} />
+        <Filter id="f-since" label="Since" value={since} onChange={setSince} options={dates} />
+        {(rule || status || person || since) && (
+          <Button variant="ghost" size="sm" onClick={() => { setRule(""); setStatus(""); setPerson(""); setSince("") }}>
+            Clear
+          </Button>
+        )}
+      </div>
+
+      <Table className="mt-4">
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-8" />
+            <TableHead>Rule</TableHead>
+            <TableHead>Decision</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Scope</TableHead>
+            <TableHead>Approved by</TableHead>
+            <TableHead>Until</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {shown.map((p) => (
             <Row key={p.id} p={p} />
           ))}
-          {precedents.length === 0 && (
-            <tr><td colSpan={7} className="py-6 text-center text-muted-foreground">No precedents yet.</td></tr>
+          {shown.length === 0 && (
+            <TableRow>
+              <TableCell colSpan={7} className="py-6 text-center text-muted-foreground">
+                Nothing matches these filters.
+              </TableCell>
+            </TableRow>
           )}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
+    </div>
+  )
+}
+
+function Filter({ id, label, value, onChange, options }: { id: string; label: string; value: string; onChange: (v: string) => void; options: string[] }) {
+  return (
+    <div className="grid gap-1">
+      <Label htmlFor={id} className="text-xs text-muted-foreground">{label}</Label>
+      <NativeSelect id={id} value={value} onChange={(e) => onChange(e.target.value)} className="min-w-40">
+        <NativeSelectOption value="">all</NativeSelectOption>
+        {options.map((o) => (
+          <NativeSelectOption key={o} value={o}>{o}</NativeSelectOption>
+        ))}
+      </NativeSelect>
     </div>
   )
 }
 
 function Row({ p }: { p: Precedent }) {
-  const subject = [p.subject.story, p.subject.component, p.subject.tokens?.join(" / "), p.subject.theme, p.subject.file]
-    .filter(Boolean)
-    .join(" · ")
-  const approved = p.history.find((h) => h.action === "approved")
+  const [open, setOpen] = React.useState(false)
+  const a = approver(p)
+  const detailsId = `details-${p.id}`
   return (
     <>
-      <tr className="border-b align-top">
-        <td className="py-2 pr-3 font-mono text-xs">{p.id}</td>
-        <td className="py-2 pr-3"><span className={`rounded px-1.5 py-0.5 text-xs ${tone[p.status] ?? ""}`}>{p.status}</span></td>
-        <td className="py-2 pr-3">{p.kind}</td>
-        <td className="py-2 pr-3 font-mono text-xs">{p.rule} v{p.rule_version}</td>
-        <td className="py-2 pr-3"><span className="font-medium">{p.scope}</span> · {subject}</td>
-        <td className="py-2 pr-3">{p.decision}</td>
-        <td className="py-2 pr-3">{p.valid_until ?? "—"}</td>
-      </tr>
-      <tr className="border-b bg-muted/40">
-        <td colSpan={7} className="px-3 py-3">
-          <div className="grid gap-4 md:grid-cols-3">
-            <section>
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Finding</h3>
-              <p className="mt-1">{p.evidence}</p>
-              <p className="mt-1 text-xs text-muted-foreground">what the rule measured — WCAG {p.criterion}</p>
-            </section>
-            <section>
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Decision</h3>
-              <p className="mt-1">
-                <span className="font-medium">{p.decision}</span>
-                {approved ? ` — ${approved.by}, ${approved.at.slice(0, 10)}` : " — not approved yet"}
-              </p>
-              <p className="mt-1 text-muted-foreground">{p.reason}</p>
-            </section>
-            <section>
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">History</h3>
-              <ol className="mt-1 space-y-1">
-                {p.history.map((h, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="w-28 shrink-0 font-mono text-xs text-muted-foreground">{h.at.replace("T", " ")}</span>
-                    <span>
-                      <span className="font-medium">{h.action}</span>
-                      {h.by ? <span className="text-muted-foreground"> · {h.by}</span> : null}
-                      {h.why ? <div className="text-xs text-muted-foreground">{h.why}</div> : null}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            </section>
+      <TableRow className="align-top">
+        <TableCell className="pr-0">
+          <Button
+            variant="ghost"
+            size="icon-xs"
+            aria-expanded={open}
+            aria-controls={detailsId}
+            aria-label={open ? `Hide details of ${p.id}` : `Show details of ${p.id}`}
+            onClick={() => setOpen(!open)}
+          >
+            <ChevronRightIcon className={open ? "rotate-90 transition-transform" : "transition-transform"} />
+          </Button>
+        </TableCell>
+        <TableCell className="font-mono text-xs">
+          {p.rule} <span className="text-muted-foreground">v{p.rule_version}</span>
+        </TableCell>
+        <TableCell>{p.decision}</TableCell>
+        <TableCell><Badge variant={statusVariant[p.status] ?? "outline"}>{p.status}</Badge></TableCell>
+        <TableCell>
+          <div className="flex flex-wrap items-center gap-1">
+            <span className="font-medium">{p.scope}</span>
+            {p.subject.story && <Badge variant="outline">{p.subject.story}</Badge>}
+            {p.subject.component && <Badge variant="outline">{p.subject.component}</Badge>}
+            {p.subject.tokens?.map((t) => (
+              <Badge key={t} variant="outline" className="font-mono">{t}</Badge>
+            ))}
+            {p.subject.theme && <Badge variant="secondary">{p.subject.theme}</Badge>}
           </div>
-        </td>
-      </tr>
+        </TableCell>
+        <TableCell>{a ? <>{a.by}<div className="text-xs text-muted-foreground">{a.at.slice(0, 10)}</div></> : <span className="text-muted-foreground">—</span>}</TableCell>
+        <TableCell>{p.valid_until ?? "—"}</TableCell>
+      </TableRow>
+      {open && (
+        <TableRow id={detailsId} className="bg-muted/40 hover:bg-muted/40">
+          <TableCell />
+          <TableCell colSpan={6} className="py-4">
+            <dl className="grid max-w-3xl gap-4">
+              <Block title="Finding" hint={`what the rule measured · WCAG ${p.criterion ?? ""}`}>
+                <p className="whitespace-pre-wrap">{p.evidence}</p>
+              </Block>
+              <Block title="Decision">
+                <p><span className="font-medium">{p.decision}</span>{a ? ` — ${a.by}, ${a.at.slice(0, 10)}` : " — not approved yet"}</p>
+                <p className="mt-1 text-muted-foreground">{p.reason}</p>
+              </Block>
+              <Block title="History">
+                <ol className="space-y-1.5">
+                  {p.history.map((h, i) => (
+                    <li key={i} className="grid grid-cols-[8.5rem_1fr] gap-2">
+                      <span className="font-mono text-xs text-muted-foreground">{h.at.replace("T", " ")}</span>
+                      <span>
+                        <span className="font-medium">{h.action}</span>
+                        {h.by ? <span className="text-muted-foreground"> · {h.by}</span> : null}
+                        {h.why ? <div className="text-xs text-muted-foreground">{h.why}</div> : null}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </Block>
+              <Block title="Record">
+                <p className="font-mono text-xs text-muted-foreground">
+                  {p.id} · {p.kind} · {p.file}{p.subject.file ? ` · ${p.subject.file}` : ""}
+                </p>
+              </Block>
+            </dl>
+          </TableCell>
+        </TableRow>
+      )}
     </>
   )
+}
+
+function Block({ title, hint, children }: { title: string; hint?: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        {title}{hint ? <span className="ml-2 font-normal normal-case tracking-normal">{hint}</span> : null}
+      </dt>
+      <dd className="mt-1">{children}</dd>
+    </div>
+  )
+}
+
+// A made-up record with many tokens and a long history, only for this
+// page's own stories: checks that the layout wraps instead of stretching.
+const stress: Precedent = {
+  file: "(not a file — layout check)",
+  format: 2,
+  id: "p-2026-10-04-99",
+  kind: "exception",
+  rule: "1.4.11-focus-ring-contrast",
+  rule_version: "1",
+  criterion: "1.4.11",
+  scope: "tokens",
+  subject: { file: "example/src/index.css", theme: "dark", tokens: ["--ring", "--background", "--primary", "--primary-foreground", "--sidebar-ring", "--sidebar", "--card", "--popover"] },
+  decision: "accept",
+  evidence: "dark: --ring oklch(0.556 0 0) at 50% over #0a0a0a = #3f3f3f = 1.87:1; against --primary #e5e5e5 = 11.6:1; needs 3:1 against adjacent colors",
+  reason: "A long reason to see how the text wraps: the ring is measured against the page background, but a focused primary button sits on it with a 11.6:1 ring-to-button contrast. The adjacent color in the sense of 1.4.11 is disputed; kept until the rule's version 2 defines which neighbour counts.",
+  valid_until: "2026-11-01",
+  history: [
+    { at: "2026-10-04T10:00", action: "drafted", by: "claude (session 1234abcd)" },
+    { at: "2026-10-04T10:30", action: "approved", by: "Jesse Example", why: "agreed in design review" },
+    { at: "2026-10-20T09:00", action: "needs-review", why: "rule 1.4.11-focus-ring-contrast bumped to v2" },
+  ],
+  status: "needs-review",
+  body: "",
 }
 
 const meta = {
   title: "Compliance/Precedents",
   component: Register,
-  parameters: { layout: "fullscreen", a11y: { test: "off" } },
+  parameters: { layout: "fullscreen" },
 } satisfies Meta<typeof Register>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Register_: Story = { name: "Register" }
+export const RegisterPage: Story = { name: "Register", args: { precedents: fromFiles } }
+
+export const LayoutStress: Story = {
+  name: "Layout stress (many tokens)",
+  args: { precedents: [stress, ...fromFiles] },
+}
