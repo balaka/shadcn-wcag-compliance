@@ -1,0 +1,5952 @@
+{
+  "format": 1,
+  "id": "2026-10-02T21-37-39",
+  "at": "2026-10-02T21:37:39.923Z",
+  "inputs": {
+    "vitest": "example/reports/vitest.json",
+    "css": "example/src/index.css"
+  },
+  "summary": {
+    "failed": 11,
+    "cantTell": 14,
+    "passed": 336,
+    "inapplicable": 0
+  },
+  "findings": [
+    {
+      "format": 1,
+      "rule": "1.4.11-border-contrast",
+      "ruleVersion": "1",
+      "criterion": "1.4.11",
+      "executor": "code",
+      "outcome": "failed",
+      "subject": {
+        "component": "Input",
+        "theme": "light",
+        "file": "example/src/index.css"
+      },
+      "evidence": "light: --input oklch(0.922 0 0) (#e5e5e5) on --background oklch(1 0 0) (#ffffff) = 1.26:1, needs 3:1",
+      "at": "2026-10-02T21:37:39.923Z",
+      "measured": {
+        "ratio": 1.26,
+        "threshold": 3,
+        "border": "#e5e5e5",
+        "background": "#ffffff"
+      }
+    },
+    {
+      "format": 1,
+      "rule": "1.4.11-border-contrast",
+      "ruleVersion": "1",
+      "criterion": "1.4.11",
+      "executor": "code",
+      "outcome": "failed",
+      "subject": {
+        "component": "Input",
+        "theme": "dark",
+        "file": "example/src/index.css"
+      },
+      "evidence": "dark: --input oklch(1 0 0 / 15%) (#2f2f2f) on --background oklch(0.145 0 0) (#0a0a0a) = 1.47:1, needs 3:1",
+      "at": "2026-10-02T21:37:39.923Z",
+      "measured": {
+        "ratio": 1.47,
+        "threshold": 3,
+        "border": "#2f2f2f",
+        "background": "#0a0a0a"
+      }
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "failed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-destructive\\/10"
+      },
+      "evidence": "Element has insufficient color contrast of 3.98 (foreground color: #e7000b, background color: #fde5e7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+      "measured": {
+        "fgColor": "#e7000b",
+        "bgColor": "#fde5e7",
+        "contrastRatio": 3.98,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "messageKey": null,
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-primary"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-secondary"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".border-border"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".dark\\:hover\\:bg-muted\\/50"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-destructive\\/10"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".text-primary"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-primary"
+      },
+      "evidence": "Element has sufficient color contrast of 17.17",
+      "measured": {
+        "fgColor": "#fafafa",
+        "bgColor": "#171717",
+        "contrastRatio": 17.17,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-secondary"
+      },
+      "evidence": "Element has sufficient color contrast of 16.44",
+      "measured": {
+        "fgColor": "#171717",
+        "bgColor": "#f5f5f5",
+        "contrastRatio": 16.44,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".border-border"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".dark\\:hover\\:bg-muted\\/50"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".text-primary"
+      },
+      "evidence": "Element has sufficient color contrast of 17.92",
+      "measured": {
+        "fgColor": "#171717",
+        "bgColor": "#ffffff",
+        "contrastRatio": 17.92,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-primary"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-secondary"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".border-border"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".dark\\:hover\\:bg-muted\\/50"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-destructive\\/10"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".text-primary"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-primary"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-secondary"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".border-border"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".dark\\:hover\\:bg-muted\\/50"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".bg-destructive\\/10"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants",
+        "selector": ".text-primary"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.920Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-primary"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-secondary"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".border-border"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".dark\\:hover\\:bg-muted\\/50"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-destructive\\/10"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".text-primary"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-primary"
+      },
+      "evidence": "Element has sufficient color contrast of 14.23",
+      "measured": {
+        "fgColor": "#171717",
+        "bgColor": "#e5e5e5",
+        "contrastRatio": 14.23,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-secondary"
+      },
+      "evidence": "Element has sufficient color contrast of 14.49",
+      "measured": {
+        "fgColor": "#fafafa",
+        "bgColor": "#262626",
+        "contrastRatio": 14.49,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".border-border"
+      },
+      "evidence": "Element has sufficient color contrast of 17.49",
+      "measured": {
+        "fgColor": "#fafafa",
+        "bgColor": "#151515",
+        "contrastRatio": 17.49,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".dark\\:hover\\:bg-muted\\/50"
+      },
+      "evidence": "Element has sufficient color contrast of 18.96",
+      "measured": {
+        "fgColor": "#fafafa",
+        "bgColor": "#0a0a0a",
+        "contrastRatio": 18.96,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-destructive\\/10"
+      },
+      "evidence": "Element has sufficient color contrast of 5.3",
+      "measured": {
+        "fgColor": "#ff6467",
+        "bgColor": "#3b1c1d",
+        "contrastRatio": 5.3,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".text-primary"
+      },
+      "evidence": "Element has sufficient color contrast of 15.71",
+      "measured": {
+        "fgColor": "#e5e5e5",
+        "bgColor": "#0a0a0a",
+        "contrastRatio": 15.71,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-primary"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-secondary"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".border-border"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".dark\\:hover\\:bg-muted\\/50"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-destructive\\/10"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".text-primary"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-primary"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-secondary"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".border-border"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".dark\\:hover\\:bg-muted\\/50"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".bg-destructive\\/10"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Variants Dark",
+        "selector": ".text-primary"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Keyboard Focus",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Keyboard Focus",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Keyboard Focus",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Keyboard Focus",
+        "selector": ".group\\/button"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Keyboard Focus",
+        "selector": ".group\\/button"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Keyboard Focus",
+        "selector": ".group\\/button"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Keyboard Focus",
+        "selector": ".group\\/button"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "failed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Icon Only Without Name",
+        "selector": ".group\\/button"
+      },
+      "evidence": "Element does not have inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Icon Only Without Name",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Icon Only Without Name",
+        "selector": ".lucide"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Icon Only Without Name",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Icon Only Without Name",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Icon Only Without Name",
+        "selector": ".group\\/button"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Button",
+        "story": "Button › Icon Only Without Name",
+        "selector": ".group\\/button"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".p-4 > span[data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(1)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".p-4 > span[data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(3)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[data-type=\"outside\"][data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(4)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[data-type=\"outside\"][data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(6)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[data-type=\"inside\"][data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(1)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[data-type=\"inside\"][data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(3)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_r_1_\"",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[aria-owns=\"_r_5_\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".isolate"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_7_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_8_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_a_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-command-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_7_"
+      },
+      "evidence": "Element has text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-command-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_8_"
+      },
+      "evidence": "Element has text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-command-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_a_"
+      },
+      "evidence": "Element has text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[aria-owns=\"_r_5_\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".isolate"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_7_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_8_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_a_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_6_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[data-checked=\"\"][aria-hidden=\"true\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[aria-owns=\"_r_5_\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".isolate"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_7_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_8_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_a_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-children",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "Required ARIA children are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-parent",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_7_"
+      },
+      "evidence": "Required ARIA parent role present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-parent",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_8_"
+      },
+      "evidence": "Required ARIA parent role present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-parent",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "Required ARIA parent role present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-parent",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_a_"
+      },
+      "evidence": "Required ARIA parent role present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".isolate"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_7_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_8_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_a_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-toggle-field-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "Element has text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[aria-owns=\"_r_5_\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "span[aria-owns=\"_r_5_\"]"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".isolate"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "Element has sufficient color contrast of 18.15",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#f5f5f5",
+        "contrastRatio": 18.15,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_6_"
+      },
+      "evidence": "Element has sufficient color contrast of 4.74",
+      "measured": {
+        "fgColor": "#737373",
+        "bgColor": "#ffffff",
+        "contrastRatio": 4.74,
+        "fontSize": "9.0pt (12px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_7_"
+      },
+      "evidence": "Element has sufficient color contrast of 16.44",
+      "measured": {
+        "fgColor": "#171717",
+        "bgColor": "#f5f5f5",
+        "contrastRatio": 16.44,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_8_"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_a_"
+      },
+      "evidence": "Element has sufficient color contrast of 4.76",
+      "measured": {
+        "fgColor": "#e7000b",
+        "bgColor": "#ffffff",
+        "contrastRatio": 4.76,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "base-ui-_r_3_",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_5_"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "_r_5_",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "_r_1_",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_6_"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "base-ui-_r_6_",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": ".-mx-1"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#_r_1_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_7_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_8_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_9_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Open",
+        "selector": "#base-ui-_r_a_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "failed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_l_"
+      },
+      "evidence": "Element has insufficient color contrast of 4 (foreground color: #e7000b, background color: #fde6e7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+      "measured": {
+        "fgColor": "#e7000b",
+        "bgColor": "#fde6e7",
+        "contrastRatio": 4,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "messageKey": null,
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".p-4 > span[data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(1)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".p-4 > span[data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(3)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[data-type=\"outside\"][data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(4)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[data-type=\"outside\"][data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(6)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[data-type=\"inside\"][data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(1)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[data-type=\"inside\"][data-base-ui-focus-guard=\"\"][aria-hidden=\"true\"]:nth-child(3)"
+      },
+      "evidence": "Fix all of the following:\n  Check that focusable elements are not tabbable in the current state",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "cantTell",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_r_c_\"",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[aria-owns=\"_r_g_\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".isolate"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_i_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_j_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_l_"
+      },
+      "evidence": "ARIA role is allowed for given element",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-command-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_i_"
+      },
+      "evidence": "Element has text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-command-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_j_"
+      },
+      "evidence": "Element has text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-command-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_l_"
+      },
+      "evidence": "Element has text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[aria-owns=\"_r_g_\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".isolate"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_i_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_j_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-deprecated-role",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_l_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_h_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[data-checked=\"\"][aria-hidden=\"true\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[aria-owns=\"_r_g_\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".isolate"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_i_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_j_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_l_"
+      },
+      "evidence": "All required ARIA attributes are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-children",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "Required ARIA children are present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-parent",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_i_"
+      },
+      "evidence": "Required ARIA parent role present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-parent",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_j_"
+      },
+      "evidence": "Required ARIA parent role present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-parent",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "Required ARIA parent role present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-required-parent",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_l_"
+      },
+      "evidence": "Required ARIA parent role present",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".isolate"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_i_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_j_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-roles",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_l_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-toggle-field-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "Element has text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[aria-owns=\"_r_g_\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "span[aria-owns=\"_r_g_\"]"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"group\"]"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "div[role=\"presentation\"][data-base-ui-inert=\"\"]"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".isolate"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "Element has inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "Element has sufficient color contrast of 18.15",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#f5f5f5",
+        "contrastRatio": 18.15,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_h_"
+      },
+      "evidence": "Element has sufficient color contrast of 4.74",
+      "measured": {
+        "fgColor": "#737373",
+        "bgColor": "#ffffff",
+        "contrastRatio": 4.74,
+        "fontSize": "9.0pt (12px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_i_"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_j_"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "base-ui-_r_e_",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_g_"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "_r_g_",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "_r_c_",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_h_"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "base-ui-_r_h_",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": ".-mx-1"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_e_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#_r_c_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_i_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_j_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_k_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Destructive Item Highlighted",
+        "selector": "#base-ui-_r_l_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "button-name",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "failed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "#base-ui-_r_p_"
+      },
+      "evidence": "Element does not have inner text that is visible to screen readers",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "#base-ui-_r_p_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "#base-ui-_r_p_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": ".lucide"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "#base-ui-_r_p_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "#base-ui-_r_p_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "#base-ui-_r_p_"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "nested-interactive",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "#base-ui-_r_p_"
+      },
+      "evidence": "Element does not have focusable descendants",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "tabindex",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "DropdownMenu",
+        "story": "DropdownMenu › Trigger Without Name",
+        "selector": "#base-ui-_r_p_"
+      },
+      "evidence": "Element does not have a tabindex greater than 0",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "1.4.11-border-contrast",
+      "ruleVersion": "1",
+      "criterion": "1.4.11",
+      "executor": "code",
+      "outcome": "failed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "#email"
+      },
+      "evidence": "Border #e5e5e5 on #ffffff has contrast 1.26:1, needs 3:1 (rule 1.4.11-border-contrast v1, WCAG 1.4.11)",
+      "measured": {
+        "rule": "1.4.11-border-contrast",
+        "version": "1",
+        "ratio": 1.26,
+        "threshold": 3,
+        "border": "#e5e5e5",
+        "backdrop": "#ffffff",
+        "borderRaw": "oklch(0.922 0 0)"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "label"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "#email"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "#email"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "email",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "form-field-multiple-labels",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "3.3.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "#email"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label-title-only",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "#email"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label",
+        "selector": "#email"
+      },
+      "evidence": "Element has an explicit <label>",
+      "measured": {
+        "explicitLabel": "Email"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "1.4.11-border-contrast",
+      "ruleVersion": "1",
+      "criterion": "1.4.11",
+      "executor": "code",
+      "outcome": "failed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "#email"
+      },
+      "evidence": "Border #2f2f2f on #0a0a0a has contrast 1.47:1, needs 3:1 (rule 1.4.11-border-contrast v1, WCAG 1.4.11)",
+      "measured": {
+        "rule": "1.4.11-border-contrast",
+        "version": "1",
+        "ratio": 1.47,
+        "threshold": 3,
+        "border": "#2f2f2f",
+        "backdrop": "#0a0a0a",
+        "borderRaw": "oklch(1 0 0 / 0.15)"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "label"
+      },
+      "evidence": "Element has sufficient color contrast of 18.96",
+      "measured": {
+        "fgColor": "#fafafa",
+        "bgColor": "#0a0a0a",
+        "contrastRatio": 18.96,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "#email"
+      },
+      "evidence": "Element has sufficient color contrast of 17.49",
+      "measured": {
+        "fgColor": "#fafafa",
+        "bgColor": "#151515",
+        "contrastRatio": 17.49,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "#email"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "email",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "form-field-multiple-labels",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "3.3.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "#email"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label-title-only",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "#email"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Dark",
+        "selector": "#email"
+      },
+      "evidence": "Element has an explicit <label>",
+      "measured": {
+        "explicitLabel": "Email"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "label"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "#email-fixed"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "#email-fixed"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "email-fixed",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "form-field-multiple-labels",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "3.3.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "#email-fixed"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label-title-only",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "#email-fixed"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "#email-fixed"
+      },
+      "evidence": "Element has an explicit <label>",
+      "measured": {
+        "explicitLabel": "Email"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "1.4.11-border-contrast",
+      "ruleVersion": "1",
+      "criterion": "1.4.11",
+      "executor": "code",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › With Label Fixed Border",
+        "selector": "#email-fixed"
+      },
+      "evidence": "Border has sufficient contrast against its surroundings",
+      "measured": {
+        "rule": "1.4.11-border-contrast",
+        "version": "1",
+        "ratio": 4.54,
+        "threshold": 3,
+        "border": "#767676",
+        "backdrop": "#ffffff",
+        "borderRaw": "rgb(118, 118, 118)"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "failed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Without Label",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "Element does not have an implicit (wrapped) <label>",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "1.4.11-border-contrast",
+      "ruleVersion": "1",
+      "criterion": "1.4.11",
+      "executor": "code",
+      "outcome": "failed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Without Label",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "Border #e5e5e5 on #ffffff has contrast 1.26:1, needs 3:1 (rule 1.4.11-border-contrast v1, WCAG 1.4.11)",
+      "measured": {
+        "rule": "1.4.11-border-contrast",
+        "version": "1",
+        "ratio": 1.26,
+        "threshold": 3,
+        "border": "#e5e5e5",
+        "backdrop": "#ffffff",
+        "borderRaw": "oklch(0.922 0 0)"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Without Label",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Without Label",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Without Label",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Without Label",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "form-field-multiple-labels",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "3.3.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Without Label",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label-title-only",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Without Label",
+        "selector": "#base-ui-_r_3_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "1.4.11-border-contrast",
+      "ruleVersion": "1",
+      "criterion": "1.4.11",
+      "executor": "code",
+      "outcome": "failed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Placeholder Only",
+        "selector": "#base-ui-_r_4_"
+      },
+      "evidence": "Border #e5e5e5 on #ffffff has contrast 1.26:1, needs 3:1 (rule 1.4.11-border-contrast v1, WCAG 1.4.11)",
+      "measured": {
+        "rule": "1.4.11-border-contrast",
+        "version": "1",
+        "ratio": 1.26,
+        "threshold": 3,
+        "border": "#e5e5e5",
+        "backdrop": "#ffffff",
+        "borderRaw": "oklch(0.922 0 0)"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Placeholder Only",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Placeholder Only",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Placeholder Only",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Placeholder Only",
+        "selector": "#base-ui-_r_4_"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "form-field-multiple-labels",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "3.3.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Placeholder Only",
+        "selector": "#base-ui-_r_4_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label-title-only",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Placeholder Only",
+        "selector": "#base-ui-_r_4_"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Placeholder Only",
+        "selector": "#base-ui-_r_4_"
+      },
+      "evidence": "Element has a placeholder attribute",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-allowed-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-conditional-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-body",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.3.1",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "body"
+      },
+      "evidence": "No aria-hidden attribute is present on document body",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-hidden-focus",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#storybook-a11y-vision-filters"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-prohibited-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr-value",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "aria-valid-attr",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "ARIA attribute name is valid",
+      "measured": null,
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "avoid-inline-spacing",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.12",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "body"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "label"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "color-contrast",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "1.4.3",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "Element has sufficient color contrast of 19.79",
+      "measured": {
+        "fgColor": "#0a0a0a",
+        "bgColor": "#ffffff",
+        "contrastRatio": 19.79,
+        "fontSize": "10.5pt (14px)",
+        "fontWeight": "normal",
+        "expectedContrastRatio": "4.5:1"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "duplicate-id-aria",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "Document has no elements referenced with ARIA or labels that share the same id attribute",
+      "measured": "email-error",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "form-field-multiple-labels",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "3.3.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label-title-only",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "?",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "",
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "label",
+      "ruleVersion": "axe-core 4.13.0",
+      "criterion": "4.1.2",
+      "executor": "axe",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "Element has an explicit <label>",
+      "measured": {
+        "explicitLabel": "Email"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    },
+    {
+      "format": 1,
+      "rule": "1.4.11-border-contrast",
+      "ruleVersion": "1",
+      "criterion": "1.4.11",
+      "executor": "code",
+      "outcome": "passed",
+      "subject": {
+        "component": "Input",
+        "story": "Input › Error Only By Color",
+        "selector": "#email-error"
+      },
+      "evidence": "Border has sufficient contrast against its surroundings",
+      "measured": {
+        "rule": "1.4.11-border-contrast",
+        "version": "1",
+        "ratio": 4.76,
+        "threshold": 3,
+        "border": "#e7000b",
+        "backdrop": "#ffffff",
+        "borderRaw": "oklch(0.577 0.245 27.325)"
+      },
+      "at": "2026-10-02T21:37:39.922Z"
+    }
+  ]
+}

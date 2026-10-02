@@ -2,8 +2,26 @@
   "name": "shadcn-wcag-compliance",
   "version": "0.0.1",
   "description": "WCAG 2.2 AA compliance checks for design systems built on shadcn/ui (Base UI). Early work, nothing to install yet.",
-  "keywords": ["shadcn", "shadcn-ui", "base-ui", "wcag", "wcag22", "accessibility", "european-accessibility-act", "design-system"],
-  "repository": { "type": "git", "url": "git+https://github.com/balaka/shadcn-wcag-compliance.git" },
+  "type": "module",
+  "keywords": [
+    "shadcn",
+    "shadcn-ui",
+    "base-ui",
+    "wcag",
+    "wcag22",
+    "accessibility",
+    "european-accessibility-act",
+    "design-system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balaka/shadcn-wcag-compliance.git"
+  },
   "homepage": "https://github.com/balaka/shadcn-wcag-compliance#readme",
-  "files": ["README.md"]
+  "files": [
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22.6"
+  }
 }
