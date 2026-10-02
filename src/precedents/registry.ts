@@ -17,7 +17,7 @@ export interface Precedent {
   scope: "story" | "component" | "tokens" | "rule"
   subject: { file?: string; theme?: string; tokens?: string[]; component?: string; story?: string }
   decision: "accept" | "reject" | "not-applicable"
-  evidence?: string
+  evidence: string[]
   reason?: string
   valid_until?: string
   history: HistoryEntry[]
@@ -44,7 +44,7 @@ export function parsePrecedent(text: string, file: string): Precedent | null {
     scope: fm.scope as Precedent["scope"],
     subject: (fm.subject as Precedent["subject"]) ?? {},
     decision: fm.decision as Precedent["decision"],
-    evidence: fm.evidence ? String(fm.evidence) : undefined,
+    evidence: Array.isArray(fm.evidence) ? fm.evidence.map(String) : fm.evidence ? String(fm.evidence).split(/;\s+/) : [],
     reason: fm.reason ? String(fm.reason) : undefined,
     valid_until: fm.valid_until ? String(fm.valid_until) : undefined,
     history,
@@ -102,6 +102,10 @@ export function parseFrontMatter(src: string): Record<string, unknown> {
       const buf: string[] = []
       while (i + 1 < lines.length && /^\s+\S/.test(lines[i + 1])) buf.push(lines[++i].trim())
       out[key] = buf.join(" ")
+    } else if (val === "" && i + 1 < lines.length && /^\s+-\s+(?!\{)/.test(lines[i + 1])) {
+      const list: unknown[] = []
+      while (i + 1 < lines.length && /^\s+-\s+(?!\{)/.test(lines[i + 1])) list.push(scalar(lines[++i].trim().slice(2).trim()))
+      out[key] = list
     } else if (val === "" && key === "history") {
       const list: HistoryEntry[] = []
       while (i + 1 < lines.length && /^\s+-\s*\{/.test(lines[i + 1])) list.push(parseInlineMap(lines[++i]) as unknown as HistoryEntry)

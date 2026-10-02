@@ -31,7 +31,8 @@ subject:                        # what the scope points at
   theme: light                  #   component: component; story: component + story
   tokens: [--input, --background]
 decision: accept                # accept | reject | not-applicable
-evidence: "oklch(0.922 0 0) on oklch(1 0 0) = 1.26:1, needs 3:1"
+evidence:                       # one line per measured case (a single string is also accepted)
+  - "light: --input oklch(0.922 0 0) on --background oklch(1 0 0) = 1.26:1, needs 3:1"
 reason: >
   plain words, citing the standard's text where it matters
 valid_until: 2026-10-07         # exceptions only; absent for interpretations

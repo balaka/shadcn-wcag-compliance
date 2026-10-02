@@ -10,7 +10,9 @@ subject:
   file: example/src/index.css
   tokens: [--input, --background]   # both themes: no theme given
 decision: accept
-evidence: "light: --input oklch(0.922 0 0) (#e5e5e5) on #ffffff = 1.26:1; dark: --input oklch(1 0 0 / 15%) (#2f2f2f) on #0a0a0a = 1.47:1; needs 3:1"
+evidence:
+  - "light: --input oklch(0.922 0 0) (#e5e5e5) on --background #ffffff = 1.26:1, needs 3:1"
+  - "dark: --input oklch(1 0 0 / 15%) (#2f2f2f) on --background #0a0a0a = 1.47:1, needs 3:1"
 reason: >
   The example must show shadcn exactly as it installs, so that the
   demonstration on 2026-10-06 starts from the real default and the fix

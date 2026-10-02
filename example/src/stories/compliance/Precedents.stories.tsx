@@ -42,6 +42,9 @@ const RULES = [
   "Source of truth: the files in precedents/. This page only shows them.",
 ]
 
+const REPO = "https://github.com/balaka/shadcn-wcag-compliance/blob/main"
+const CRITERION_ANCHOR: Record<string, string> = { "1.4.11": "non-text-contrast", "1.4.3": "contrast-minimum", "3.3.2": "labels-or-instructions" }
+
 const statusVariant: Record<string, React.ComponentProps<typeof Badge>["variant"]> = {
   approved: "default",
   drafted: "secondary",
@@ -194,8 +197,8 @@ function Row({ p }: { p: Precedent }) {
         <TableCell>
           {a ? (
             <>
-              <div className="font-medium">{a.at.slice(0, 10)}</div>
-              <div className="text-muted-foreground">{a.by}</div>
+              <div className="font-medium">{a.by}</div>
+              <div className="text-muted-foreground">{a.at.slice(0, 10)}</div>
             </>
           ) : (
             <span className="text-muted-foreground">not approved</span>
@@ -210,8 +213,25 @@ function Row({ p }: { p: Precedent }) {
               <Card size="sm">
                 <CardHeader><CardTitle>Finding</CardTitle></CardHeader>
                 <CardContent>
-                  <p className="whitespace-pre-wrap">{p.evidence}</p>
-                  <p className="mt-2 text-muted-foreground">WCAG {p.criterion} · rule {p.rule} v{p.rule_version}</p>
+                  <ol className="list-decimal space-y-1 pl-5">
+                    {p.evidence.map((e, i) => (
+                      <li key={i}>{e}</li>
+                    ))}
+                  </ol>
+                  <p className="mt-3 text-muted-foreground">
+                    Rule applied:{" "}
+                    <a className="underline underline-offset-4 hover:text-foreground" href={`${REPO}/rules/own/${p.rule}.md`} target="_blank" rel="noreferrer">
+                      {p.rule} v{p.rule_version}
+                    </a>
+                    {p.criterion ? (
+                      <>
+                        {" "}· WCAG{" "}
+                        <a className="underline underline-offset-4 hover:text-foreground" href={`https://www.w3.org/TR/WCAG22/#${CRITERION_ANCHOR[p.criterion] ?? ""}`} target="_blank" rel="noreferrer">
+                          {p.criterion}
+                        </a>
+                      </>
+                    ) : null}
+                  </p>
                 </CardContent>
               </Card>
               <Card size="sm">
@@ -222,14 +242,14 @@ function Row({ p }: { p: Precedent }) {
                     {a ? ` — ${a.by}, ${a.at.slice(0, 10)}` : " — not approved yet"}
                     {p.valid_until ? ` · until ${p.valid_until}` : ""}
                   </p>
-                  <p className="mt-2 text-muted-foreground">{p.reason}</p>
+                  <p className="mt-2 text-muted-foreground"><span className="font-medium text-foreground">Why</span> — {p.reason}</p>
                 </CardContent>
               </Card>
               <Card size="sm">
                 <CardHeader><CardTitle>History</CardTitle></CardHeader>
                 <CardContent>
                   <ol className="space-y-2">
-                    {p.history.map((h, i) => (
+                    {[...p.history].reverse().map((h, i) => (
                       <li key={i} className="grid grid-cols-[8.5rem_1fr] gap-2">
                         <span className="font-mono text-xs text-muted-foreground">{h.at.replace("T", " ")}</span>
                         <span>
@@ -266,7 +286,7 @@ const stress: Precedent = {
   scope: "tokens",
   subject: { file: "example/src/index.css", theme: "dark", tokens: ["--ring", "--background", "--primary", "--primary-foreground", "--sidebar-ring", "--sidebar", "--card", "--popover"] },
   decision: "accept",
-  evidence: "dark: --ring oklch(0.556 0 0) at 50% over #0a0a0a = #3f3f3f = 1.87:1; against --primary #e5e5e5 = 11.6:1; needs 3:1 against adjacent colors",
+  evidence: ["dark: --ring oklch(0.556 0 0) at 50% over --background #0a0a0a = #3f3f3f = 1.87:1, needs 3:1", "dark: the same ring against --primary #e5e5e5 = 11.6:1 — passes against the button"],
   reason: "A long reason to see how the text wraps: the ring is measured against the page background, but a focused primary button sits on it with a 11.6:1 ring-to-button contrast. The adjacent color in the sense of 1.4.11 is disputed; kept until the rule's version 2 defines which neighbour counts.",
   valid_until: "2026-11-01",
   history: [
