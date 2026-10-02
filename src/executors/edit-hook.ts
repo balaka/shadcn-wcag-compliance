@@ -27,7 +27,44 @@ const call = JSON.parse(raw || "{}")
 const input = call.tool_input ?? {}
 const file: string | undefined = input.file_path
 
-if (!file || !THEME_FILE.test(file)) process.exit(0)
+if (call.tool_name !== "Bash" && (!file || !THEME_FILE.test(file))) process.exit(0)
+
+// Every decision is recorded, refusals above all: a refused write is the
+// gate doing its job, and the history of refusals is the evidence that it
+// does. One JSON line per attempt, same Finding objects as every other run.
+function record(decision: string, findings: unknown[], target: string) {
+  const log = { at: new Date().toISOString(), place: "edit-hook", tool: call.tool_name, file: target, session: call.session_id ?? null, decision, findings }
+  try {
+    mkdirSync(join(process.env.CLAUDE_PROJECT_DIR ?? ".", "runs"), { recursive: true })
+    appendFileSync(join(process.env.CLAUDE_PROJECT_DIR ?? ".", "runs", "edits.jsonl"), JSON.stringify(log) + "\n")
+  } catch {
+    // never let logging failure change the decision
+  }
+}
+
+// A shell command can rewrite the theme file too (sed -i, >, tee, cp…).
+// Its result cannot be computed in advance, so such a command is refused
+// outright and the agent is pointed at Edit/Write, where the rule can see
+// what the file will become. Same approach as bro's journal write guard.
+if (call.tool_name === "Bash") {
+  // Quoted text is data, not a target: a commit message or a journal line
+  // that merely mentions index.css must not trip the guard.
+  const cmd: string = String(input.command ?? "").replace(/'[^']*'|"[^"]*"/g, '""')
+  const target = cmd.match(/[\w./~$-]*(?:index|globals)\.css\b/g) ?? []
+  const writes = /(^|[\s;&|])(sed\s+-[a-zA-Z]*i|perl\s+-[a-zA-Z]*i|tee\b|cp\b|mv\b|install\b|dd\b|truncate\b|>{1,2}\s*[\w./~$-]*(?:index|globals)\.css)/.test(cmd)
+    || /open\([^)]*(?:index|globals)\.css[^)]*['"][wa]/.test(cmd)
+  if (target.length && writes) {
+    record("refused", [], file ?? target[0])
+    console.error(
+      [
+        `shadcn-wcag-compliance: shell write to ${target[0]} refused — rule 1.4.11-border-contrast cannot check a file rewritten by a shell command.`,
+        `Change theme tokens with the Edit or Write tool; the hook then measures the result and lets a passing edit through.`,
+      ].join("\n")
+    )
+    process.exit(2)
+  }
+  process.exit(0)
+}
 
 const before = existsSync(file) ? readFileSync(file, "utf8") : ""
 let after: string
@@ -50,25 +87,8 @@ const stillFailing = now.filter((f) => f.outcome === "failed" && was.get(f.subje
 // but silence would hide it, so it is said and recorded as "unchecked".
 const unchecked = now.filter((f) => f.outcome === "cantTell")
 
-// Every decision is recorded, refusals above all: a refused write is the
-// gate doing its job, and the history of refusals is the evidence that it
-// does. One JSON line per attempt, same Finding objects as every other run.
 const decision = regressions.length ? "refused" : stillFailing.length ? "noted" : unchecked.length ? "unchecked" : "passed"
-const log = {
-  at: new Date().toISOString(),
-  place: "edit-hook",
-  tool: call.tool_name,
-  file,
-  session: call.session_id ?? null,
-  decision,
-  findings: now,
-}
-try {
-  mkdirSync(join(process.env.CLAUDE_PROJECT_DIR ?? ".", "runs"), { recursive: true })
-  appendFileSync(join(process.env.CLAUDE_PROJECT_DIR ?? ".", "runs", "edits.jsonl"), JSON.stringify(log) + "\n")
-} catch {
-  // never let logging failure change the decision
-}
+record(decision, now, file!)
 
 if (regressions.length) {
   console.error(
