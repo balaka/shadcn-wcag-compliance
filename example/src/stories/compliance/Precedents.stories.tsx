@@ -5,6 +5,7 @@ import { ChevronRightIcon } from "lucide-react"
 import { parsePrecedent, type Precedent } from "../../../../src/precedents/registry"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import {
@@ -102,7 +103,6 @@ function Register({ precedents }: { precedents: Precedent[] }) {
             <TableHead>Status</TableHead>
             <TableHead>Scope</TableHead>
             <TableHead>Approved by</TableHead>
-            <TableHead>Until</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -111,7 +111,7 @@ function Register({ precedents }: { precedents: Precedent[] }) {
           ))}
           {shown.length === 0 && (
             <TableRow>
-              <TableCell colSpan={7} className="py-6 text-center text-muted-foreground">
+              <TableCell colSpan={6} className="py-6 text-center text-muted-foreground">
                 Nothing matches these filters.
               </TableCell>
             </TableRow>
@@ -132,6 +132,34 @@ function Filter({ id, label, value, onChange, options }: { id: string; label: st
           <NativeSelectOption key={o} value={o}>{o}</NativeSelectOption>
         ))}
       </NativeSelect>
+    </div>
+  )
+}
+
+const SHOWN_TOKENS = 2
+
+function Scope({ p }: { p: Precedent }) {
+  const [all, setAll] = React.useState(false)
+  const tokens = p.subject.tokens ?? []
+  const shown = all ? tokens : tokens.slice(0, SHOWN_TOKENS)
+  const hidden = tokens.length - shown.length
+  return (
+    <div className="flex flex-wrap items-center gap-1">
+      <span className="font-medium">{p.scope}</span>
+      {p.subject.story && <Badge variant="outline">{p.subject.story}</Badge>}
+      {p.subject.component && <Badge variant="outline">{p.subject.component}</Badge>}
+      {shown.map((t) => (
+        <Badge key={t} variant="outline" className="font-mono">{t}</Badge>
+      ))}
+      {hidden > 0 && (
+        <Button variant="link" size="xs" className="h-5 px-1" onClick={() => setAll(true)} aria-label={`Show all ${tokens.length} tokens`}>
+          +{hidden} more
+        </Button>
+      )}
+      {all && tokens.length > SHOWN_TOKENS && (
+        <Button variant="link" size="xs" className="h-5 px-1" onClick={() => setAll(false)}>less</Button>
+      )}
+      {p.subject.theme && <Badge variant="secondary">{p.subject.theme}</Badge>}
     </div>
   )
 }
@@ -161,66 +189,67 @@ function Row({ p }: { p: Precedent }) {
         <TableCell>{p.decision}</TableCell>
         <TableCell><Badge variant={statusVariant[p.status] ?? "outline"}>{p.status}</Badge></TableCell>
         <TableCell className="whitespace-normal">
-          <div className="flex flex-wrap items-center gap-1">
-            <span className="font-medium">{p.scope}</span>
-            {p.subject.story && <Badge variant="outline">{p.subject.story}</Badge>}
-            {p.subject.component && <Badge variant="outline">{p.subject.component}</Badge>}
-            {p.subject.tokens?.map((t) => (
-              <Badge key={t} variant="outline" className="font-mono">{t}</Badge>
-            ))}
-            {p.subject.theme && <Badge variant="secondary">{p.subject.theme}</Badge>}
-          </div>
+          <Scope p={p} />
         </TableCell>
-        <TableCell>{a ? <>{a.by}<div className="text-xs text-muted-foreground">{a.at.slice(0, 10)}</div></> : <span className="text-muted-foreground">—</span>}</TableCell>
-        <TableCell>{p.valid_until ?? "—"}</TableCell>
+        <TableCell>
+          {a ? (
+            <>
+              <div className="font-medium">{a.at.slice(0, 10)}</div>
+              <div className="text-muted-foreground">{a.by}</div>
+            </>
+          ) : (
+            <span className="text-muted-foreground">not approved</span>
+          )}
+        </TableCell>
       </TableRow>
       {open && (
         <TableRow id={detailsId} className="bg-muted/40 hover:bg-muted/40">
           <TableCell />
-          <TableCell colSpan={6} className="py-4 whitespace-normal">
-            <dl className="grid max-w-3xl gap-4 break-words">
-              <Block title="Finding" hint={`what the rule measured · WCAG ${p.criterion ?? ""}`}>
-                <p className="whitespace-pre-wrap">{p.evidence}</p>
-              </Block>
-              <Block title="Decision">
-                <p><span className="font-medium">{p.decision}</span>{a ? ` — ${a.by}, ${a.at.slice(0, 10)}` : " — not approved yet"}</p>
-                <p className="mt-1 text-muted-foreground">{p.reason}</p>
-              </Block>
-              <Block title="History">
-                <ol className="space-y-1.5">
-                  {p.history.map((h, i) => (
-                    <li key={i} className="grid grid-cols-[8.5rem_1fr] gap-2">
-                      <span className="font-mono text-xs text-muted-foreground">{h.at.replace("T", " ")}</span>
-                      <span>
-                        <span className="font-medium">{h.action}</span>
-                        {h.by ? <span className="text-muted-foreground"> · {h.by}</span> : null}
-                        {h.why ? <div className="text-xs text-muted-foreground">{h.why}</div> : null}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              </Block>
-              <Block title="Record">
-                <p className="font-mono text-xs text-muted-foreground">
-                  {p.id} · {p.kind} · {p.file}{p.subject.file ? ` · ${p.subject.file}` : ""}
-                </p>
-              </Block>
-            </dl>
+          <TableCell colSpan={5} className="py-4 whitespace-normal">
+            <div className="grid max-w-3xl gap-3 break-words">
+              <Card size="sm">
+                <CardHeader><CardTitle>Finding</CardTitle></CardHeader>
+                <CardContent>
+                  <p className="whitespace-pre-wrap">{p.evidence}</p>
+                  <p className="mt-2 text-muted-foreground">WCAG {p.criterion} · rule {p.rule} v{p.rule_version}</p>
+                </CardContent>
+              </Card>
+              <Card size="sm">
+                <CardHeader><CardTitle>Decision</CardTitle></CardHeader>
+                <CardContent>
+                  <p>
+                    <span className="font-medium">{p.decision}</span>
+                    {a ? ` — ${a.by}, ${a.at.slice(0, 10)}` : " — not approved yet"}
+                    {p.valid_until ? ` · until ${p.valid_until}` : ""}
+                  </p>
+                  <p className="mt-2 text-muted-foreground">{p.reason}</p>
+                </CardContent>
+              </Card>
+              <Card size="sm">
+                <CardHeader><CardTitle>History</CardTitle></CardHeader>
+                <CardContent>
+                  <ol className="space-y-2">
+                    {p.history.map((h, i) => (
+                      <li key={i} className="grid grid-cols-[8.5rem_1fr] gap-2">
+                        <span className="font-mono text-xs text-muted-foreground">{h.at.replace("T", " ")}</span>
+                        <span>
+                          <span className="font-medium">{h.action}</span>
+                          {h.by ? <span className="text-muted-foreground"> · {h.by}</span> : null}
+                          {h.why ? <div className="text-muted-foreground">{h.why}</div> : null}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                </CardContent>
+              </Card>
+              <p className="font-mono text-xs text-muted-foreground">
+                {p.id} · {p.kind} · {p.file}{p.subject.file ? ` · ${p.subject.file}` : ""}
+              </p>
+            </div>
           </TableCell>
         </TableRow>
       )}
     </>
-  )
-}
-
-function Block({ title, hint, children }: { title: string; hint?: string; children: React.ReactNode }) {
-  return (
-    <div>
-      <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-        {title}{hint ? <span className="ml-2 font-normal normal-case tracking-normal">{hint}</span> : null}
-      </dt>
-      <dd className="mt-1">{children}</dd>
-    </div>
   )
 }
 
