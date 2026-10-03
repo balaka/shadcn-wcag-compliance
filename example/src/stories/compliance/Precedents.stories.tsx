@@ -278,31 +278,6 @@ function Row({ p }: { p: Precedent }) {
   )
 }
 
-// A made-up record with many tokens and a long history, only for this
-// page's own stories: checks that the layout wraps instead of stretching.
-const stress: Precedent = {
-  file: "(not a file — layout check)",
-  format: 2,
-  id: "p-2026-10-04-99",
-  kind: "exception",
-  rule: "1.4.11-focus-ring-contrast",
-  rule_version: "1",
-  criterion: "1.4.11",
-  scope: "tokens",
-  subject: { file: "example/src/index.css", theme: "dark", tokens: ["--ring", "--background", "--primary", "--primary-foreground", "--sidebar-ring", "--sidebar", "--card", "--popover"] },
-  decision: "accept",
-  evidence: ["dark: --ring oklch(0.556 0 0) at 50% over --background #0a0a0a = #3f3f3f = 1.87:1, needs 3:1", "dark: the same ring against --primary #e5e5e5 = 11.6:1 — passes against the button"],
-  reason: "A long reason to see how the text wraps: the ring is measured against the page background, but a focused primary button sits on it with a 11.6:1 ring-to-button contrast. The adjacent color in the sense of 1.4.11 is disputed; kept until the rule's version 2 defines which neighbour counts.",
-  valid_until: "2026-11-01",
-  history: [
-    { at: "2026-10-04T10:00", action: "drafted", by: "claude (session 1234abcd)" },
-    { at: "2026-10-04T10:30", action: "approved", by: "Jesse Example", why: "agreed in design review" },
-    { at: "2026-10-20T09:00", action: "needs-review", why: "rule 1.4.11-focus-ring-contrast bumped to v2" },
-  ],
-  status: "needs-review",
-  body: "",
-}
-
 const meta = {
   title: "WCAG compliance/Precedents",
   component: Register,
@@ -313,8 +288,3 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const RegisterPage: Story = { name: "Register", args: { precedents: fromFiles } }
-
-export const LayoutStress: Story = {
-  name: "Layout stress (many tokens)",
-  args: { precedents: [stress, ...fromFiles] },
-}
