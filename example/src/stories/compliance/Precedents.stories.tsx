@@ -304,7 +304,7 @@ const stress: Precedent = {
 }
 
 const meta = {
-  title: "Compliance/Precedents",
+  title: "WCAG compliance/Precedents",
   component: Register,
   parameters: { layout: "fullscreen" },
 } satisfies Meta<typeof Register>
