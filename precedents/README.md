@@ -31,6 +31,10 @@ subject:                        # what the scope points at
   theme: light                  #   component: component; story: component + story
   tokens: [--input, --background]
 decision: accept                # accept | reject | not-applicable
+match:                          # rules with several reasons to say cantTell (axe's):
+  check: focusable-not-tabbable #   which check inside the rule…
+  selector: data-base-ui-focus-guard  # …on which element (substring of its selector)
+                                # required for rules that are not ours; omit for own rules
 evidence:                       # one line per measured case (a single string is also accepted)
   - "light: --input oklch(0.922 0 0) on --background oklch(1 0 0) = 1.26:1, needs 3:1"
 reason: >
@@ -47,6 +51,16 @@ history:                        # append-only; the LAST entry is the status
 Status is read off the last `history` entry: `drafted` → `approved`
 (= active) → `expired` | `revoked` | `superseded` | `needs-review`. Only
 `approved`, and not past `valid_until`, is active.
+
+## Who may write what
+
+A chat (any agent) may create a precedent and append `drafted` or
+`needs-review` to its history. `approved` and `revoked` are a person's act:
+run `node src/precedents/approve.ts <id> --by "<name>" [--why "…"] [--revoke]`
+in your own terminal, or edit the file yourself. The edit hook refuses a
+chat that writes such an entry or runs that command — a threshold, not a
+wall: the wall is the pull request, where the entry must arrive in a
+commit a person made.
 
 ## How it is applied
 

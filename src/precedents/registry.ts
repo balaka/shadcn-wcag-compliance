@@ -17,6 +17,9 @@ export interface Precedent {
   scope: "story" | "component" | "tokens" | "rule"
   subject: { file?: string; theme?: string; tokens?: string[]; component?: string; story?: string }
   decision: "accept" | "reject" | "not-applicable"
+  // For rules with several reasons to say "cantTell" (axe's), which one and
+  // on which element this precedent is about. Required for non-own rules.
+  match?: { check?: string; selector?: string }
   evidence: string[]
   reason?: string
   valid_until?: string
@@ -44,6 +47,7 @@ export function parsePrecedent(text: string, file: string): Precedent | null {
     scope: fm.scope as Precedent["scope"],
     subject: (fm.subject as Precedent["subject"]) ?? {},
     decision: fm.decision as Precedent["decision"],
+    match: (fm.match as Precedent["match"]) ?? undefined,
     evidence: Array.isArray(fm.evidence) ? fm.evidence.map(String) : fm.evidence ? String(fm.evidence).split(/;\s+/) : [],
     reason: fm.reason ? String(fm.reason) : undefined,
     valid_until: fm.valid_until ? String(fm.valid_until) : undefined,
@@ -60,13 +64,29 @@ export function isActive(p: Precedent): boolean {
 const SCOPE_ORDER: Precedent["scope"][] = ["story", "component", "tokens", "rule"]
 
 // Narrow to wide; first match wins. `tokens` is what the rule compared.
-export function findPrecedent(finding: Pick<Finding, "rule" | "ruleVersion" | "subject">, tokens: string[] | undefined, all: Precedent[]): Precedent | undefined {
-  const candidates = all.filter((p) => p.rule === finding.rule && p.rule_version === finding.ruleVersion && isActive(p))
+// `includeDrafts` is for the Stop hook only: it asks "has anyone looked at
+// this?", not "is it decided?".
+export function findPrecedent(
+  finding: Pick<Finding, "rule" | "ruleVersion" | "subject">,
+  tokens: string[] | undefined,
+  all: Precedent[],
+  opts: { includeDrafts?: boolean } = {}
+): Precedent | undefined {
+  const candidates = all.filter(
+    (p) => p.rule === finding.rule && p.rule_version === finding.ruleVersion && (opts.includeDrafts ? p.status !== "revoked" : isActive(p))
+  )
   for (const scope of SCOPE_ORDER) {
-    const hit = candidates.find((p) => p.scope === scope && matches(p, finding.subject, tokens))
+    const hit = candidates.find((p) => p.scope === scope && matches(p, finding.subject, tokens) && matchesDetail(p, finding.subject))
     if (hit) return hit
   }
   return undefined
+}
+
+// `match.selector` is a substring of the element's selector; `match.check`
+// is compared by the executor that knows axe's check ids (not here).
+function matchesDetail(p: Precedent, s: Finding["subject"]): boolean {
+  if (!p.match?.selector) return true
+  return !!s.selector && s.selector.includes(p.match.selector)
 }
 
 function matches(p: Precedent, s: Finding["subject"], tokens?: string[]): boolean {

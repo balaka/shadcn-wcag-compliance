@@ -11,6 +11,17 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR\"/src/executors/stop-hook.ts",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   }
 }
