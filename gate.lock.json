@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "signedAt": "2026-10-03T17:28:07.738Z",
+  "signedBy": "Yuriy Balaka (initial, via chat before the gate was switched on)",
+  "files": {
+    ".claude/settings.json": "81781829ac2e9d2122bf1c7166f66faf5ba2f2130862475dffefadd09570aed6",
+    "src/finding.ts": "c7a45dff86da6e443a674c6dd7be1f14c95d8e56e7baac69ff1a98ce16c7eba2",
+    "src/gate/README.md": "1d09f4ffcda253f629adaf46ca6df6a23dac790d558a2894fd58457fea0d55c5",
+    "src/gate/guards/gate.ts": "680d34971cb326ec3aa0cdedbe29d383d414a92bad188f3cede4e1911e3fddf2",
+    "src/gate/guards/index.ts": "cdd7c100a8fa15016d40afef739a3ff298c04ed419e9afc221fd43b8c4a0db0b",
+    "src/gate/guards/precedent.ts": "65c2d68f2f1affd7ad60aaf4cb6d6d217e564fc39fde5b0dab993675071f3863",
+    "src/gate/guards/rule.ts": "9be22891cffedca97578440fdb23838014dfa70789eae99c83b70bfa1b02a4ed",
+    "src/gate/guards/standard.ts": "3d55187d102a6e2011a16135e19812a428870badd8b6c9eee2fe71bf36891fb6",
+    "src/gate/guards/story.ts": "e58b89df1f9034ebc40b29866c23513896c90fe6107d7116ca63344368dedc44",
+    "src/gate/guards/theme.ts": "388fd806aa910d420326975c9804068b2815abf967a11fbbcc78f3176c3f1578",
+    "src/gate/integrity.ts": "ecea3bb7184f1c1bf3be76991c143a094056846ec7fede10065917647398b58b",
+    "src/gate/launcher.mjs": "c54a37c1297bab21a75a67be6ec78dfa9463ae7411e4944b7d461fb004bdfeb4",
+    "src/gate/paths.ts": "f287d57bc26b5910e994fada8431be7c07ef8adb05f6618edc1f9e70f259c12a",
+    "src/gate/record.ts": "fd3b69db116b883f7eccc7de543d118839ac597a80dc4de03920bcca5d00b503",
+    "src/gate/runner.ts": "c1294e2c7d7d359442873b4332cfe9e633da4a022d579c10663593ba95e8a802",
+    "src/gate/shell.ts": "7291d3f750b79bbd46e0f2ddc0b5c9b146e1d8cbe888176611edcb1163bc96e4",
+    "src/gate/sign.ts": "7a1a7b51b49a243f9237e05d81949b1d688c39bb0ece8731e8966f08191f257c",
+    "src/gate/stop.ts": "e9721da8b6dba6fab5c136e03691d7dc9801bce6044d3c694f6e2f96aa8c0a55",
+    "src/gate/types.ts": "373893cbad104cee34bb0a2a28b9b761f0748580668a7981fb7240150bf8f958",
+    "src/gate/unlock.ts": "859edcfe7dae6a0d2ac5af45baccb77f7fd4feb00cf42a64a1930e29458a3536",
+    "src/precedents/approve.ts": "0839f9d96a56190ce46cbd96b0391c4bcf75da8d2c86dd25f1e910c063e77d1e",
+    "src/precedents/load.ts": "0328010a3aa8d9b1734410a73e3ba523ac47828aa500484edb94afb26c381908",
+    "src/precedents/registry.ts": "a885cc66716ab5584740f586742574364a49c4bd37dba2e465859684d025eb57",
+    "src/theme/read-tokens.ts": "5a224f3b2e5ee531a56075c6af3a8f7267f0ee3a0de270b35b72538afb65a889",
+    "src/wcag/contrast-ratio.ts": "60381cbf4e1d59d4a9f228009cd1c3607a2450c8aab19e01a5668d78914869dd"
+  }
+}

@@ -41,9 +41,11 @@ src/
                            var() followed to its end, color + alpha per token
   rules/<criterion>-<name>.ts   the code side of each rule in rules/; same file
                            name as the Markdown rule, same version, same threshold
-  executors/               who runs a rule, where:
-    storybook-axe.ts         inside Storybook, as an axe custom rule
-    edit-hook.ts             before a file write, as a Claude Code PreToolUse hook
+  executors/storybook-axe.ts   runs a rule inside Storybook, as an axe custom rule
+  gate/                    the Claude Code hooks: launcher (fails closed), runner,
+                           one guard per kind of file, shell analysis, integrity
+                           lock, Stop hook; people's commands sign/unlock — see
+                           src/gate/README.md
   finding.ts               the one finding format (carries `format: 1`)
   run.ts                   gathers findings from all executors → runs/<stamp>.json,
                            prints expected-vs-actual
@@ -81,7 +83,8 @@ standards/ ──► rules/ ──► stories (expected written first) ──►
    findings (one format) ──► runs/<stamp>.json
           │
           ├─► expected vs actual: does each rule catch what it should?
-          ├─► while editing: hook refuses the write, returns the number
+          ├─► while editing: the gate refuses the write, returns the number;
+          │   a person's precedent lets an accepted failure through, marked
           ├─► on a PR: SARIF → line annotations (planned)
           ├─► full sweep: history page from runs/ (planned)
           └─► cantTell / disagreement ──► precedents/ ──► example in a rule
@@ -90,8 +93,8 @@ standards/ ──► rules/ ──► stories (expected written first) ──►
 
 The same rule runs through two executors on purpose: `storybook-axe.ts`
 shows the finding where people look (Storybook's Accessibility tab) and in
-the Vitest report; `edit-hook.ts` answers in milliseconds from the CSS text
-alone, which is what a write hook needs. Both call the same rule file, so
+the Vitest report; the gate's theme guard answers in milliseconds from the
+CSS text alone, which is what a write hook needs. Both call the same rule file, so
 they cannot disagree on the number.
 
 Naming: a rule file is `<criterion>-<name>` (`1.4.11-border-contrast`) in

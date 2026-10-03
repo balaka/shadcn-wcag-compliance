@@ -1,0 +1,65 @@
+# The gate
+
+The place where a chat's write meets the rules. One launcher, one runner,
+one guard per kind of file. Decisions come from data — the file as it is
+and as it would become, the precedents on disk, the lock — never from
+anything said in a conversation.
+
+## Principles
+
+1. **One entry.** Every write a tool makes passes through `launcher.mjs`.
+2. **Fail closed.** If the gate cannot run, the write is refused. A broken
+   gate never becomes an open one (`launcher.mjs`).
+3. **The gate protects itself.** Its code, its registration
+   (`.claude/settings.json`), its lock are a protected set; a tool does not
+   change them (`guards/gate.ts`). A person edits them outside the chat, or
+   opens an unlock window first (`unlock.ts`).
+4. **Integrity, every call.** `gate.lock.json` holds a person's signature
+   over the protected files (`sign.ts`). A mismatch refuses every guarded
+   write until a person re-signs (`integrity.ts`). Tampering may succeed
+   once; it cannot go unnoticed and keep working.
+5. **A command with an unknown result is a write.** `sed -i`, `>`, `cp`,
+   `ln`, `git checkout -- file`, `git reset --hard`… against a guarded or
+   protected path are refused; the agent is pointed at Edit/Write
+   (`shell.ts`).
+6. **People act outside the chat.** `approve`, `sign`, `unlock` are commands
+   a person runs in their own terminal; from a chat they are refused by name.
+7. **Data at request time, from the repository.** Guards read `precedents/`
+   and `rules/` from disk when called. Nothing is passed in.
+8. **Guards are small and alike.** `{ name, matches(path), check(ctx) }`,
+   one file each under `guards/`. Adding a guard is adding a file and a line
+   in `guards/index.ts`.
+9. **Everything is recorded.** `runs/edits.jsonl`: allowed, refused,
+   accepted by precedent, unchecked, unlocked, fail-closed.
+
+## Honest limits
+
+This is a threshold, not a wall. A chat set on bypassing it can hide a
+path in a variable or feed a nested interpreter; the text analysis in
+`shell.ts` will not see it. What it cannot do is keep working afterwards:
+the next call finds the lock broken (for the gate's files) or the next run
+finds the regression (for data files), and both leave a trace. The wall is
+the pull request, where an approval or a gate change has to arrive in a
+commit a person made and a person reviewed.
+
+## Files
+
+```
+launcher.mjs   what Claude Code calls; dependency-free; fails closed
+runner.ts      shell → shell.ts; file → integrity → the matching guard; records
+shell.ts       reads a command's text for writes to guarded/protected paths
+integrity.ts   protected set, manifest, lock, unlock window
+paths.ts       GUARDED and PROTECTED patterns, human-only commands
+guards/        gate · standard · precedent · rule · story · theme
+stop.ts        Stop hook: cantTell findings without a precedent block the answer
+sign.ts        person: write gate.lock.json       (refused from a chat)
+unlock.ts      person: open/close an edit window  (refused from a chat)
+record.ts      runs/edits.jsonl
+```
+
+## Repairing the gate
+
+If the launcher reports that the gate could not run: fix the cause in
+your editor (the message names it), then `node src/gate/sign.ts --by
+"<name>"`. To develop the gate through Claude Code: `node src/gate/unlock.ts
+--by "<name>" --minutes 60`, work, then sign.

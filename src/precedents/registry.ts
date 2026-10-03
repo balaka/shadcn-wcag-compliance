@@ -147,7 +147,11 @@ export function parseFrontMatter(src: string): Record<string, unknown> {
 // A ` # comment` ends a value — unless the value is quoted, where # is text.
 function stripComment(v: string): string {
   const t = v.trim()
-  if (/^["']/.test(t)) return t
+  const q = t[0]
+  if (q === '"' || q === "'") {
+    const end = t.indexOf(q, 1)
+    return end > 0 ? t.slice(0, end + 1) : t
+  }
   return t.replace(/\s+#.*$/, "").trim()
 }
 

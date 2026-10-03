@@ -3,3 +3,6 @@ dist/
 storybook-static/
 .DS_Store
 *.log
+
+# a person's unlock window for editing the gate; local, never committed
+.gate-unlock.json
