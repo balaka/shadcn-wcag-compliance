@@ -100,7 +100,7 @@ function Register({ precedents }: { precedents: Precedent[] }) {
       <Table className="mt-4">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-8" />
+            <TableHead className="w-8"><span className="sr-only">Details</span></TableHead>
             <TableHead>Rule</TableHead>
             <TableHead>Decision</TableHead>
             <TableHead>Status</TableHead>
