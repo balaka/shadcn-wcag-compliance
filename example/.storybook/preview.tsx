@@ -42,6 +42,10 @@ const preview: Preview = {
     }
   },
   parameters: {
+    // Components first; the compliance pages close the sidebar.
+    options: {
+      storySort: { order: ["shadcn", "WCAG compliance", ["Overview", "Precedents"]] },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
