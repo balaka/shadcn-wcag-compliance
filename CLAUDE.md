@@ -37,9 +37,17 @@ An answer about accessibility without a quoted record is not accepted.
   `node src/precedents/approve.ts <id> --by "<name>"` in their terminal.
   Format: `precedents/README.md` (format 2; a precedent on an axe rule needs
   `match`; an exception needs `valid_until`).
-- `*.stories.tsx`: `parameters.expected` is written before the run and is
-  never adjusted to the result. If a component was really fixed, keep the
-  planted failure as its own story and say in `evidence` what changed.
+- `*.stories.tsx`: not yours unless the task is about stories.
+  `parameters.expected` is written before the run and is never adjusted to
+  the result. If your fix makes a story's expectation wrong, **report the
+  mismatch and stop** — a person decides whether the story keeps the
+  planted failure or changes. Do not add or rewrite stories to make the
+  table green.
+- Change only what was asked. A fix to a token is a fix to a token; it is
+  not a licence to touch stories, rules, or anything else the task did not
+  name. Say what else would have to change, and leave it.
+- Theme tokens keep the notation the file uses (shadcn: `oklch(…)`). Do not
+  write a hex or rgb value into an oklch theme.
 - `rules/own/*.md` and `src/rules/*.ts`: a change to what a rule checks
   needs a new `version` in both files.
 - `standards/`, `src/gate/`, `.claude/settings.json`, `gate.lock.json`:
