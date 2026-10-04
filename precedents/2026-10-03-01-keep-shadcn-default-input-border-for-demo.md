@@ -22,6 +22,7 @@ valid_until: 2026-10-07
 history:
   - { at: 2026-10-03T03:20, action: drafted, by: "claude (session bd7e5d39)" }
   - { at: 2026-10-03T03:23, action: approved, by: "Yuriy Balaka", why: "его слово в чате 03.10: «согласен, вноси; вернём изначальное состояние токенов, как в дистрибутиве shadcn»" }
+  - { at: 2026-10-04T17:21, action: revoked, by: "Yuriy Balaka", why: "the planted failure stays as the demo state; no exception needed" }
 ---
 
 ## What happens without this precedent
