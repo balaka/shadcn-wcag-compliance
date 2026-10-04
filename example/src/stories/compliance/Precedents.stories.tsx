@@ -53,6 +53,8 @@ const statusVariant: Record<string, React.ComponentProps<typeof Badge>["variant"
 }
 
 const approver = (p: Precedent) => p.history.find((h) => h.action === "approved")
+// Whose check produced the finding: axe's own rule (its version is axe's) or ours.
+const foundBy = (p: Precedent) => (/^axe-core/.test(p.rule_version) ? `axe (${p.rule_version})` : "our rule")
 const uniq = (xs: (string | undefined)[]) => [...new Set(xs.filter((x): x is string => !!x))].sort()
 
 function Register({ precedents }: { precedents: Precedent[] }) {
@@ -197,8 +199,9 @@ function Row({ p }: { p: Precedent }) {
             <ChevronRightIcon className={open ? "rotate-90 transition-transform" : "transition-transform"} />
           </Button>
         </TableCell>
-        <TableCell className="font-mono text-xs">
-          {p.rule} <span className="text-muted-foreground">v{p.rule_version}</span>
+        <TableCell className="whitespace-normal">
+          <div className="font-mono text-xs">{p.rule} <span className="text-muted-foreground">v{p.rule_version}</span></div>
+          <div className="mt-1 text-xs text-muted-foreground">{foundBy(p)}</div>
         </TableCell>
         <TableCell>{p.decision}</TableCell>
         <TableCell><Badge variant={statusVariant[p.status] ?? "outline"}>{p.status}</Badge></TableCell>
@@ -224,6 +227,7 @@ function Row({ p }: { p: Precedent }) {
               <Card size="sm">
                 <CardHeader><CardTitle>Finding</CardTitle></CardHeader>
                 <CardContent>
+                  <p className="mb-2 text-muted-foreground">Found by {foundBy(p)}{p.kind === "interpretation" ? " — reported as \"cannot tell\", not as a violation" : ""}</p>
                   <ol className="list-decimal space-y-1 pl-5">
                     {p.evidence.map((e, i) => (
                       <li key={i}>{e}</li>
