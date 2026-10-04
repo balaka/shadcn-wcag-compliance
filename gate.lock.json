@@ -1,9 +1,9 @@
 {
   "format": 1,
-  "signedAt": "2026-10-03T17:28:07.738Z",
-  "signedBy": "Yuriy Balaka (initial, via chat before the gate was switched on)",
+  "signedAt": "2026-10-04T10:04:30.273Z",
+  "signedBy": "Yuriy Balaka",
   "files": {
-    ".claude/settings.json": "81781829ac2e9d2122bf1c7166f66faf5ba2f2130862475dffefadd09570aed6",
+    ".claude/settings.json": "45bbbea62a2023f0f0770b1070a97ed44b7151cf4754555e5464900c3fcaf96a",
     "src/finding.ts": "c7a45dff86da6e443a674c6dd7be1f14c95d8e56e7baac69ff1a98ce16c7eba2",
     "src/gate/README.md": "1d09f4ffcda253f629adaf46ca6df6a23dac790d558a2894fd58457fea0d55c5",
     "src/gate/guards/gate.ts": "680d34971cb326ec3aa0cdedbe29d383d414a92bad188f3cede4e1911e3fddf2",
