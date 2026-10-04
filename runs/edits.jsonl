@@ -290,3 +290,4 @@
 {"at":"2026-10-04T17:19:26.935Z","place":"edit-hook","guard":"story","tool":"Edit","file":"example/src/stories/compliance/Precedents.stories.tsx","session":"51e04f22-750e-4816-902d-20fba727c690","decision":"passed","findings":[]}
 {"at":"2026-10-04T17:19:35.351Z","place":"edit-hook","guard":"story","tool":"Edit","file":"example/src/stories/compliance/Precedents.stories.tsx","session":"51e04f22-750e-4816-902d-20fba727c690","decision":"passed","findings":[]}
 {"at":"2026-10-04T17:19:35.547Z","place":"edit-hook","guard":"story","tool":"Edit","file":"example/src/stories/compliance/Precedents.stories.tsx","session":"51e04f22-750e-4816-902d-20fba727c690","decision":"passed","findings":[]}
+{"at":"2026-10-04T17:21:25.763Z","place":"edit-hook","guard":"story","tool":"Edit","file":"example/src/stories/compliance/Precedents.stories.tsx","session":"51e04f22-750e-4816-902d-20fba727c690","decision":"passed","findings":[]}

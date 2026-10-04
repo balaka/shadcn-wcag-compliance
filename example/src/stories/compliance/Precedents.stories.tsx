@@ -199,9 +199,8 @@ function Row({ p }: { p: Precedent }) {
             <ChevronRightIcon className={open ? "rotate-90 transition-transform" : "transition-transform"} />
           </Button>
         </TableCell>
-        <TableCell className="whitespace-normal">
-          <div className="font-mono text-xs">{p.rule} <span className="text-muted-foreground">v{p.rule_version}</span></div>
-          <div className="mt-1 text-xs text-muted-foreground">{foundBy(p)}</div>
+        <TableCell className="font-mono text-xs">
+          {p.rule} <span className="text-muted-foreground">v{p.rule_version}</span>
         </TableCell>
         <TableCell>{p.decision}</TableCell>
         <TableCell><Badge variant={statusVariant[p.status] ?? "outline"}>{p.status}</Badge></TableCell>
