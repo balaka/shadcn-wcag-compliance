@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "signedAt": "2026-10-04T10:04:30.273Z",
+  "signedAt": "2026-10-04T12:14:48.394Z",
   "signedBy": "Yuriy Balaka",
   "files": {
     ".claude/settings.json": "45bbbea62a2023f0f0770b1070a97ed44b7151cf4754555e5464900c3fcaf96a",
@@ -15,10 +15,10 @@
     "src/gate/guards/theme.ts": "388fd806aa910d420326975c9804068b2815abf967a11fbbcc78f3176c3f1578",
     "src/gate/integrity.ts": "ecea3bb7184f1c1bf3be76991c143a094056846ec7fede10065917647398b58b",
     "src/gate/launcher.mjs": "c54a37c1297bab21a75a67be6ec78dfa9463ae7411e4944b7d461fb004bdfeb4",
-    "src/gate/paths.ts": "f287d57bc26b5910e994fada8431be7c07ef8adb05f6618edc1f9e70f259c12a",
+    "src/gate/paths.ts": "a7ef2c89ddb20b733de5eedde230e9f5c6c4c29c1d3c5bf4184aeb20b8fac92b",
     "src/gate/record.ts": "fd3b69db116b883f7eccc7de543d118839ac597a80dc4de03920bcca5d00b503",
     "src/gate/runner.ts": "c1294e2c7d7d359442873b4332cfe9e633da4a022d579c10663593ba95e8a802",
-    "src/gate/shell.ts": "7291d3f750b79bbd46e0f2ddc0b5c9b146e1d8cbe888176611edcb1163bc96e4",
+    "src/gate/shell.ts": "56777747ef5949a40a22d97ec1f5b7833a419d66cb0598f5262936f2990d8683",
     "src/gate/sign.ts": "7a1a7b51b49a243f9237e05d81949b1d688c39bb0ece8731e8966f08191f257c",
     "src/gate/stop.ts": "e9721da8b6dba6fab5c136e03691d7dc9801bce6044d3c694f6e2f96aa8c0a55",
     "src/gate/types.ts": "373893cbad104cee34bb0a2a28b9b761f0748580668a7981fb7240150bf8f958",

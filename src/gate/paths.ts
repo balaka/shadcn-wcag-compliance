@@ -37,8 +37,10 @@ export const PROTECTED: RegExp[] = [
 export const PROTECTED_DIRS = ["src/gate", "src/precedents", "src/theme", "src/wcag"]
 export const PROTECTED_FILES = [".claude/settings.json", "src/finding.ts"]
 
-// Commands only a person runs. From a chat they are refused by name.
-export const HUMAN_COMMANDS = /src\/(precedents\/approve|gate\/(sign|unlock))\.ts|gate\.lock\.json|\.gate-unlock\.json/
+// Commands only a person runs. From a chat they are refused when invoked
+// (node/tsx/npx … approve.ts) — mentioning or reading the files is fine;
+// writing the lock or the unlock file is caught by the protected set.
+export const HUMAN_COMMANDS = /(^|[\s;&|(])(node|tsx|bun|deno|npx)\b[^|;&\n]*src\/(precedents\/approve|gate\/(sign|unlock))\.ts/
 
 export function guardedKind(path: string): GuardedKind | null {
   for (const [k, re] of Object.entries(GUARDED)) if (re.test(path)) return k as GuardedKind

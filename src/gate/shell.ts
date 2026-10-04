@@ -25,14 +25,41 @@ const GIT_WHOLE_TREE = /(^|[\s;&|(])git\s+(reset\s+--hard|clean\b|stash\b|checko
 const INLINE_CODE = /(^|[\s;&|(])(python3?|node|deno|bun|perl|ruby|php|bash|sh|zsh)\s+-[a-zA-Z]*[ce]\b/
 const CODE_WRITES = /writeFile|appendFile|createWriteStream|fs\.write|open\([^)]*['"][wa]|File\.(write|open)|\.write\(|>{1,2}/
 
-export function analyze(command: string): ShellVerdict {
+// A here-document's body is data — a commit message, a journal entry — and
+// is dropped before the text is read, with two exceptions where the body
+// executes: it is fed to an interpreter (`bash <<EOF`, `python3 <<EOF`), or
+// its delimiter is unquoted and the body holds a live substitution
+// (`$(…)` or a backtick), which the shell expands before anything else.
+const HEREDOC = /<<-?\s*(["']?)(\w+)\1([^\n]*)\n([\s\S]*?)\n[ \t]*\2[ \t]*(?=\n|$)/g
+const FED_TO_INTERPRETER = /(^|[\s;&|(])(bash|sh|zsh|python3?|node|deno|bun|perl|ruby|php)\b[^|;&\n]*$/
+
+// Returns the command with data bodies dropped, and whether any body was
+// kept because it executes — such a body is read as code, quotes and all.
+function dropHeredocBodies(command: string): { text: string; keptCode: boolean } {
+  let keptCode = false
+  const text = command.replace(HEREDOC, (whole: string, quote: string, delim: string, rest: string, body: string, offset: number) => {
+    const line = command.slice(0, offset).split("\n").pop() ?? ""
+    if (FED_TO_INTERPRETER.test(line) || (!quote && /\$\(|`/.test(body))) {
+      keptCode = true
+      return whole
+    }
+    // the rest of the first line (a redirect, a pipe) stays: it is the command's
+    return `<<${quote}${delim}${quote}${rest}\n${delim}`
+  })
+  return { text, keptCode }
+}
+
+export function analyze(rawCommand: string): ShellVerdict {
+  const { text: command, keptCode } = dropHeredocBodies(rawCommand)
   // Quoted text is data, not a target: a commit message or a journal line
   // that merely mentions a file must not trip the guard — unless the quotes
-  // hold a program for an inline interpreter.
-  const inline = INLINE_CODE.test(command)
+  // hold a program for an inline interpreter or an executing heredoc body.
+  const inline = keptCode || INLINE_CODE.test(command)
   const cmd = inline ? command : command.replace(/'[^']*'|"[^"]*"/g, '""')
+  // A person's command is caught by its invocation (node … approve.ts), not
+  // by its name appearing somewhere: reading or listing those files is fine.
   if (HUMAN_COMMANDS.test(cmd)) {
-    return { refuse: true, guard: "human-command", target: cmd.match(HUMAN_COMMANDS)![0], why: "this is a person's command — approving, signing or unlocking is not done from a chat. Ask the person to run it in their own terminal." }
+    return { refuse: true, guard: "human-command", target: cmd.match(HUMAN_COMMANDS)![0].trim(), why: "this is a person's command — approving, signing or unlocking is not done from a chat. Ask the person to run it in their own terminal." }
   }
   const words = cmd.match(/[\w./~$-]+/g) ?? []
   const targets = words.filter((w) => guardedKind(w) !== null || isProtected(w))
