@@ -4,6 +4,7 @@
 ![WCAG 2.2 AA](https://img.shields.io/badge/WCAG-2.2%20AA-0F6E56)
 ![shadcn on Base UI](https://img.shields.io/badge/shadcn-Base%20UI-1B1F2A)
 ![status: one rule end to end](https://img.shields.io/badge/status-one%20rule%20end%20to%20end-BA7517)
+![license: MIT](https://img.shields.io/badge/license-MIT-534AB7)
 
 **Accessibility rules, written once, kept on every edit.**
 
@@ -88,4 +89,4 @@ Run the bench: `cd example && npm install && npm run storybook`. Full check from
 
 One rule carried through every step, measured on 2026-10-01. Nothing to install yet; the npm name is reserved. Russian notes on the way here: [docs/research-gates-evals-2026-09-30.md](docs/research-gates-evals-2026-09-30.md).
 
-License: not chosen yet (MIT proposed).
+License: [MIT](LICENSE).
