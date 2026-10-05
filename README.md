@@ -56,11 +56,37 @@ Rule [`1.4.11-border-contrast`](rules/own/1.4.11-border-contrast.md): the border
 
 ## Who it is for
 
-Teams that build or use a design system on shadcn, and whoever answers for the product's accessibility.
+Teams that build or use a design system on shadcn, and whoever answers for the product's accessibility: a designer, a developer, a product owner, legal.
 
-Accessibility is not about a minority. Presbyopia affects up to 85 % of people over 40; 8 % of men have a colour vision deficiency; everyone has sunlight on the screen, a cheap monitor, a remote desktop that flattens colours, a night at 3 a.m. during an incident. In a study with 61 participants without disabilities, a WCAG AA site completed tasks faster and more often and was rated more trustworthy (Schmutz, Sonderegger, Sauer, *Human Factors*). A visible border is a completed form.
+### Who a faint border actually hurts
 
-For the person doing the checking: the repeated work disappears. Rules are written once; the checks run on every edit; the specialist is left with the disputed cases, each recorded with its reasoning.
+Accessibility is sold as "16 % of people". The number is real (1.3 billion people live with a significant disability[^who]), and it is the smallest of the groups below. The same border that fails a blind user's screen reader fails everyone in this table, and most of them are paying customers.
+
+| Group | Who, concretely | What breaks for them |
+|---|---|---|
+| **Permanent** | blind and low-vision users, deaf users, people with motor or cognitive impairments | everything the standard covers |
+| **Temporary** | a broken arm, eye drops after an examination, a concussion, flu, no sleep | one hand means keyboard only; blurred vision means contrast |
+| **Situational** | sunlight on the screen, a child in one arm, a train, a noisy room, gloves | contrast, target size, labels instead of colour |
+| **Hardware** | a cheap LCD, an old projector in a meeting, a night-mode colour filter, **a remote desktop or screen share** (RDP, VNC, Zoom compress colours; a pale border is the first thing to vanish) | border and focus contrast |
+| **Age** | presbyopia in up to 85 % of people over 40[^presbyopia]; after 60 the lens yellows and needs more contrast; colour vision deficiency in 8 % of men[^cvd] | contrast; status not by colour alone |
+| **State and context** | an administrator at 3 a.m. during an incident; a reader in a second language; a first-time user; a power user who never touches the mouse | readable labels and error text, a visible focus, a sane tab order |
+| **Machines** | a screen reader, but also a search engine, an automated test, voice control, **an agent operating the interface on a user's behalf** | an element's name and role; structure |
+
+Two of these are the daily life of the people who use hosting control panels: **a remote desktop** flattens colours so that a 1.26:1 border is simply not there, and **3 a.m. during an incident** leaves no attention for an error shown only by the shade of a frame.
+
+### What this is worth
+
+- **Easier and more obvious to use, for the people who pay.** In a study with 61 participants *without* disabilities, a WCAG AA site had faster task completion and higher completion rates than the same site without conformance, and was rated more usable and more trustworthy; level A alone made no difference[^schmutz]. A visible border is a completed registration and a paid order.
+- **The rules the law asks for.** The European Accessibility Act has applied since 28 June 2025; fines are national, up to 100,000 EUR in Germany, 200,000 EUR in Belgium, 1,000,000 EUR in Spain[^eaa]. In the United States more than 5,000 digital accessibility lawsuits were filed in 2025, nearly half against companies already sued once[^ada]. Enterprise and public buyers ask for proof of conformance before a deal; the run history and the precedent register here are that proof, kept automatically.
+- **The specialist stops repeating work.** A manual audit of a hundred-component design system takes weeks and has to be redone after every change. Here the rules are written once; the checks run on every edit; what is left for the specialist is the disputed case, recorded with its reasoning. Decisions with legal weight can be approved by legal, in the same card.
+- **One token fixes every product.** A design system is shared across products: a border fixed in one token is fixed on every screen that uses it, and one gate guards all of them.
+
+[^who]: WHO, *Global report on health equity for persons with disabilities*, 2022: 1.3 billion people, 16 % of the world population.
+[^presbyopia]: Prevalence of presbyopia from 40 years of age up to about 85 %; 1.8 billion people in 2015 (Fricke et al., *Ophthalmology*, 2018).
+[^cvd]: Red–green colour vision deficiency in about 8 % of males and 0.5 % of females of Northern European descent.
+[^schmutz]: Schmutz, Sonderegger, Sauer, "Implementing recommendations from web accessibility guidelines: would they also provide benefits to nondisabled users", *Human Factors*, 2016.
+[^eaa]: Directive (EU) 2019/882; national penalties as summarised by Fieldfisher and Clym, 2025.
+[^ada]: UsableNet, 2025 year-end report on digital accessibility lawsuits.
 
 ## Roadmap
 
