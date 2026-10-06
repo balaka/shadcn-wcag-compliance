@@ -26,6 +26,7 @@ reason: >
   inside the menu that is aria-hidden and focusable.
 history:
   - { at: 2026-10-03T21:40, action: drafted, by: "claude (session bd7e5d39)" }
+  - { at: 2026-10-05T14:35, action: approved, by: "Yuriy Balaka" }
 ---
 
 ## What axe saw
