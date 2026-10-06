@@ -7,6 +7,7 @@
 
 import { flatten, parseColor, type Rgb } from "../wcag/contrast-ratio.ts"
 import { RULE, fromColors } from "../rules/1.4.11-border-contrast.ts"
+import { textContrastAxeConfig } from "./storybook-text-contrast.ts"
 
 const TEXT_INPUT_TYPES = new Set([
   "text", "email", "password", "search", "tel", "url", "number", "date",
@@ -86,4 +87,11 @@ export const borderContrastAxeConfig = {
       },
     },
   ],
+}
+
+// All our rules, for `parameters.a11y.config`: 1.4.11-border-contrast and
+// 1.4.3-text-contrast (where axe's color-contrast cannot tell).
+export const ourAxeConfig = {
+  checks: [...borderContrastAxeConfig.checks, ...textContrastAxeConfig.checks],
+  rules: [...borderContrastAxeConfig.rules, ...textContrastAxeConfig.rules],
 }

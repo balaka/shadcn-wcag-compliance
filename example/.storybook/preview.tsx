@@ -2,7 +2,7 @@ import type { Preview } from "@storybook/react-vite"
 
 import "../src/index.css"
 
-import { borderContrastAxeConfig } from "../../src/executors/storybook-axe"
+import { ourAxeConfig } from "../../src/executors/storybook-axe"
 
 const preview: Preview = {
   globalTypes: {
@@ -63,7 +63,7 @@ const preview: Preview = {
       test: "todo",
       // Our own rules ride inside axe, so they show up in the same
       // Accessibility tab and the same report as axe's rules.
-      config: borderContrastAxeConfig,
+      config: ourAxeConfig,
     },
   },
 }

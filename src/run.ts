@@ -71,7 +71,23 @@ function axeFindings(vitest: any): Finding[] {
 
 // --- gather --------------------------------------------------------------
 const vitest = JSON.parse(readFileSync(vitestPath, "utf8"))
-const fromAxe = axeFindings(vitest)
+const rawAxe = axeFindings(vitest)
+// Rule 1.4.3: axe's color-contrast where it measured, our code where it
+// could not. Our rule applies only to elements axe cannot settle; where it
+// produced a finding, axe's "incomplete" on the same element is replaced.
+const OWN_TEXT_RULE = "1.4.3-text-contrast"
+// the rule's own "does not apply" (text drawn elsewhere by design) arrives as
+// an axe pass with a reason; it is recorded as what it is
+for (const f of rawAxe) if (f.rule === OWN_TEXT_RULE && (f.measured as { inapplicable?: string } | undefined)?.inapplicable) f.outcome = "inapplicable"
+const measuredByUs = new Set(rawAxe.filter((f) => f.rule === OWN_TEXT_RULE).map((f) => `${f.subject.story}|${f.subject.selector}`))
+let settledByOwnCode = 0
+const fromAxe = rawAxe.filter((f) => {
+  if (f.rule === "color-contrast" && f.outcome === "cantTell" && measuredByUs.has(`${f.subject.story}|${f.subject.selector}`)) {
+    settledByOwnCode++
+    return false
+  }
+  return true
+})
 const fromCss = fromTokens(readTokens(readFileSync(cssPath, "utf8")), cssPath)
 const findings = [...fromCss, ...fromAxe]
 
@@ -119,6 +135,7 @@ const run = {
   at: new Date().toISOString(),
   inputs: { vitest: vitestPath, css: cssPath },
   summary: Object.fromEntries((["failed", "cantTell", "passed", "inapplicable"] as Outcome[]).map((o) => [o, findings.filter((f) => f.outcome === o).length])),
+  settledByOwnCode, // axe "incomplete" on text contrast, measured by rule 1.4.3-text-contrast instead
   findings: findings.filter(keep),
   passed: [...passedCounts.values()],
 }
@@ -145,6 +162,7 @@ if (open.length > 20) console.log(`  … and ${open.length - 20} more`)
 const review = decisions.filter((d) => d.status === "needs-review")
 console.log(`\nrules with a finding: ${rows.filter((r) => r.failed || r.cantTell).length} of ${rows.length} that ran · failed: ${open.length} · accepted by a decision: ${acceptedCount} · cantTell: ${run.summary.cantTell}`)
 console.log(`css executor: ${fromCss.map((f) => `${f.subject.theme} ${f.outcome} ${f.measured?.ratio}:1`).join(" · ")}`)
+console.log(`text contrast: ${settledByOwnCode} axe "cannot tell" measured by ${OWN_TEXT_RULE} instead`)
 console.log(`decisions: ${decisions.length} on file, ${decisions.filter((d) => d.status === "approved").length} active, ${review.length} need review`)
 for (const d of review) console.log(`  needs review: ${d.id} — ${d.review ?? "sent back by a chat"}`)
 console.log(`run written: runs/${stamp}.json (${findings.length} findings)`)
