@@ -13,7 +13,7 @@ export const GUARDED = {
   theme: /(^|\/)(index|globals)\.css$/,
   decision: /(^|\/)decisions\/(?!README\.md$)[^/]+\.md$/,
   story: /\.stories\.[jt]sx?$/,
-  ruleText: /(^|\/)rules\/own\/[^/]+\.md$/,
+  ruleText: /(^|\/)rules\/(own|axe)\/[^/]+\.md$/,
   ruleCode: /(^|\/)src\/rules\/[^/]+\.ts$/,
   standard: /(^|\/)standards\/.+\.md$/,
 } as const
@@ -33,6 +33,8 @@ export const PROTECTED: RegExp[] = [
   // how the checks run: our rules inside axe, Storybook's a11y settings,
   // the test runner. Switching a check off here switches it off everywhere.
   /(^|\/)src\/executors\/.+/,
+  // which of axe's checks each numbered rule runs, and that axe's own rules are off
+  /(^|\/)rules\/axe\/wrapped\.json$/,
   /(^|\/)example\/\.storybook\/.+/,
   /(^|\/)example\/(vite|vitest)\.config\.[cm]?[jt]s$/,
   // who owns what on GitHub (decisions/ needs an approver's review) and CI
@@ -42,7 +44,7 @@ export const PROTECTED: RegExp[] = [
 // Files whose hashes go into gate.lock.json: everything PROTECTED that
 // exists in the repository (globbed at sign time), see integrity.ts.
 export const PROTECTED_DIRS = ["src/gate", "src/decisions", "src/theme", "src/wcag", "src/executors", "example/.storybook", ".github"]
-export const PROTECTED_FILES = [".claude/settings.json", "src/finding.ts", "example/vite.config.ts"]
+export const PROTECTED_FILES = [".claude/settings.json", "src/finding.ts", "example/vite.config.ts", "rules/axe/wrapped.json"]
 
 // Commands only a person runs. From a chat they are refused when invoked
 // (node/tsx/npx … approve.ts) — mentioning or reading the files is fine;

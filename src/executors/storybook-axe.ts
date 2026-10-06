@@ -89,9 +89,40 @@ export const borderContrastAxeConfig = {
   ],
 }
 
-// All our rules, for `parameters.a11y.config`: 1.4.11-border-contrast and
-// 1.4.3-text-contrast (where axe's color-contrast cannot tell).
+// axe's rules under our names. rules/axe/wrapped.json lists, for every
+// axe-core rule tagged WCAG A/AA, our numbered rule (4.1.2-button-name) and
+// what it runs: axe's selector, axe's matcher and axe's checks, by their
+// names. Nothing of axe's logic is copied — axe runs its own checks, and
+// reports them under our id. Every native axe rule is switched off, so
+// only numbered rules appear in the Accessibility tab and in the report.
+// The list is generated from axe-core itself and protected by the gate.
+import wrapped from "../../rules/axe/wrapped.json"
+
+const REPO = "https://github.com/balaka/shadcn-wcag-compliance/blob/main"
+type Wrapped = { id: string; axe: string; criteria: string[]; level: string; enabled: boolean; help: string; description: string; axeTags: string[]; spec: Record<string, unknown> }
+
+const nativeOff = (wrapped.native as string[]).map((id) => ({ id, enabled: false }))
+const numbered = (wrapped.rules as Wrapped[]).map((r) => ({
+  id: r.id,
+  ...r.spec,
+  enabled: r.enabled,
+  tags: [...r.axeTags, "shadcn-wcag-compliance", "axe-wrapped"],
+  metadata: {
+    description: r.description,
+    help: `${r.help} (WCAG ${r.criteria.join(", ")}, level ${r.level}; axe-core ${wrapped.axe_version} \`${r.axe}\`)`,
+    helpUrl: `${REPO}/rules/axe/${r.id}.md`,
+  },
+}))
+
+// The axe rule our numbered rule runs, by our id — run.ts and the decision
+// register use it, so a decision written against axe's own name still holds.
+export const AXE_RULE_OF: Record<string, string> = Object.fromEntries((wrapped.rules as Wrapped[]).map((r) => [r.id, r.axe]))
+export const AXE_VERSION: string = wrapped.axe_version
+
+// All our rules, for `parameters.a11y.config`: axe's rules under our
+// numbers, 1.4.11-border-contrast, and 1.4.3-text-contrast (where axe's
+// color-contrast cannot tell).
 export const ourAxeConfig = {
   checks: [...borderContrastAxeConfig.checks, ...textContrastAxeConfig.checks],
-  rules: [...borderContrastAxeConfig.rules, ...textContrastAxeConfig.rules],
+  rules: [...nativeOff, ...numbered, ...borderContrastAxeConfig.rules, ...textContrastAxeConfig.rules],
 }

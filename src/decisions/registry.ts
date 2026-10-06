@@ -108,14 +108,19 @@ const SCOPE_ORDER: Decision["scope"][] = ["story", "component", "tokens", "rule"
 // Narrow to wide; first match wins. `tokens` is what the rule compared.
 // `includeDrafts` is for the Stop hook only: it asks "has anyone looked at
 // this?", not "is it decided?".
+// A decision names a rule by our id, or — written before axe's rules got our
+// numbers (2026-10-06) — by axe's own name, which the finding carries as `aka`.
 export function findDecision(
-  finding: Pick<Finding, "rule" | "ruleVersion" | "subject">,
+  finding: Pick<Finding, "rule" | "ruleVersion" | "subject" | "aka">,
   tokens: string[] | undefined,
   all: Decision[],
   opts: { includeDrafts?: boolean } = {}
 ): Decision | undefined {
   const candidates = all.filter(
-    (d) => d.rule === finding.rule && d.rule_version === finding.ruleVersion && (opts.includeDrafts ? d.status !== "revoked" : isActive(d))
+    (d) =>
+      (d.rule === finding.rule || (!!finding.aka && d.rule === finding.aka)) &&
+      d.rule_version === finding.ruleVersion &&
+      (opts.includeDrafts ? d.status !== "revoked" : isActive(d))
   )
   for (const scope of SCOPE_ORDER) {
     const hit = candidates.find((d) => d.scope === scope && matches(d, finding.subject, tokens) && matchesDetail(d, finding.subject))

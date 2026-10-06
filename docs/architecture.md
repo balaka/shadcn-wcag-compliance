@@ -26,13 +26,21 @@ Which executor a rule gets is not a classification of the criterion; it is
 read off the rule's `input_aspects`: DOM and CSS → machine; meaning → judge.
 
 We answer for every rule in the report, so none of axe's rules reaches the
-report on its own (decided 2026-10-06). An axe rule is adopted as our rule
-file in `rules/` — ACT format, our version, the criterion it serves, plus
-`executor: axe`, the axe rule id and the axe-core version — and only after
-axe passes that rule's exam: the W3C ACT test cases for it. A new axe-core
-version sits the exam again before it is accepted. axe's rules without such
-a file are switched off. Where axe fails the exam or has no rule, we write
-the code ourselves, as for the field border.
+report under its own name (decided 2026-10-06). Each axe rule for WCAG
+A/AA runs under our number — `4.1.2-button-name` runs axe's `button-name`
+— with its rule file in `rules/axe/`: ACT front matter, the criteria it
+serves, `executor: axe`, the axe rule id, the axe-core version and the
+state of its exam (the W3C ACT test cases for it; not taken yet). How:
+`rules/axe/wrapped.json`, generated from axe-core's own rule specs, gives
+axe each numbered rule as its own selector, matcher and checks by name —
+nothing of axe's logic is copied, axe runs its own checks and reports
+them under our id — and switches every native axe rule off
+(`src/executors/storybook-axe.ts`). Best-practice and AAA rules have no
+number and do not run. A finding keeps axe's own name as `aka`, so a
+decision written against it still holds. A new axe-core version means the
+list is generated again and the exam taken again. Where axe fails the
+exam or cannot tell, we write the code ourselves, as for the field border
+and for text contrast where axe cannot tell.
 
 ## Folders
 
@@ -40,8 +48,9 @@ the code ourselves, as for the field border.
 standards/      verbatim copies of what rules rest on — WCAG criterion text,
                 ACT rules and their test cases — each with edition + capture date
 rules/
-  act/          axe's rules we adopt: our rule file, executor axe + pinned
-                version, exam on the ACT test cases (planned)
+  axe/          axe's A/AA rules under our WCAG numbers: one rule file each
+                (executor axe, pinned version, exam state) + wrapped.json,
+                the list axe runs (generated, protected by the gate)
   own/          our rules where W3C has none; ACT format 1.1 + executor/version/source
   judge/        rules of judgement; examples come from decisions/
 decisions/      a person's decisions on cases a rule could not settle; one

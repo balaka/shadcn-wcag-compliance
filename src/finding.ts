@@ -13,8 +13,9 @@ export type Outcome = "passed" | "failed" | "cantTell" | "inapplicable"
 
 export interface Finding {
   format: typeof FINDING_FORMAT
-  rule: string // rule id, e.g. "1.4.11-border-contrast" or axe's "color-contrast"
-  ruleVersion: string // our rules carry a version; axe rules carry axe's version
+  rule: string // our rule id, numbered: "1.4.11-border-contrast", "4.1.2-button-name"
+  ruleVersion: string // our own rules carry their version; rules that run axe's checks carry axe's version
+  aka?: string // the executor's own name for the rule: axe's "button-name" for 4.1.2-button-name
   criterion: string // WCAG success criterion, e.g. "1.4.11"
   executor: "axe" | "code" | "judge"
   outcome: Outcome

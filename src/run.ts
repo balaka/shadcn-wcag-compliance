@@ -16,6 +16,10 @@ import { FINDING_FORMAT, type Finding, type Outcome } from "./finding.ts"
 
 const [vitestPath = "example/reports/vitest.json", cssPath = "example/src/index.css"] = process.argv.slice(2)
 const ctx = reviewContext()
+// axe's rules under our numbers: our id → axe's own name (rules/axe/wrapped.json)
+const AXE_RULE_OF: Record<string, string> = Object.fromEntries(
+  (JSON.parse(readFileSync("rules/axe/wrapped.json", "utf8")).rules as Array<{ id: string; axe: string }>).map((r) => [r.id, r.axe])
+)
 
 // --- executor "axe" (incl. our rules that ride inside axe) ----------------
 // The Vitest JSON carries, per story, meta.reports[] with type "a11y" (axe's
@@ -43,13 +47,18 @@ function axeFindings(vitest: any): Finding[] {
       const push = (rules: AxeRule[], outcome: Outcome) => {
         for (const rule of rules) {
           if (outcome !== "failed" && outcome !== "cantTell" && rule.nodes.length === 0) continue
-          const ours = rule.tags.includes("shadcn-wcag-compliance")
+          // three kinds: our own code (1.4.11, 1.4.3-text-contrast), axe's
+          // checks under our number (axe-wrapped), and — should one ever
+          // slip through — a native axe rule
+          const wrappedAxe = rule.tags.includes("axe-wrapped")
+          const ours = rule.tags.includes("shadcn-wcag-compliance") && !wrappedAxe
           for (const node of rule.nodes.length ? rule.nodes : [{ target: [] } as AxeNode]) {
             const data = node.any?.[0]?.data as Record<string, string | number> | undefined
             findings.push({
               format: FINDING_FORMAT,
               rule: rule.id,
               ruleVersion: ours ? (ctx.ownRuleVersions?.[rule.id] ?? "?") : `axe-core ${axe.testEngine?.version ?? "?"}`,
+              ...(wrappedAxe ? { aka: AXE_RULE_OF[rule.id] } : {}),
               criterion: criterionOf(rule.tags),
               executor: ours ? "code" : "axe",
               outcome,
@@ -82,7 +91,7 @@ for (const f of rawAxe) if (f.rule === OWN_TEXT_RULE && (f.measured as { inappli
 const measuredByUs = new Set(rawAxe.filter((f) => f.rule === OWN_TEXT_RULE).map((f) => `${f.subject.story}|${f.subject.selector}`))
 let settledByOwnCode = 0
 const fromAxe = rawAxe.filter((f) => {
-  if (f.rule === "color-contrast" && f.outcome === "cantTell" && measuredByUs.has(`${f.subject.story}|${f.subject.selector}`)) {
+  if ((f.rule === "color-contrast" || f.aka === "color-contrast") && f.outcome === "cantTell" && measuredByUs.has(`${f.subject.story}|${f.subject.selector}`)) {
     settledByOwnCode++
     return false
   }

@@ -1,0 +1,3020 @@
+{
+ "format": 1,
+ "generated": "2026-10-06",
+ "axe_version": "4.13.0",
+ "native": [
+  "accesskeys",
+  "area-alt",
+  "aria-allowed-attr",
+  "aria-allowed-role",
+  "aria-braille-equivalent",
+  "aria-command-name",
+  "aria-conditional-attr",
+  "aria-deprecated-role",
+  "aria-dialog-name",
+  "aria-hidden-body",
+  "aria-hidden-focus",
+  "aria-input-field-name",
+  "aria-meter-name",
+  "aria-progressbar-name",
+  "aria-prohibited-attr",
+  "aria-required-attr",
+  "aria-required-children",
+  "aria-required-parent",
+  "aria-roledescription",
+  "aria-roles",
+  "aria-tab-name",
+  "aria-text",
+  "aria-toggle-field-name",
+  "aria-tooltip-name",
+  "aria-treeitem-name",
+  "aria-valid-attr-value",
+  "aria-valid-attr",
+  "audio-caption",
+  "autocomplete-valid",
+  "avoid-inline-spacing",
+  "blink",
+  "button-name",
+  "bypass",
+  "color-contrast-enhanced",
+  "color-contrast",
+  "css-orientation-lock",
+  "definition-list",
+  "dlitem",
+  "document-title",
+  "duplicate-id-active",
+  "duplicate-id-aria",
+  "duplicate-id",
+  "empty-heading",
+  "empty-table-header",
+  "focus-order-semantics",
+  "form-field-multiple-labels",
+  "frame-focusable-content",
+  "frame-tested",
+  "frame-title-unique",
+  "frame-title",
+  "heading-order",
+  "hidden-content",
+  "html-has-lang",
+  "html-lang-valid",
+  "html-xml-lang-mismatch",
+  "identical-links-same-purpose",
+  "image-alt",
+  "image-redundant-alt",
+  "input-button-name",
+  "input-image-alt",
+  "label-content-name-mismatch",
+  "label-title-only",
+  "label",
+  "landmark-banner-is-top-level",
+  "landmark-complementary-is-top-level",
+  "landmark-contentinfo-is-top-level",
+  "landmark-main-is-top-level",
+  "landmark-no-duplicate-banner",
+  "landmark-no-duplicate-contentinfo",
+  "landmark-no-duplicate-main",
+  "landmark-one-main",
+  "landmark-unique",
+  "link-in-text-block",
+  "link-name",
+  "list",
+  "listitem",
+  "marquee",
+  "meta-refresh-no-exceptions",
+  "meta-refresh",
+  "meta-viewport-large",
+  "meta-viewport",
+  "nested-interactive",
+  "no-autoplay-audio",
+  "object-alt",
+  "p-as-heading",
+  "page-has-heading-one",
+  "presentation-role-conflict",
+  "region",
+  "role-img-alt",
+  "scope-attr-valid",
+  "scrollable-region-focusable",
+  "select-name",
+  "server-side-image-map",
+  "skip-link",
+  "summary-name",
+  "svg-img-alt",
+  "tabindex",
+  "table-duplicate-name",
+  "table-fake-caption",
+  "target-size",
+  "td-has-header",
+  "td-headers-attr",
+  "th-has-data-cells",
+  "valid-lang",
+  "video-caption"
+ ],
+ "rules": [
+  {
+   "id": "2.4.4-area-alt",
+   "axe": "area-alt",
+   "criteria": [
+    "2.4.4",
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "c487ae"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "map area[href]",
+    "excludeHidden": false,
+    "impact": "critical",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "attribute": "alt"
+      },
+      "id": "non-empty-alt"
+     },
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": []
+   },
+   "help": "Active <area> elements must have alternative text",
+   "description": "Ensure <area> elements of image maps have alternative text",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag244",
+    "wcag412",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT6.a",
+    "EN-301-549",
+    "EN-9.2.4.4",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-1.1.2"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-allowed-attr",
+   "axe": "aria-allowed-attr",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "5c01ea"
+   ],
+   "enabled": true,
+   "spec": {
+    "matches": "aria-allowed-attr-matches",
+    "impact": "critical",
+    "all": [
+     {
+      "options": {
+       "validTreeRowAttrs": [
+        "aria-posinset",
+        "aria-setsize",
+        "aria-expanded",
+        "aria-level"
+       ]
+      },
+      "id": "aria-allowed-attr"
+     },
+     "aria-allowed-attr-elm",
+     "aria-no-deprecated-attr"
+    ],
+    "any": [],
+    "none": [
+     "aria-unsupported-attr"
+    ]
+   },
+   "help": "Elements must only use supported ARIA attributes",
+   "description": "Ensure an element's role supports its ARIA attributes",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-braille-equivalent",
+   "axe": "aria-braille-equivalent",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "[aria-brailleroledescription], [aria-braillelabel]",
+    "reviewOnFail": true,
+    "impact": "serious",
+    "all": [
+     "braille-roledescription-equivalent",
+     "braille-label-equivalent"
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "aria-braille attributes must have a non-braille equivalent",
+   "description": "Ensure aria-braillelabel and aria-brailleroledescription have a non-braille equivalent",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-command-name",
+   "axe": "aria-command-name",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "97a4e1"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[role=\"link\"], [role=\"button\"], [role=\"menuitem\"]",
+    "matches": "no-naming-method-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "has-visible-text",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": []
+   },
+   "help": "ARIA commands must have an accessible name",
+   "description": "Ensure every ARIA button, link and menuitem has an accessible name",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "TTv5",
+    "TT6.a",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-11.9.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-conditional-attr",
+   "axe": "aria-conditional-attr",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "5c01ea"
+   ],
+   "enabled": true,
+   "spec": {
+    "matches": "aria-allowed-attr-matches",
+    "impact": "serious",
+    "all": [
+     {
+      "options": {
+       "invalidTableRowAttrs": [
+        "aria-posinset",
+        "aria-setsize",
+        "aria-expanded",
+        "aria-level"
+       ]
+      },
+      "id": "aria-conditional-attr"
+     }
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "ARIA attributes must be used as specified for the element's role",
+   "description": "Ensure ARIA attributes are used as described in the specification of the element's role",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-deprecated-role",
+   "axe": "aria-deprecated-role",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "674b10"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[role]",
+    "matches": "no-empty-role-matches",
+    "impact": "minor",
+    "all": [],
+    "any": [],
+    "none": [
+     "deprecatedrole"
+    ]
+   },
+   "help": "Deprecated ARIA roles must not be used",
+   "description": "Ensure elements do not use deprecated roles",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "1.3.1-aria-hidden-body",
+   "axe": "aria-hidden-body",
+   "criteria": [
+    "1.3.1",
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "body",
+    "matches": "is-initiator-matches",
+    "excludeHidden": false,
+    "impact": "critical",
+    "all": [],
+    "any": [
+     "aria-hidden-body"
+    ],
+    "none": []
+   },
+   "help": "aria-hidden=\"true\" must not be present on the document body",
+   "description": "Ensure aria-hidden=\"true\" is not present on the document body.",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag131",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-10.8.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-hidden-focus",
+   "axe": "aria-hidden-focus",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "6cfa84"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[aria-hidden=\"true\"]",
+    "matches": "aria-hidden-focus-matches",
+    "excludeHidden": false,
+    "impact": "serious",
+    "all": [
+     "focusable-modal-open",
+     "focusable-disabled",
+     "focusable-not-tabbable"
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "ARIA hidden element must not be focusable or contain focusable elements",
+   "description": "Ensure aria-hidden elements are not focusable nor contain focusable elements",
+   "axeTags": [
+    "cat.name-role-value",
+    "wcag2a",
+    "wcag412",
+    "TTv5",
+    "TT6.a",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-10.8.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-input-field-name",
+   "axe": "aria-input-field-name",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "e086e5"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[role=\"combobox\"], [role=\"listbox\"], [role=\"searchbox\"], [role=\"slider\"], [role=\"spinbutton\"], [role=\"textbox\"]",
+    "matches": "no-naming-method-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": [
+     "no-implicit-explicit-label"
+    ]
+   },
+   "help": "ARIA input fields must have an accessible name",
+   "description": "Ensure every ARIA input field has an accessible name",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "TTv5",
+    "TT5.c",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-11.1.1"
+   ]
+  },
+  {
+   "id": "1.1.1-aria-meter-name",
+   "axe": "aria-meter-name",
+   "criteria": [
+    "1.1.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "[role=\"meter\"]",
+    "matches": "no-naming-method-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": []
+   },
+   "help": "ARIA meter nodes must have an accessible name",
+   "description": "Ensure every ARIA meter node has an accessible name",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag111",
+    "EN-301-549",
+    "EN-9.1.1.1",
+    "RGAAv4",
+    "RGAA-11.1.1"
+   ]
+  },
+  {
+   "id": "1.1.1-aria-progressbar-name",
+   "axe": "aria-progressbar-name",
+   "criteria": [
+    "1.1.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "[role=\"progressbar\"]",
+    "matches": "no-naming-method-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": []
+   },
+   "help": "ARIA progressbar nodes must have an accessible name",
+   "description": "Ensure every ARIA progressbar node has an accessible name",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag111",
+    "EN-301-549",
+    "EN-9.1.1.1",
+    "RGAAv4",
+    "RGAA-11.1.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-prohibited-attr",
+   "axe": "aria-prohibited-attr",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "5c01ea"
+   ],
+   "enabled": true,
+   "spec": {
+    "matches": "aria-allowed-attr-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [],
+    "none": [
+     {
+      "options": {
+       "elementsAllowedAriaLabel": [
+        "applet"
+       ]
+      },
+      "id": "aria-prohibited-attr"
+     }
+    ]
+   },
+   "help": "Elements must only use permitted ARIA attributes",
+   "description": "Ensure ARIA attributes are not prohibited for an element's role",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-required-attr",
+   "axe": "aria-required-attr",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "4e8ab6"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[role]",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     "aria-required-attr"
+    ],
+    "none": []
+   },
+   "help": "Required ARIA attributes must be provided",
+   "description": "Ensure elements with ARIA roles have all required ARIA attributes",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "1.3.1-aria-required-children",
+   "axe": "aria-required-children",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "bc4a75",
+    "ff89c9"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[role]",
+    "matches": "aria-required-children-matches",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "reviewEmpty": [
+        "doc-bibliography",
+        "doc-endnotes",
+        "grid",
+        "list",
+        "listbox",
+        "menu",
+        "menubar",
+        "table",
+        "tablist",
+        "tree",
+        "treegrid",
+        "rowgroup"
+       ]
+      },
+      "id": "aria-required-children"
+     }
+    ],
+    "none": []
+   },
+   "help": "Certain ARIA roles must contain particular children",
+   "description": "Ensure elements with an ARIA role that require child roles contain them",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag131",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-9.3.1"
+   ]
+  },
+  {
+   "id": "1.3.1-aria-required-parent",
+   "axe": "aria-required-parent",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "ff89c9"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[role]",
+    "matches": "aria-required-parent-matches",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "ownGroupRoles": [
+        "listitem",
+        "treeitem"
+       ]
+      },
+      "id": "aria-required-parent"
+     }
+    ],
+    "none": []
+   },
+   "help": "Certain ARIA roles must be contained by particular parents",
+   "description": "Ensure elements with an ARIA role that require parent roles are contained by them",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag131",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-9.3.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-roledescription",
+   "axe": "aria-roledescription",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": false,
+   "spec": {
+    "selector": "[aria-roledescription]",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "supportedRoles": [
+        "button",
+        "img",
+        "image",
+        "checkbox",
+        "radio",
+        "combobox",
+        "menuitemcheckbox",
+        "menuitemradio"
+       ]
+      },
+      "id": "aria-roledescription"
+     }
+    ],
+    "none": []
+   },
+   "help": "aria-roledescription must be on elements with a semantic role",
+   "description": "Ensure aria-roledescription is only used on elements with an implicit or explicit role",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "deprecated"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-roles",
+   "axe": "aria-roles",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "674b10"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[role]",
+    "matches": "no-empty-role-matches",
+    "impact": "critical",
+    "all": [],
+    "any": [],
+    "none": [
+     "invalidrole",
+     "abstractrole",
+     "unsupportedrole"
+    ]
+   },
+   "help": "ARIA roles used must conform to valid values",
+   "description": "Ensure all elements with a role attribute use a valid value",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-tab-name",
+   "axe": "aria-tab-name",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "[role=\"tab\"]",
+    "matches": "no-naming-method-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "has-visible-text",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": []
+   },
+   "help": "ARIA tab nodes must have an accessible name",
+   "description": "Ensure every ARIA tab node has an accessible name",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "TTv5",
+    "TT5.c",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-toggle-field-name",
+   "axe": "aria-toggle-field-name",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "e086e5"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[role=\"checkbox\"], [role=\"menuitemcheckbox\"], [role=\"menuitemradio\"], [role=\"radio\"], [role=\"switch\"], [role=\"option\"]",
+    "matches": "no-naming-method-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "has-visible-text",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": [
+     "no-implicit-explicit-label"
+    ]
+   },
+   "help": "ARIA toggle fields must have an accessible name",
+   "description": "Ensure every ARIA toggle field has an accessible name",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "TTv5",
+    "TT5.c",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-tooltip-name",
+   "axe": "aria-tooltip-name",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "[role=\"tooltip\"]",
+    "matches": "no-naming-method-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "has-visible-text",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": []
+   },
+   "help": "ARIA tooltip nodes must have an accessible name",
+   "description": "Ensure every ARIA tooltip node has an accessible name",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-valid-attr-value",
+   "axe": "aria-valid-attr-value",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "6a7281"
+   ],
+   "enabled": true,
+   "spec": {
+    "matches": "aria-has-attr-matches",
+    "impact": "critical",
+    "all": [
+     {
+      "options": [],
+      "id": "aria-valid-attr-value"
+     },
+     "aria-errormessage",
+     "aria-level"
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "ARIA attributes must conform to valid values",
+   "description": "Ensure all ARIA attributes have valid values",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "4.1.2-aria-valid-attr",
+   "axe": "aria-valid-attr",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "5f99a7"
+   ],
+   "enabled": true,
+   "spec": {
+    "matches": "aria-has-attr-matches",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     {
+      "options": [],
+      "id": "aria-valid-attr"
+     }
+    ],
+    "none": []
+   },
+   "help": "ARIA attributes must conform to valid names",
+   "description": "Ensure attributes that begin with aria- are valid ARIA attributes",
+   "axeTags": [
+    "cat.aria",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "1.2.1-audio-caption",
+   "axe": "audio-caption",
+   "criteria": [
+    "1.2.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "2eb176",
+    "afb423"
+   ],
+   "enabled": false,
+   "spec": {
+    "selector": "audio",
+    "excludeHidden": false,
+    "impact": "critical",
+    "all": [],
+    "any": [],
+    "none": [
+     "caption"
+    ]
+   },
+   "help": "<audio> elements must have a captions track",
+   "description": "Ensure <audio> elements have captions",
+   "axeTags": [
+    "cat.time-and-media",
+    "wcag2a",
+    "wcag121",
+    "EN-301-549",
+    "EN-9.1.2.1",
+    "section508",
+    "section508.22.a",
+    "deprecated"
+   ]
+  },
+  {
+   "id": "1.3.5-autocomplete-valid",
+   "axe": "autocomplete-valid",
+   "criteria": [
+    "1.3.5"
+   ],
+   "level": "AA",
+   "actIds": [
+    "73f2c2"
+   ],
+   "enabled": true,
+   "spec": {
+    "matches": "autocomplete-matches",
+    "impact": "serious",
+    "all": [
+     {
+      "options": {
+       "stateTerms": [
+        "none",
+        "false",
+        "true",
+        "disabled",
+        "enabled",
+        "undefined",
+        "null",
+        "xoff",
+        "xon"
+       ],
+       "ignoredValues": [
+        "text",
+        "pronouns",
+        "gender",
+        "message",
+        "content"
+       ]
+      },
+      "id": "autocomplete-valid"
+     }
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "autocomplete attribute must be used correctly",
+   "description": "Ensure the autocomplete attribute is correct and suitable for the form field",
+   "axeTags": [
+    "cat.forms",
+    "wcag21aa",
+    "wcag135",
+    "EN-301-549",
+    "EN-9.1.3.5",
+    "ACT",
+    "RGAAv4",
+    "RGAA-11.13.1"
+   ]
+  },
+  {
+   "id": "1.4.12-avoid-inline-spacing",
+   "axe": "avoid-inline-spacing",
+   "criteria": [
+    "1.4.12"
+   ],
+   "level": "AA",
+   "actIds": [
+    "24afc2",
+    "9e45ec",
+    "78fd32"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[style]",
+    "matches": "is-visible-on-screen-matches",
+    "impact": "serious",
+    "all": [
+     {
+      "options": {
+       "cssProperty": "letter-spacing",
+       "minValue": 0.12
+      },
+      "id": "important-letter-spacing"
+     },
+     {
+      "options": {
+       "cssProperty": "word-spacing",
+       "minValue": 0.16
+      },
+      "id": "important-word-spacing"
+     },
+     {
+      "options": {
+       "multiLineOnly": true,
+       "cssProperty": "line-height",
+       "minValue": 1.5,
+       "normalValue": 1
+      },
+      "id": "important-line-height"
+     }
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "Inline text spacing must be adjustable with custom stylesheets",
+   "description": "Ensure that text spacing set through style attributes can be adjusted with custom stylesheets",
+   "axeTags": [
+    "cat.structure",
+    "wcag21aa",
+    "wcag1412",
+    "EN-301-549",
+    "EN-9.1.4.12",
+    "ACT"
+   ]
+  },
+  {
+   "id": "2.2.2-blink",
+   "axe": "blink",
+   "criteria": [
+    "2.2.2"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "blink",
+    "excludeHidden": false,
+    "impact": "serious",
+    "all": [],
+    "any": [],
+    "none": [
+     "is-on-screen"
+    ]
+   },
+   "help": "<blink> elements are deprecated and must not be used",
+   "description": "Ensure <blink> elements are not used",
+   "axeTags": [
+    "cat.time-and-media",
+    "wcag2a",
+    "wcag222",
+    "section508",
+    "section508.22.j",
+    "TTv5",
+    "TT2.b",
+    "EN-301-549",
+    "EN-9.2.2.2",
+    "RGAAv4",
+    "RGAA-13.8.1"
+   ]
+  },
+  {
+   "id": "4.1.2-button-name",
+   "axe": "button-name",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "97a4e1",
+    "m6b1q3"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "button",
+    "matches": "no-explicit-name-required-matches",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     "button-has-visible-text",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     },
+     "implicit-label",
+     "explicit-label",
+     "presentational-role"
+    ],
+    "none": []
+   },
+   "help": "Buttons must have discernible text",
+   "description": "Ensure buttons have discernible text",
+   "axeTags": [
+    "cat.name-role-value",
+    "wcag2a",
+    "wcag412",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT6.a",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-11.9.1"
+   ]
+  },
+  {
+   "id": "2.4.1-bypass",
+   "axe": "bypass",
+   "criteria": [
+    "2.4.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "cf77f2",
+    "047fe0",
+    "b40fd1",
+    "3e12e1",
+    "ye5d6e"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "html:not(html *)",
+    "matches": "bypass-matches",
+    "pageLevel": true,
+    "reviewOnFail": true,
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "internal-link-present",
+     {
+      "options": {
+       "selector": ":is(h1, h2, h3, h4, h5, h6):not([role]), [role=heading]"
+      },
+      "id": "header-present"
+     },
+     {
+      "options": {
+       "selector": "main, [role=main]"
+      },
+      "id": "landmark"
+     }
+    ],
+    "none": []
+   },
+   "help": "Page must have means to bypass repeated blocks",
+   "description": "Ensure each page has at least one mechanism for a user to bypass navigation and jump straight to the content",
+   "axeTags": [
+    "cat.keyboard",
+    "wcag2a",
+    "wcag241",
+    "section508",
+    "section508.22.o",
+    "TTv5",
+    "TT9.a",
+    "EN-301-549",
+    "EN-9.2.4.1",
+    "RGAAv4",
+    "RGAA-12.7.1"
+   ]
+  },
+  {
+   "id": "1.4.3-color-contrast",
+   "axe": "color-contrast",
+   "criteria": [
+    "1.4.3"
+   ],
+   "level": "AA",
+   "actIds": [
+    "afw4f7",
+    "09o5cg"
+   ],
+   "enabled": true,
+   "spec": {
+    "matches": "color-contrast-matches",
+    "excludeHidden": false,
+    "impact": "serious",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "ignoreUnicode": true,
+       "ignoreLength": false,
+       "ignorePseudo": false,
+       "boldValue": 700,
+       "boldTextPt": 14,
+       "largeTextPt": 18,
+       "contrastRatio": {
+        "normal": {
+         "expected": 4.5
+        },
+        "large": {
+         "expected": 3
+        }
+       },
+       "pseudoSizeThreshold": 0.25,
+       "shadowOutlineEmMax": 0.2,
+       "textStrokeEmMin": 0.03
+      },
+      "id": "color-contrast"
+     }
+    ],
+    "none": []
+   },
+   "help": "Elements must meet minimum color contrast ratio thresholds",
+   "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+   "axeTags": [
+    "cat.color",
+    "wcag2aa",
+    "wcag143",
+    "TTv5",
+    "TT13.c",
+    "EN-301-549",
+    "EN-9.1.4.3",
+    "ACT",
+    "RGAAv4",
+    "RGAA-3.2.1"
+   ]
+  },
+  {
+   "id": "1.3.4-css-orientation-lock",
+   "axe": "css-orientation-lock",
+   "criteria": [
+    "1.3.4"
+   ],
+   "level": "AA",
+   "actIds": [
+    "b33eff"
+   ],
+   "enabled": false,
+   "spec": {
+    "selector": "html:not(html *)",
+    "impact": "serious",
+    "all": [
+     {
+      "options": {
+       "degreeThreshold": 2
+      },
+      "id": "css-orientation-lock"
+     }
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "CSS Media queries must not lock display orientation",
+   "description": "Ensure content is not locked to any specific display orientation, and the content is operable in all display orientations",
+   "axeTags": [
+    "cat.structure",
+    "wcag134",
+    "wcag21aa",
+    "EN-301-549",
+    "EN-9.1.3.4",
+    "RGAAv4",
+    "RGAA-13.9.1",
+    "experimental"
+   ]
+  },
+  {
+   "id": "1.3.1-definition-list",
+   "axe": "definition-list",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "dl",
+    "matches": "no-role-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [],
+    "none": [
+     "structured-dlitems",
+     {
+      "options": {
+       "validRoles": [
+        "definition",
+        "term",
+        "listitem"
+       ],
+       "validNodeNames": [
+        "dt",
+        "dd"
+       ],
+       "divGroups": true
+      },
+      "id": "only-dlitems"
+     }
+    ]
+   },
+   "help": "<dl> elements must only directly contain properly-ordered <dt> and <dd> groups, <script>, <template> or <div> elements",
+   "description": "Ensure <dl> elements are structured correctly",
+   "axeTags": [
+    "cat.structure",
+    "wcag2a",
+    "wcag131",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-9.3.3"
+   ]
+  },
+  {
+   "id": "1.3.1-dlitem",
+   "axe": "dlitem",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "dd, dt",
+    "matches": "no-role-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "dlitem"
+    ],
+    "none": []
+   },
+   "help": "<dt> and <dd> elements must be contained by a <dl>",
+   "description": "Ensure <dt> and <dd> elements are contained by a <dl>",
+   "axeTags": [
+    "cat.structure",
+    "wcag2a",
+    "wcag131",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-9.3.3"
+   ]
+  },
+  {
+   "id": "2.4.2-document-title",
+   "axe": "document-title",
+   "criteria": [
+    "2.4.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "2779a5"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "html:not(html *)",
+    "matches": "is-initiator-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "doc-has-title"
+    ],
+    "none": []
+   },
+   "help": "Documents must have <title> element to aid in navigation",
+   "description": "Ensure each HTML document contains a non-empty <title> element",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag242",
+    "TTv5",
+    "TT12.a",
+    "EN-301-549",
+    "EN-9.2.4.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-8.5.1"
+   ]
+  },
+  {
+   "id": "4.1.2-duplicate-id-aria",
+   "axe": "duplicate-id-aria",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "3ea0c8"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[id]",
+    "matches": "duplicate-id-aria-matches",
+    "excludeHidden": false,
+    "reviewOnFail": true,
+    "impact": "critical",
+    "all": [],
+    "any": [
+     "duplicate-id-aria"
+    ],
+    "none": []
+   },
+   "help": "IDs used in ARIA and labels must be unique",
+   "description": "Ensure every id attribute value used in ARIA and in labels is unique",
+   "axeTags": [
+    "cat.parsing",
+    "wcag2a",
+    "wcag412",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-8.2.1"
+   ]
+  },
+  {
+   "id": "3.3.2-form-field-multiple-labels",
+   "axe": "form-field-multiple-labels",
+   "criteria": [
+    "3.3.2"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "input, select, textarea",
+    "matches": "label-matches",
+    "impact": "moderate",
+    "all": [],
+    "any": [],
+    "none": [
+     "multiple-label"
+    ]
+   },
+   "help": "Form field must not have multiple label elements",
+   "description": "Ensure form field does not have multiple label elements",
+   "axeTags": [
+    "cat.forms",
+    "wcag2a",
+    "wcag332",
+    "TTv5",
+    "TT5.c",
+    "EN-301-549",
+    "EN-9.3.3.2",
+    "RGAAv4",
+    "RGAA-11.2.1"
+   ]
+  },
+  {
+   "id": "2.1.1-frame-focusable-content",
+   "axe": "frame-focusable-content",
+   "criteria": [
+    "2.1.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "akn7bn"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "html:not(html *)",
+    "matches": "frame-focusable-content-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "frame-focusable-content"
+    ],
+    "none": []
+   },
+   "help": "Frames with focusable content must not have tabindex=-1",
+   "description": "Ensure <frame> and <iframe> elements with focusable content do not have tabindex=-1",
+   "axeTags": [
+    "cat.keyboard",
+    "wcag2a",
+    "wcag211",
+    "TTv5",
+    "TT4.a",
+    "EN-301-549",
+    "EN-9.2.1.1",
+    "RGAAv4",
+    "RGAA-7.3.2"
+   ]
+  },
+  {
+   "id": "4.1.2-frame-title-unique",
+   "axe": "frame-title-unique",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "4b1c6c"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "frame[title], iframe[title]",
+    "matches": "frame-title-has-text-matches",
+    "reviewOnFail": true,
+    "impact": "serious",
+    "all": [],
+    "any": [],
+    "none": [
+     "unique-frame-title"
+    ]
+   },
+   "help": "Frames must have a unique title attribute",
+   "description": "Ensure <iframe> and <frame> elements contain a unique title attribute",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag412",
+    "TTv5",
+    "TT12.d",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-2.2.1"
+   ]
+  },
+  {
+   "id": "4.1.2-frame-title",
+   "axe": "frame-title",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "cae760"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "frame, iframe",
+    "matches": "no-negative-tabindex-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     },
+     "aria-label",
+     "aria-labelledby",
+     "presentational-role"
+    ],
+    "none": []
+   },
+   "help": "Frames must have an accessible name",
+   "description": "Ensure <iframe> and <frame> elements have an accessible name",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag412",
+    "section508",
+    "section508.22.i",
+    "TTv5",
+    "TT12.d",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-2.1.1"
+   ]
+  },
+  {
+   "id": "3.1.1-html-has-lang",
+   "axe": "html-has-lang",
+   "criteria": [
+    "3.1.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "b5c3f8"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "html:not(html *)",
+    "matches": "is-initiator-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "attributes": [
+        "lang",
+        "xml:lang"
+       ]
+      },
+      "id": "has-lang"
+     }
+    ],
+    "none": []
+   },
+   "help": "<html> element must have a lang attribute",
+   "description": "Ensure every HTML document has a lang attribute",
+   "axeTags": [
+    "cat.language",
+    "wcag2a",
+    "wcag311",
+    "TTv5",
+    "TT11.a",
+    "EN-301-549",
+    "EN-9.3.1.1",
+    "ACT",
+    "RGAAv4",
+    "RGAA-8.3.1"
+   ]
+  },
+  {
+   "id": "3.1.1-html-lang-valid",
+   "axe": "html-lang-valid",
+   "criteria": [
+    "3.1.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "bf051a"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "html[lang]:not([lang=\"\"]):not(html *), html[xml\\:lang]:not([xml\\:lang=\"\"]):not(html *)",
+    "impact": "serious",
+    "all": [],
+    "any": [],
+    "none": [
+     {
+      "options": {
+       "attributes": [
+        "lang",
+        "xml:lang"
+       ]
+      },
+      "id": "valid-lang"
+     }
+    ]
+   },
+   "help": "<html> element must have a valid value for the lang attribute",
+   "description": "Ensure the lang attribute of the <html> element has a valid value",
+   "axeTags": [
+    "cat.language",
+    "wcag2a",
+    "wcag311",
+    "TTv5",
+    "TT11.a",
+    "EN-301-549",
+    "EN-9.3.1.1",
+    "ACT",
+    "RGAAv4",
+    "RGAA-8.4.1"
+   ]
+  },
+  {
+   "id": "3.1.1-html-xml-lang-mismatch",
+   "axe": "html-xml-lang-mismatch",
+   "criteria": [
+    "3.1.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "5b7ae0"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "html[lang][xml\\:lang]:not(html *)",
+    "matches": "xml-lang-mismatch-matches",
+    "impact": "moderate",
+    "all": [
+     "xml-lang-mismatch"
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "HTML elements with lang and xml:lang must have the same base language",
+   "description": "Ensure that HTML elements with both valid lang and xml:lang attributes agree on the base language of the page",
+   "axeTags": [
+    "cat.language",
+    "wcag2a",
+    "wcag311",
+    "EN-301-549",
+    "EN-9.3.1.1",
+    "ACT",
+    "RGAAv4",
+    "RGAA-8.3.1"
+   ]
+  },
+  {
+   "id": "1.1.1-image-alt",
+   "axe": "image-alt",
+   "criteria": [
+    "1.1.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "23a2a8"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "img",
+    "matches": "no-explicit-name-required-matches",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     "has-alt",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     },
+     "presentational-role"
+    ],
+    "none": [
+     "alt-space-value"
+    ]
+   },
+   "help": "Images must have alternative text",
+   "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag111",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT7.a",
+    "TT7.b",
+    "EN-301-549",
+    "EN-9.1.1.1",
+    "ACT",
+    "RGAAv4",
+    "RGAA-1.1.1"
+   ]
+  },
+  {
+   "id": "4.1.2-input-button-name",
+   "axe": "input-button-name",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "97a4e1"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "input[type=\"button\"], input[type=\"submit\"], input[type=\"reset\"]",
+    "matches": "no-explicit-name-required-matches",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     "non-empty-if-present",
+     {
+      "options": {
+       "attribute": "value"
+      },
+      "id": "non-empty-value"
+     },
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     },
+     "implicit-label",
+     "explicit-label",
+     "presentational-role"
+    ],
+    "none": []
+   },
+   "help": "Input buttons must have discernible text",
+   "description": "Ensure input buttons have discernible text",
+   "axeTags": [
+    "cat.name-role-value",
+    "wcag2a",
+    "wcag412",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT5.c",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-11.9.1"
+   ]
+  },
+  {
+   "id": "1.1.1-input-image-alt",
+   "axe": "input-image-alt",
+   "criteria": [
+    "1.1.1",
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "59796f"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "input[type=\"image\"]",
+    "matches": "no-explicit-name-required-matches",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "attribute": "alt"
+      },
+      "id": "non-empty-alt"
+     },
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     },
+     "implicit-label",
+     "explicit-label"
+    ],
+    "none": []
+   },
+   "help": "Image buttons must have alternative text",
+   "description": "Ensure <input type=\"image\"> elements have alternative text",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag111",
+    "wcag412",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT7.a",
+    "EN-301-549",
+    "EN-9.1.1.1",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-1.1.3"
+   ]
+  },
+  {
+   "id": "2.5.3-label-content-name-mismatch",
+   "axe": "label-content-name-mismatch",
+   "criteria": [
+    "2.5.3"
+   ],
+   "level": "A",
+   "actIds": [
+    "2ee8b8"
+   ],
+   "enabled": false,
+   "spec": {
+    "matches": "label-content-name-mismatch-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "pixelThreshold": 0.1,
+       "occurrenceThreshold": 3
+      },
+      "id": "label-content-name-mismatch"
+     }
+    ],
+    "none": []
+   },
+   "help": "Elements must have their visible text as part of their accessible name",
+   "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+   "axeTags": [
+    "cat.semantics",
+    "wcag21a",
+    "wcag253",
+    "EN-301-549",
+    "EN-9.2.5.3",
+    "RGAAv4",
+    "RGAA-6.1.5",
+    "experimental"
+   ]
+  },
+  {
+   "id": "4.1.2-label",
+   "axe": "label",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "e086e5"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "input, textarea",
+    "matches": "label-matches",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     "implicit-label",
+     "explicit-label",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     },
+     {
+      "options": {
+       "attribute": "placeholder"
+      },
+      "id": "non-empty-placeholder"
+     },
+     "presentational-role"
+    ],
+    "none": [
+     "hidden-explicit-label"
+    ]
+   },
+   "help": "Form elements must have labels",
+   "description": "Ensure every form element has a label",
+   "axeTags": [
+    "cat.forms",
+    "wcag2a",
+    "wcag412",
+    "section508",
+    "section508.22.n",
+    "TTv5",
+    "TT5.c",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-11.1.1"
+   ]
+  },
+  {
+   "id": "1.4.1-link-in-text-block",
+   "axe": "link-in-text-block",
+   "criteria": [
+    "1.4.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "a[href], [role=link]",
+    "matches": "link-in-text-block-matches",
+    "excludeHidden": false,
+    "impact": "serious",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "requiredContrastRatio": 3,
+       "allowSameColor": true
+      },
+      "id": "link-in-text-block"
+     },
+     "link-in-text-block-style"
+    ],
+    "none": []
+   },
+   "help": "Links must be distinguishable without relying on color",
+   "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+   "axeTags": [
+    "cat.color",
+    "wcag2a",
+    "wcag141",
+    "TTv5",
+    "TT13.a",
+    "EN-301-549",
+    "EN-9.1.4.1",
+    "RGAAv4",
+    "RGAA-10.6.1"
+   ]
+  },
+  {
+   "id": "2.4.4-link-name",
+   "axe": "link-name",
+   "criteria": [
+    "2.4.4",
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "c487ae"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "a[href]",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "has-visible-text",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": [
+     "focusable-no-name"
+    ]
+   },
+   "help": "Links must have discernible text",
+   "description": "Ensure links have discernible text",
+   "axeTags": [
+    "cat.name-role-value",
+    "wcag2a",
+    "wcag244",
+    "wcag412",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT6.a",
+    "EN-301-549",
+    "EN-9.2.4.4",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-6.2.1"
+   ]
+  },
+  {
+   "id": "1.3.1-list",
+   "axe": "list",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "ul, ol",
+    "matches": "no-role-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [],
+    "none": [
+     {
+      "options": {
+       "validRoles": [
+        "listitem"
+       ],
+       "validNodeNames": [
+        "li"
+       ]
+      },
+      "id": "only-listitems"
+     }
+    ]
+   },
+   "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+   "description": "Ensure that lists are structured correctly",
+   "axeTags": [
+    "cat.structure",
+    "wcag2a",
+    "wcag131",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-9.3.1"
+   ]
+  },
+  {
+   "id": "1.3.1-listitem",
+   "axe": "listitem",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "li",
+    "matches": "no-role-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "listitem"
+    ],
+    "none": []
+   },
+   "help": "<li> elements must be contained in a <ul> or <ol>",
+   "description": "Ensure <li> elements are used semantically",
+   "axeTags": [
+    "cat.structure",
+    "wcag2a",
+    "wcag131",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-9.3.1"
+   ]
+  },
+  {
+   "id": "2.2.2-marquee",
+   "axe": "marquee",
+   "criteria": [
+    "2.2.2"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "marquee",
+    "excludeHidden": false,
+    "impact": "serious",
+    "all": [],
+    "any": [],
+    "none": [
+     "is-on-screen"
+    ]
+   },
+   "help": "<marquee> elements are deprecated and must not be used",
+   "description": "Ensure <marquee> elements are not used",
+   "axeTags": [
+    "cat.parsing",
+    "wcag2a",
+    "wcag222",
+    "TTv5",
+    "TT2.b",
+    "EN-301-549",
+    "EN-9.2.2.2",
+    "RGAAv4",
+    "RGAA-13.8.1"
+   ]
+  },
+  {
+   "id": "2.2.1-meta-refresh",
+   "axe": "meta-refresh",
+   "criteria": [
+    "2.2.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "bc659a",
+    "bisz58"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "meta[http-equiv=\"refresh\"][content]",
+    "excludeHidden": false,
+    "impact": "critical",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "minDelay": 0,
+       "maxDelay": 72000
+      },
+      "id": "meta-refresh"
+     }
+    ],
+    "none": []
+   },
+   "help": "Delayed refresh under 20 hours must not be used",
+   "description": "Ensure <meta http-equiv=\"refresh\"> is not used for delayed refresh",
+   "axeTags": [
+    "cat.time-and-media",
+    "wcag2a",
+    "wcag221",
+    "TTv5",
+    "TT8.a",
+    "EN-301-549",
+    "EN-9.2.2.1",
+    "RGAAv4",
+    "RGAA-13.1.2"
+   ]
+  },
+  {
+   "id": "1.4.4-meta-viewport",
+   "axe": "meta-viewport",
+   "criteria": [
+    "1.4.4"
+   ],
+   "level": "AA",
+   "actIds": [
+    "b4f0c3"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "meta[name=\"viewport\"]",
+    "matches": "is-initiator-matches",
+    "excludeHidden": false,
+    "impact": "moderate",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "scaleMinimum": 2
+      },
+      "id": "meta-viewport"
+     }
+    ],
+    "none": []
+   },
+   "help": "Zooming and scaling must not be disabled",
+   "description": "Ensure <meta name=\"viewport\"> does not disable text scaling and zooming",
+   "axeTags": [
+    "cat.sensory-and-visual-cues",
+    "wcag2aa",
+    "wcag144",
+    "EN-301-549",
+    "EN-9.1.4.4",
+    "ACT",
+    "RGAAv4",
+    "RGAA-10.4.2"
+   ]
+  },
+  {
+   "id": "4.1.2-nested-interactive",
+   "axe": "nested-interactive",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "307n5z"
+   ],
+   "enabled": true,
+   "spec": {
+    "matches": "nested-interactive-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "no-focusable-content"
+    ],
+    "none": []
+   },
+   "help": "Interactive controls must not be nested",
+   "description": "Ensure interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
+   "axeTags": [
+    "cat.keyboard",
+    "wcag2a",
+    "wcag412",
+    "TTv5",
+    "TT6.a",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "RGAAv4",
+    "RGAA-7.1.1"
+   ]
+  },
+  {
+   "id": "1.4.2-no-autoplay-audio",
+   "axe": "no-autoplay-audio",
+   "criteria": [
+    "1.4.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "80f0bf"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "audio[autoplay], video[autoplay]",
+    "matches": "no-autoplay-audio-matches",
+    "excludeHidden": false,
+    "reviewOnFail": true,
+    "impact": "moderate",
+    "all": [
+     {
+      "options": {
+       "allowedDuration": 3
+      },
+      "id": "no-autoplay-audio"
+     }
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "<video> or <audio> elements must not play automatically",
+   "description": "Ensure <video> or <audio> elements do not autoplay audio for more than 3 seconds without a control mechanism to stop or mute the audio",
+   "axeTags": [
+    "cat.time-and-media",
+    "wcag2a",
+    "wcag142",
+    "TTv5",
+    "TT2.a",
+    "EN-301-549",
+    "EN-9.1.4.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-4.10.1"
+   ]
+  },
+  {
+   "id": "1.1.1-object-alt",
+   "axe": "object-alt",
+   "criteria": [
+    "1.1.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "8fc3b6"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "object[data]",
+    "matches": "object-is-loaded-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     },
+     "presentational-role"
+    ],
+    "none": []
+   },
+   "help": "<object> elements must have alternative text",
+   "description": "Ensure <object> elements have alternative text",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag111",
+    "section508",
+    "section508.22.a",
+    "EN-301-549",
+    "EN-9.1.1.1",
+    "RGAAv4",
+    "RGAA-1.1.6"
+   ]
+  },
+  {
+   "id": "1.3.1-p-as-heading",
+   "axe": "p-as-heading",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": false,
+   "spec": {
+    "selector": "p",
+    "matches": "p-as-heading-matches",
+    "impact": "serious",
+    "all": [
+     {
+      "options": {
+       "margins": [
+        {
+         "weight": 150,
+         "italic": true
+        },
+        {
+         "weight": 150,
+         "size": 1.15
+        },
+        {
+         "italic": true,
+         "size": 1.15
+        },
+        {
+         "size": 1.4
+        }
+       ],
+       "passLength": 1,
+       "failLength": 0.5
+      },
+      "id": "p-as-heading"
+     }
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "Styled <p> elements must not be used as headings",
+   "description": "Ensure bold, italic text and font-size is not used to style <p> elements as a heading",
+   "axeTags": [
+    "cat.semantics",
+    "wcag2a",
+    "wcag131",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-9.1.3",
+    "experimental"
+   ]
+  },
+  {
+   "id": "1.1.1-role-img-alt",
+   "axe": "role-img-alt",
+   "criteria": [
+    "1.1.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "23a2a8"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": ":is([role='img'], [role='image']):not(img, area, input, object)",
+    "matches": "html-namespace-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": []
+   },
+   "help": "[role=\"img\"] and [role=\"image\"] elements must have alternative text",
+   "description": "Ensure [role=\"img\"] and [role=\"image\"] elements have alternative text",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag111",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT7.a",
+    "EN-301-549",
+    "EN-9.1.1.1",
+    "ACT",
+    "RGAAv4",
+    "RGAA-1.1.1"
+   ]
+  },
+  {
+   "id": "2.1.1-scrollable-region-focusable",
+   "axe": "scrollable-region-focusable",
+   "criteria": [
+    "2.1.1",
+    "2.1.3"
+   ],
+   "level": "A",
+   "actIds": [
+    "0ssw9k"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "*:not(select,textarea)",
+    "matches": "scrollable-region-focusable-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "focusable-content",
+     "focusable-element"
+    ],
+    "none": []
+   },
+   "help": "Scrollable region must have keyboard access",
+   "description": "Ensure elements that have scrollable content are accessible by keyboard in Safari",
+   "axeTags": [
+    "cat.keyboard",
+    "wcag2a",
+    "wcag211",
+    "wcag213",
+    "TTv5",
+    "TT4.a",
+    "EN-301-549",
+    "EN-9.2.1.1",
+    "EN-9.2.1.3",
+    "RGAAv4",
+    "RGAA-7.3.2"
+   ]
+  },
+  {
+   "id": "4.1.2-select-name",
+   "axe": "select-name",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "e086e5"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "select",
+    "impact": "critical",
+    "all": [],
+    "any": [
+     "implicit-label",
+     "explicit-label",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     },
+     "presentational-role"
+    ],
+    "none": [
+     "hidden-explicit-label"
+    ]
+   },
+   "help": "Select element must have an accessible name",
+   "description": "Ensure select element has an accessible name",
+   "axeTags": [
+    "cat.forms",
+    "wcag2a",
+    "wcag412",
+    "section508",
+    "section508.22.n",
+    "TTv5",
+    "TT5.c",
+    "EN-301-549",
+    "EN-9.4.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-11.1.1"
+   ]
+  },
+  {
+   "id": "2.1.1-server-side-image-map",
+   "axe": "server-side-image-map",
+   "criteria": [
+    "2.1.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "img[ismap]",
+    "impact": "minor",
+    "all": [],
+    "any": [],
+    "none": [
+     "exists"
+    ]
+   },
+   "help": "Server-side image maps must not be used",
+   "description": "Ensure that server-side image maps are not used",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag211",
+    "section508",
+    "section508.22.f",
+    "TTv5",
+    "TT4.a",
+    "EN-301-549",
+    "EN-9.2.1.1",
+    "RGAAv4",
+    "RGAA-1.1.4"
+   ]
+  },
+  {
+   "id": "4.1.2-summary-name",
+   "axe": "summary-name",
+   "criteria": [
+    "4.1.2"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": true,
+   "spec": {
+    "selector": "summary",
+    "matches": "summary-interactive-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "has-visible-text",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": []
+   },
+   "help": "Summary elements must have discernible text",
+   "description": "Ensure summary elements have discernible text",
+   "axeTags": [
+    "cat.name-role-value",
+    "wcag2a",
+    "wcag412",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT6.a",
+    "EN-301-549",
+    "EN-9.4.1.2"
+   ]
+  },
+  {
+   "id": "1.1.1-svg-img-alt",
+   "axe": "svg-img-alt",
+   "criteria": [
+    "1.1.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "7d6734"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": ":is([role='img'], [role='image']), [role='graphics-symbol'], svg[role='graphics-document']",
+    "matches": "svg-namespace-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     "svg-non-empty-title",
+     "aria-label",
+     "aria-labelledby",
+     {
+      "options": {
+       "attribute": "title"
+      },
+      "id": "non-empty-title"
+     }
+    ],
+    "none": []
+   },
+   "help": "<svg> elements with an img or image role must have alternative text",
+   "description": "Ensure <svg> elements with an img, image, graphics-document or graphics-symbol role have accessible text",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag111",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT7.a",
+    "EN-301-549",
+    "EN-9.1.1.1",
+    "ACT",
+    "RGAAv4",
+    "RGAA-1.1.5"
+   ]
+  },
+  {
+   "id": "1.3.1-table-fake-caption",
+   "axe": "table-fake-caption",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": false,
+   "spec": {
+    "selector": "table",
+    "matches": "data-table-matches",
+    "impact": "serious",
+    "all": [
+     "caption-faked"
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "Data or header cells must not be used to give caption to a data table.",
+   "description": "Ensure that tables with a caption use the <caption> element.",
+   "axeTags": [
+    "cat.tables",
+    "experimental",
+    "wcag2a",
+    "wcag131",
+    "section508",
+    "section508.22.g",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-5.4.1"
+   ]
+  },
+  {
+   "id": "2.5.8-target-size",
+   "axe": "target-size",
+   "criteria": [
+    "2.5.8"
+   ],
+   "level": "AA",
+   "actIds": [],
+   "enabled": false,
+   "spec": {
+    "selector": "*",
+    "matches": "widget-not-inline-matches",
+    "impact": "serious",
+    "all": [],
+    "any": [
+     {
+      "options": {
+       "minSize": 24
+      },
+      "id": "target-size"
+     },
+     {
+      "options": {
+       "minOffset": 24
+      },
+      "id": "target-offset"
+     }
+    ],
+    "none": []
+   },
+   "help": "All touch targets must be 24px large, or leave sufficient space",
+   "description": "Ensure touch targets have sufficient size and space",
+   "axeTags": [
+    "cat.sensory-and-visual-cues",
+    "wcag22aa",
+    "wcag258"
+   ]
+  },
+  {
+   "id": "1.3.1-td-has-header",
+   "axe": "td-has-header",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [],
+   "enabled": false,
+   "spec": {
+    "selector": "table",
+    "matches": "data-table-large-matches",
+    "impact": "critical",
+    "all": [
+     "td-has-header"
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "Non-empty <td> elements in larger <table> must have an associated table header",
+   "description": "Ensure that each non-empty data cell in a <table> larger than 3 by 3  has one or more table headers",
+   "axeTags": [
+    "cat.tables",
+    "experimental",
+    "wcag2a",
+    "wcag131",
+    "section508",
+    "section508.22.g",
+    "TTv5",
+    "TT14.b",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-5.7.4"
+   ]
+  },
+  {
+   "id": "1.3.1-td-headers-attr",
+   "axe": "td-headers-attr",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "a25f45"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "table",
+    "matches": "table-or-grid-role-matches",
+    "impact": "serious",
+    "all": [
+     "td-headers-attr"
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "Table cell headers attributes must refer to other <th> elements in the same table",
+   "description": "Ensure that each cell in a table that uses the headers attribute refers only to other <th> elements in that table",
+   "axeTags": [
+    "cat.tables",
+    "wcag2a",
+    "wcag131",
+    "section508",
+    "section508.22.g",
+    "TTv5",
+    "TT14.b",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-5.7.4"
+   ]
+  },
+  {
+   "id": "1.3.1-th-has-data-cells",
+   "axe": "th-has-data-cells",
+   "criteria": [
+    "1.3.1"
+   ],
+   "level": "A",
+   "actIds": [
+    "d0f69e"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "table",
+    "matches": "data-table-matches",
+    "impact": "serious",
+    "all": [
+     "th-has-data-cells"
+    ],
+    "any": [],
+    "none": []
+   },
+   "help": "Table headers in a data table must refer to data cells",
+   "description": "Ensure that <th> elements and elements with role=columnheader/rowheader have data cells they describe",
+   "axeTags": [
+    "cat.tables",
+    "wcag2a",
+    "wcag131",
+    "section508",
+    "section508.22.g",
+    "TTv5",
+    "TT14.b",
+    "EN-301-549",
+    "EN-9.1.3.1",
+    "RGAAv4",
+    "RGAA-5.7.1"
+   ]
+  },
+  {
+   "id": "3.1.2-valid-lang",
+   "axe": "valid-lang",
+   "criteria": [
+    "3.1.2"
+   ],
+   "level": "AA",
+   "actIds": [
+    "de46e4"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "[lang]:not(html), [xml\\:lang]:not(html)",
+    "impact": "serious",
+    "all": [],
+    "any": [],
+    "none": [
+     {
+      "options": {
+       "attributes": [
+        "lang",
+        "xml:lang"
+       ]
+      },
+      "id": "valid-lang"
+     }
+    ]
+   },
+   "help": "lang attribute must have a valid value",
+   "description": "Ensure lang attributes have valid values",
+   "axeTags": [
+    "cat.language",
+    "wcag2aa",
+    "wcag312",
+    "TTv5",
+    "TT11.b",
+    "EN-301-549",
+    "EN-9.3.1.2",
+    "ACT",
+    "RGAAv4",
+    "RGAA-8.8.1"
+   ]
+  },
+  {
+   "id": "1.2.2-video-caption",
+   "axe": "video-caption",
+   "criteria": [
+    "1.2.2"
+   ],
+   "level": "A",
+   "actIds": [
+    "eac66b"
+   ],
+   "enabled": true,
+   "spec": {
+    "selector": "video",
+    "impact": "critical",
+    "all": [],
+    "any": [],
+    "none": [
+     "caption"
+    ]
+   },
+   "help": "<video> elements must have captions",
+   "description": "Ensure <video> elements have captions",
+   "axeTags": [
+    "cat.text-alternatives",
+    "wcag2a",
+    "wcag122",
+    "section508",
+    "section508.22.a",
+    "TTv5",
+    "TT17.a",
+    "EN-301-549",
+    "EN-9.1.2.2",
+    "RGAAv4",
+    "RGAA-4.3.1"
+   ]
+  }
+ ]
+}

@@ -56,6 +56,11 @@ An answer about accessibility without a quoted record is not accepted.
 - `rules/own/*.md` and `src/rules/*.ts`: a change to what a rule checks
   needs a new `version` in both files. The decisions approved for the old
   version then show needs-review; the gate lists them.
+- `rules/axe/*.md`: axe's rules under our WCAG numbers (`4.1.2-button-name`
+  runs axe's `button-name` checks). axe's own rule names are switched off;
+  only numbered rules run. Which checks each runs is
+  `rules/axe/wrapped.json`, generated from axe-core and part of the gate —
+  not yours. Name rules by their number in answers and decisions.
 - `standards/`: add a new verbatim copy with its edition date; never edit
   an existing one.
 - `src/gate/`, `src/decisions/`, `src/executors/`, `example/.storybook/`,
