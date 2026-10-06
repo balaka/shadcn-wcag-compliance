@@ -19,7 +19,12 @@ export const LOCK_FILE = "gate.lock.json"
 export const UNLOCK_FILE = ".gate-unlock.json"
 
 export interface Lock { format: 1; signedAt: string; signedBy: string; files: Record<string, string> }
-export interface Unlock { until: string; by: string; why?: string }
+// What a window opens. "gate": the gate's own files (and integrity is not
+// enforced while it is open). "stories": *.stories.tsx, which are closed to
+// a chat otherwise. A window written before scopes existed opens the gate.
+export type Scope = "gate" | "stories"
+export interface Unlock { until: string; by: string; why?: string; scope?: Scope[] }
+export const opens = (u: Unlock | null, s: Scope) => !!u && (u.scope ?? ["gate"]).includes(s)
 
 function* walk(dir: string): Generator<string> {
   for (const name of readdirSync(dir)) {

@@ -1,43 +1,42 @@
 // Step 5 + 6 of the pipeline: one run = one file.
 // Gathers findings from every executor into the single Finding format,
-// writes runs/<timestamp>.json (+ runs/latest.json), and prints the
-// expected-vs-actual table: for each story, did the rules that should fire
-// actually fire?
+// writes runs/<timestamp>.json (+ runs/latest.json), and prints what the
+// run found, rule by rule. Whether a rule itself is right is not decided
+// here: that is its golden set (the Passed / Failed / Inapplicable examples
+// in its rule file). A story is the design system as its users see it.
 //
 // Usage: node src/run.ts [example/reports/vitest.json] [example/src/index.css]
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { readTokens } from "./theme/read-tokens.ts"
 import { fromTokens, RULE } from "./rules/1.4.11-border-contrast.ts"
-import { findPrecedent } from "./precedents/registry.ts"
-import { loadPrecedents } from "./precedents/load.ts"
+import { findDecision } from "./decisions/registry.ts"
+import { loadDecisions, reviewContext } from "./decisions/load.ts"
 import { FINDING_FORMAT, type Finding, type Outcome } from "./finding.ts"
 
 const [vitestPath = "example/reports/vitest.json", cssPath = "example/src/index.css"] = process.argv.slice(2)
+const ctx = reviewContext()
 
 // --- executor "axe" (incl. our rules that ride inside axe) ----------------
 // The Vitest JSON carries, per story, meta.reports[] with type "a11y" (axe's
-// full result) and type "expected" (the answer written before the run).
+// full result).
 
 interface AxeNode { target: string[]; failureSummary?: string; any?: Array<{ data?: Record<string, unknown>; message?: string }> }
 interface AxeRule { id: string; tags: string[]; nodes: AxeNode[] }
 interface AxeResult { violations: AxeRule[]; incomplete: AxeRule[]; passes: AxeRule[]; inapplicable: AxeRule[]; testEngine?: { version: string } }
-interface Expected { wcag: "pass" | "fail" | "disputed"; criteria: string[]; evidence: string; axe: string | null }
 
 const criterionOf = (tags: string[]) => {
   const t = tags.find((x) => /^wcag\d{3,4}$/.test(x))
   return t ? t.slice(4).split("").join(".").replace(/^(\d)\.(\d)\.(\d)\.(\d)$/, "$1.$2.$3$4") : "?"
 }
 
-function axeFindings(vitest: any): { findings: Finding[]; expectations: Array<{ story: string; expected: Expected; fired: string[]; incomplete: string[] }> } {
+function axeFindings(vitest: any): Finding[] {
   const findings: Finding[] = []
-  const expectations = []
   for (const file of vitest.testResults) {
     const component = String(file.name).split("/").pop()!.replace(/\.stories\.tsx?$/, "")
     for (const test of file.assertionResults) {
       const reports: any[] = test.meta?.reports ?? []
       const axe: AxeResult | undefined = reports.find((r) => r.type === "a11y")?.result
-      const expected: Expected | undefined = reports.find((r) => r.type === "expected")?.result
       if (!axe) continue
       const story = `${component} › ${test.title}`
       const at = new Date(test.startAt ?? Date.now()).toISOString()
@@ -50,7 +49,7 @@ function axeFindings(vitest: any): { findings: Finding[]; expectations: Array<{ 
             findings.push({
               format: FINDING_FORMAT,
               rule: rule.id,
-              ruleVersion: ours ? "1" : `axe-core ${axe.testEngine?.version ?? "?"}`,
+              ruleVersion: ours ? (ctx.ownRuleVersions?.[rule.id] ?? "?") : `axe-core ${axe.testEngine?.version ?? "?"}`,
               criterion: criterionOf(rule.tags),
               executor: ours ? "code" : "axe",
               outcome,
@@ -65,37 +64,29 @@ function axeFindings(vitest: any): { findings: Finding[]; expectations: Array<{ 
       push(axe.violations, "failed")
       push(axe.incomplete, "cantTell")
       push(axe.passes, "passed")
-      if (expected) {
-        expectations.push({
-          story,
-          expected,
-          fired: axe.violations.map((v) => v.id),
-          incomplete: axe.incomplete.map((v) => v.id),
-        })
-      }
     }
   }
-  return { findings, expectations }
+  return findings
 }
 
 // --- gather --------------------------------------------------------------
 const vitest = JSON.parse(readFileSync(vitestPath, "utf8"))
-const { findings: fromAxe, expectations } = axeFindings(vitest)
+const fromAxe = axeFindings(vitest)
 const fromCss = fromTokens(readTokens(readFileSync(cssPath, "utf8")), cssPath)
 const findings = [...fromCss, ...fromAxe]
 
-// Precedents: a failed finding a person has accepted stays failed in the
+// Decisions: a failed finding a person has accepted stays failed in the
 // record but is marked, so every reader sees both the number and the decision.
-const precedents = loadPrecedents()
+const decisions = loadDecisions()
 let acceptedCount = 0
 for (const f of findings) {
   if (f.outcome !== "failed") continue
   const tokens = f.rule === RULE.id ? [RULE.borderToken, RULE.backgroundToken] : undefined
-  const p = findPrecedent(f, tokens, precedents)
-  if (p) {
+  const d = findDecision(f, tokens, decisions)
+  if (d) {
     acceptedCount++
-    ;(f as Finding & { acceptedBy?: string }).acceptedBy = p.id
-    f.evidence += ` — accepted by ${p.id}`
+    ;(f as Finding & { acceptedBy?: string }).acceptedBy = d.id
+    f.evidence += ` — accepted by ${d.id}`
   }
 }
 
@@ -112,21 +103,25 @@ mkdirSync("runs", { recursive: true })
 writeFileSync(`runs/${stamp}.json`, JSON.stringify(run, null, 2))
 writeFileSync("runs/latest.json", JSON.stringify(run, null, 2))
 
-// --- expected vs actual ---------------------------------------------------
-const rows = expectations.map(({ story, expected, fired, incomplete }) => {
-  const shouldFire = expected.axe
-  const predictionRight = shouldFire ? fired.includes(shouldFire) : fired.length === 0
-  const caught = fired.length > 0
-  const verdict =
-    expected.wcag === "fail" ? (caught ? "caught" : "MISSED") :
-    expected.wcag === "pass" ? (caught ? "FALSE ALARM" : "clean") :
-    "disputed → person"
-  return { story, truth: expected.wcag, criteria: expected.criteria.join("; "), fired: fired.join(", ") || "-", cantTell: incomplete.join(", ") || "-", "prediction right": predictionRight ? "yes" : "NO", verdict }
-})
-console.table(rows)
-const real = rows.filter((r) => r.truth === "fail")
-const missed = real.filter((r) => r.verdict === "MISSED")
-console.log(`\nreal problems: ${real.length}, caught: ${real.length - missed.length}, missed: ${missed.length}`)
+// --- what the run found, rule by rule --------------------------------------
+const byRule = new Map<string, { rule: string; version: string; executor: string; criterion: string; failed: number; accepted: number; cantTell: number; passed: number }>()
+for (const f of findings) {
+  const key = `${f.rule}|${f.ruleVersion}`
+  const row = byRule.get(key) ?? { rule: f.rule, version: f.ruleVersion, executor: f.executor, criterion: f.criterion, failed: 0, accepted: 0, cantTell: 0, passed: 0 }
+  if (f.outcome === "failed") (f as { acceptedBy?: string }).acceptedBy ? row.accepted++ : row.failed++
+  if (f.outcome === "cantTell") row.cantTell++
+  if (f.outcome === "passed") row.passed++
+  byRule.set(key, row)
+}
+const rows = [...byRule.values()].sort((a, b) => b.failed - a.failed || b.cantTell - a.cantTell || a.rule.localeCompare(b.rule))
+console.table(rows.filter((r) => r.failed || r.accepted || r.cantTell))
+const open = findings.filter((f) => f.outcome === "failed" && !(f as { acceptedBy?: string }).acceptedBy)
+for (const f of open.slice(0, 20)) console.log(`✗ ${f.rule} · ${f.subject.story ?? f.subject.file} · ${f.subject.selector ?? f.subject.theme ?? ""} — ${f.evidence.replace(/\s+/g, " ").slice(0, 140)}`)
+if (open.length > 20) console.log(`  … and ${open.length - 20} more`)
+
+const review = decisions.filter((d) => d.status === "needs-review")
+console.log(`\nrules with a finding: ${rows.filter((r) => r.failed || r.cantTell).length} of ${rows.length} that ran · failed: ${open.length} · accepted by a decision: ${acceptedCount} · cantTell: ${run.summary.cantTell}`)
 console.log(`css executor: ${fromCss.map((f) => `${f.subject.theme} ${f.outcome} ${f.measured?.ratio}:1`).join(" · ")}`)
-console.log(`precedents: ${precedents.length} on file, ${precedents.filter((p) => p.status === "approved").length} active, ${acceptedCount} finding(s) accepted`)
+console.log(`decisions: ${decisions.length} on file, ${decisions.filter((d) => d.status === "approved").length} active, ${review.length} need review`)
+for (const d of review) console.log(`  needs review: ${d.id} — ${d.review ?? "sent back by a chat"}`)
 console.log(`run written: runs/${stamp}.json (${findings.length} findings)`)

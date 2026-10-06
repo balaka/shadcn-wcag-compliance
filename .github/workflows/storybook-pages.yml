@@ -1,6 +1,6 @@
 # Publishes the example Storybook to GitHub Pages on every push to main.
 # What works there: every story, the Accessibility tab (axe and our rule run
-# in the viewer's browser), the Overview and Precedents pages. What does not:
+# in the viewer's browser), the Overview and Decisions pages. What does not:
 # the Run tests button (needs Vitest on a server) and the edit gate (lives in
 # Claude Code) — those are shown live or as a recording.
 #

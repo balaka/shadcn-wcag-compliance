@@ -32,34 +32,43 @@ An answer about accessibility without a quoted record is not accepted.
 - `example/src/index.css` (theme tokens): edit with Edit/Write only. The
   gate measures the result; a pair that would start failing is refused —
   find another value, do not retry the same one.
-- `precedents/*.md`: you may **draft** (history entry `drafted`) and mark
-  `needs-review`. `approved` / `revoked` are a person's; ask them to run
-  `node src/precedents/approve.ts <id> --by "<name>"` in their terminal.
-  Format: `precedents/README.md` (format 2; a precedent on an axe rule needs
-  `match`; an exception needs `valid_until`).
-- `*.stories.tsx`: not yours unless the task is about stories.
-  `parameters.expected` is written before the run and is never adjusted to
-  the result. If your fix makes a story's expectation wrong, **report the
-  mismatch and stop** — a person decides whether the story keeps the
-  planted failure or changes. Do not add or rewrite stories to make the
-  table green.
+- `example/src/components/ui/*.tsx` (components): yours to fix. A fix to
+  accessibility goes here or into a token — that is what the design
+  system's users get.
+- `decisions/*.md`: you may **draft** (history entry `drafted`) and send one
+  back with `needs-review`. `approved` / `revoked` are a person's, and only
+  a person on the approvers list (`src/decisions/approvers.ts`); ask them
+  to run `node src/decisions/approve.ts <id> --by "<name>"` in their
+  terminal. What a person approved is frozen: to change it, append
+  `needs-review` in the same write. Format: `decisions/README.md` (format
+  3; a decision on an axe rule needs `match`; an exception needs
+  `valid_until`).
+- `*.stories.tsx`: **closed.** A story is what the checks see; changing it
+  can hide a finding. The gate refuses every story write unless a person
+  opened a stories window (`unlock.ts --scope stories`). Inside the window a
+  story still never configures or switches off the check (`a11y:`, `!test`,
+  axe calls) — a rule that does not apply is a decision, not a setting.
 - Change only what was asked. A fix to a token is a fix to a token; it is
-  not a licence to touch stories, rules, or anything else the task did not
-  name. Say what else would have to change, and leave it.
+  not a licence to touch rules or anything else the task did not name. Say
+  what else would have to change, and leave it.
 - Theme tokens keep the notation the file uses (shadcn: `oklch(…)`). Do not
   write a hex or rgb value into an oklch theme.
 - `rules/own/*.md` and `src/rules/*.ts`: a change to what a rule checks
-  needs a new `version` in both files.
-- `standards/`, `src/gate/`, `.claude/settings.json`, `gate.lock.json`:
-  not yours. A person edits them.
+  needs a new `version` in both files. The decisions approved for the old
+  version then show needs-review; the gate lists them.
+- `standards/`: add a new verbatim copy with its edition date; never edit
+  an existing one.
+- `src/gate/`, `src/decisions/`, `src/executors/`, `example/.storybook/`,
+  `example/vite.config.ts`, `.github/`, `.claude/settings.json`,
+  `gate.lock.json`: not yours. A person edits them, or opens a gate window.
 
 ## When a check says "cantTell"
 
 Do not skip it. Look at the element, decide how you read the rule, and
-draft a precedent (`kind: interpretation`, `decision` as you read it,
-`match: { check, selector }`, history `drafted` only). A person approves
-later. The Stop hook will not let an answer end while a `cantTell` in
-`runs/latest.json` has no draft.
+draft a decision (`format: 3`, `kind: interpretation`, `verdict` as you
+read it, `match: { check, selector }`, history `drafted` only). A person
+approves later. The Stop hook will not let an answer end while a
+`cantTell` in `runs/latest.json` has no draft.
 
 ## Do not run Vitest while Storybook's "Run tests" is running
 

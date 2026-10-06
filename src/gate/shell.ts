@@ -13,8 +13,13 @@ import { guardedKind, HUMAN_COMMANDS, isProtected } from "./paths.ts"
 
 export interface ShellVerdict { refuse: boolean; target?: string; why?: string; guard: string }
 
-const WRITE_VERBS =
-  /(^|[\s;&|(])(sed\s+-[a-zA-Z]*i|perl\s+-[a-zA-Z]*i|tee\b|cp\b|mv\b|ln\b|install\b|dd\b|truncate\b|rm\b|unlink\b|chmod\b|chown\b|>{1,2})/
+// A redirect to a file is `>` or `>>` — not the `>` of an arrow (`=>`,
+// `->`) or a comparison (`>=`) inside code given to an interpreter, and not
+// `2>&1`, which joins two outputs and writes no file.
+const REDIRECT = /(?<![=\-<>])>{1,2}(?![=&])/
+const WRITE_VERBS = new RegExp(
+  /(^|[\s;&|(])(sed\s+-[a-zA-Z]*i|perl\s+-[a-zA-Z]*i|tee\b|cp\b|mv\b|ln\b|install\b|dd\b|truncate\b|rm\b|unlink\b|chmod\b|chown\b)/.source + "|" + REDIRECT.source
+)
 const PY_OPEN_WRITE = /open\([^)]*['"][wa]/
 // git verbs that rewrite the working tree
 const GIT_REWRITE = /(^|[\s;&|(])git\s+(checkout|restore|mv|rm|stash|reset|clean|apply|revert|rebase|merge|cherry-pick)\b/
@@ -23,7 +28,7 @@ const GIT_WHOLE_TREE = /(^|[\s;&|(])git\s+(reset\s+--hard|clean\b|stash\b|checko
 // An interpreter given code on the command line: the quoted part IS the
 // program, so it is read, not dropped.
 const INLINE_CODE = /(^|[\s;&|(])(python3?|node|deno|bun|perl|ruby|php|bash|sh|zsh)\s+-[a-zA-Z]*[ce]\b/
-const CODE_WRITES = /writeFile|appendFile|createWriteStream|fs\.write|open\([^)]*['"][wa]|File\.(write|open)|\.write\(|>{1,2}/
+const CODE_WRITES = new RegExp(/writeFile|appendFile|createWriteStream|fs\.write|open\([^)]*['"][wa]|File\.(write|open)|\.write\(/.source + "|" + REDIRECT.source)
 
 // A here-document's body is data — a commit message, a journal entry — and
 // is dropped before the text is read, with two exceptions where the body

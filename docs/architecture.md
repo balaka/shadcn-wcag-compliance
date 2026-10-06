@@ -11,19 +11,28 @@ elsewhere: in W3C's ACT rules (90 of them, each with pass/fail examples) and,
 where W3C has none, in rules we write ourselves in the same format. One
 criterion can have several rules; a rule passing never proves the criterion
 ("further testing needed" in ACT's own words), a rule failing does disprove
-it. So the registry, the findings, the precedents and the versions all hang
+it. So the registry, the findings, the decisions and the versions all hang
 off rules.
 
 Each rule names its **executor** — what is able to run it:
 
 | executor | what it needs | example |
 |---|---|---|
-| `axe` | a rendered page | `color-contrast`, `button-name`, `label` |
+| `axe` | a rendered page | `color-contrast`, `button-name`, `label` — only behind our own rule file, after an exam (below) |
 | `code` | a fact from code or CSS: a number, an attribute, a size | `border-contrast` (ours) |
 | `judge` | a judgement about meaning | "is this label descriptive?" (not built yet) |
 
 Which executor a rule gets is not a classification of the criterion; it is
 read off the rule's `input_aspects`: DOM and CSS → machine; meaning → judge.
+
+We answer for every rule in the report, so none of axe's rules reaches the
+report on its own (decided 2026-10-06). An axe rule is adopted as our rule
+file in `rules/` — ACT format, our version, the criterion it serves, plus
+`executor: axe`, the axe rule id and the axe-core version — and only after
+axe passes that rule's exam: the W3C ACT test cases for it. A new axe-core
+version sits the exam again before it is accepted. axe's rules without such
+a file are switched off. Where axe fails the exam or has no rule, we write
+the code ourselves, as for the field border.
 
 ## Folders
 
@@ -31,10 +40,12 @@ read off the rule's `input_aspects`: DOM and CSS → machine; meaning → judge.
 standards/      verbatim copies of what rules rest on — WCAG criterion text,
                 ACT rules and their test cases — each with edition + capture date
 rules/
-  act/          ACT rules we adopt (axe runs them); file = pointer + axe rule id
+  act/          axe's rules we adopt: our rule file, executor axe + pinned
+                version, exam on the ACT test cases (planned)
   own/          our rules where W3C has none; ACT format 1.1 + executor/version/source
-  judge/        rules of judgement; examples come from precedents/
-precedents/     decisions on cases a rule could not settle; one file per case
+  judge/        rules of judgement; examples come from decisions/
+decisions/      a person's decisions on cases a rule could not settle; one
+                file per case (format 3, see decisions/README.md)
 src/
   wcag/contrast-ratio.ts   the WCAG contrast formula: two colors in, a ratio out
   theme/read-tokens.ts     service: theme CSS in, tokens per theme out, every
@@ -42,17 +53,21 @@ src/
   rules/<criterion>-<name>.ts   the code side of each rule in rules/; same file
                            name as the Markdown rule, same version, same threshold
   executors/storybook-axe.ts   runs a rule inside Storybook, as an axe custom rule
+  decisions/               the register: parse + match (pure, also used by the
+                           Storybook page), load from disk, the approvers list,
+                           approve.ts (a person's command)
   gate/                    the Claude Code hooks: launcher (fails closed), runner,
                            one guard per kind of file, shell analysis, integrity
                            lock, Stop hook; people's commands sign/unlock — see
                            src/gate/README.md
   finding.ts               the one finding format (carries `format: 1`)
   run.ts                   gathers findings from all executors → runs/<stamp>.json,
-                           prints expected-vs-actual
+                           prints what each rule found
 runs/           one file per run + latest.json; nothing server-side
 example/        clean shadcn (Base UI) + Storybook: the test bench
-  src/stories/  stories = the state table of each component; every story
-                carries `parameters.expected`, written before the first run
+  src/stories/  stories = the design system as its users get it, state by
+                state; closed to agents (written in a person's window), and
+                a story never switches a check off
 ```
 
 ## Rule file format
@@ -76,18 +91,17 @@ downstream knows axe exists.
 ## Pipeline
 
 ```
-standards/ ──► rules/ ──► stories (expected written first) ──► run
+standards/ ──► rules/ (+ golden set) ──► stories (closed) ──────► run
                                                                  │
           ┌──────────────────────────────────────────────────────┘
           ▼
    findings (one format) ──► runs/<stamp>.json
           │
-          ├─► expected vs actual: does each rule catch what it should?
           ├─► while editing: the gate refuses the write, returns the number;
-          │   a person's precedent lets an accepted failure through, marked
+          │   a person's decision lets an accepted failure through, marked
           ├─► on a PR: SARIF → line annotations (planned)
           ├─► full sweep: history page from runs/ (planned)
-          └─► cantTell / disagreement ──► precedents/ ──► example in a rule
+          └─► cantTell / disagreement ──► decisions/ ──► example in a rule
                                                       ──► new rule version
 ```
 
@@ -100,19 +114,28 @@ they cannot disagree on the number.
 Naming: a rule file is `<criterion>-<name>` (`1.4.11-border-contrast`) in
 both `rules/` and `src/rules/`. The criterion prefix says where the rule
 grows from; the name keeps it apart from the other rules under the same
-criterion, each with its own version. Every record format — rule, precedent,
+criterion, each with its own version. Every record format — rule, decision,
 finding, run — carries a `format` number; older formats live in git history.
+
+Whether a rule is right is not decided by the stories. It is decided by the
+rule's golden set: the Passed / Failed / Inapplicable examples in its file
+(and, for an adopted axe rule, the ACT test cases). The stories are where
+the rule is applied. Until 2026-10-06 every story carried an answer
+written before the run (`parameters.expected`); that was a measurement of
+the first rule, not part of the tool, and it is gone.
 
 ## Checking the bench itself
 
 ACT publishes its test cases machine-readably
 (https://act-rules.github.io/testcases.json — 1,134 cases over 91 rules,
 each with `expected`). Running them through the bench and comparing outcomes
-measures the bench before it says anything about shadcn. Planned.
+measures the bench before it says anything about shadcn. Planned: this is
+the exam an axe rule sits before we adopt it.
 
 ## First measurements (2026-10-01, shadcn CLI 4.21, axe-core 4.13)
 
-Three components, 13 stories, every prediction confirmed. Clean shadcn
+Three components, 13 stories with answers written before the run (removed
+2026-10-06, together with the planted failures), every prediction confirmed. Clean shadcn
 fails on its own: destructive button text 3.98:1 (axe catches), field
 border 1.26:1 light / 1.47:1 dark (axe silent — `border-contrast` catches),
 focus ring 1.54:1 (axe silent — next rule). The write hook refuses an edit

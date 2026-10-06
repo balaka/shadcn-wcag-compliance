@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { EllipsisIcon } from "lucide-react"
 import { userEvent } from "storybook/test"
 
 import { Button } from "@/components/ui/button"
@@ -14,7 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-// `parameters.expected` — see Button.stories.tsx.
+// A story shows the component the way the design system's users get it —
+// see Button.stories.tsx.
 
 const meta = {
   title: "shadcn/DropdownMenu",
@@ -53,15 +53,6 @@ export const Open: Story = {
     await userEvent.tab()
     await userEvent.keyboard("{Enter}")
   },
-  parameters: {
-    expected: {
-      wcag: "pass",
-      criteria: ["1.4.3 Contrast (Minimum)"],
-      evidence:
-        "label --muted-foreground #737373 on white = 4.73:1; destructive item #e7000b on white = 4.76:1",
-      axe: null,
-    },
-  },
 }
 
 export const DestructiveItemHighlighted: Story = {
@@ -71,35 +62,5 @@ export const DestructiveItemHighlighted: Story = {
     await userEvent.keyboard("{Enter}")
     // End moves the highlight to the last item: Delete account
     await userEvent.keyboard("{End}")
-  },
-  parameters: {
-    expected: {
-      wcag: "fail",
-      criteria: ["1.4.3 Contrast (Minimum)"],
-      evidence:
-        "highlighted destructive item: text #e7000b on destructive/10 #fde5e7 = 3.99:1, needs 4.5:1",
-      axe: "color-contrast",
-    },
-  },
-}
-
-// Planted breakage: an icon-only trigger with no accessible name.
-export const TriggerWithoutName: Story = {
-  render: () => (
-    <AccountMenu
-      trigger={
-        <Button variant="ghost" size="icon">
-          <EllipsisIcon />
-        </Button>
-      }
-    />
-  ),
-  parameters: {
-    expected: {
-      wcag: "fail",
-      criteria: ["4.1.2 Name, Role, Value"],
-      evidence: "menu button has no text and no aria-label",
-      axe: "button-name",
-    },
   },
 }

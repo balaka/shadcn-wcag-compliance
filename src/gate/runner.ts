@@ -17,7 +17,7 @@
 import { existsSync, readFileSync } from "node:fs"
 import { relative, resolve } from "node:path"
 import { guardFor } from "./guards/index.ts"
-import { verify } from "./integrity.ts"
+import { opens, verify } from "./integrity.ts"
 import { guardedKind, isProtected } from "./paths.ts"
 import { record } from "./record.ts"
 import { analyze } from "./shell.ts"
@@ -57,7 +57,7 @@ export async function run(call: any): Promise<number> {
 
   // ---- integrity ---------------------------------------------------------
   const integrity = verify(root)
-  if (!integrity.ok && !integrity.unlock) {
+  if (!integrity.ok && !opens(integrity.unlock, "gate")) {
     const what = !integrity.signed
       ? "gate.lock.json is missing — the gate has not been signed."
       : `the gate's own files differ from gate.lock.json: ${[...integrity.changed.map((f) => "changed " + f), ...integrity.added.map((f) => "added " + f), ...integrity.removed.map((f) => "removed " + f)].join(", ")}.`

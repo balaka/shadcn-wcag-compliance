@@ -1,0 +1,16 @@
+# Who reviews what. With "Require review from Code Owners" switched on in
+# the branch protection of main, a pull request that touches these paths
+# cannot be merged without a review from the owner named here.
+#
+# decisions/ is the wall behind src/decisions/approvers.ts: an approval
+# typed on a command line is self-declared, a review on GitHub is not.
+# Keep the people here in step with that list.
+
+/decisions/            @balaka
+/src/decisions/        @balaka
+/standards/            @balaka
+/rules/                @balaka
+/src/gate/             @balaka
+/gate.lock.json        @balaka
+/.claude/              @balaka
+/.github/              @balaka

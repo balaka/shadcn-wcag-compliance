@@ -1,6 +1,6 @@
-// One finding format for every executor. Everything downstream — the
-// expected-vs-actual comparison, the hook message, the PR annotations, the
-// history page — reads only this shape.
+// One finding format for every executor. Everything downstream — the run
+// summary, the hook message, the PR annotations, the history page — reads
+// only this shape.
 //
 // `format` is the version of THIS shape. Bump it when a field changes
 // meaning; older runs keep their number, so a reader knows how to read them.

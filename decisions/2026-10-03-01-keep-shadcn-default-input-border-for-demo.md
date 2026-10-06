@@ -1,6 +1,7 @@
 ---
-format: 2
-id: p-2026-10-03-01
+format: 3
+id: d-2026-10-03-01
+formerly: p-2026-10-03-01
 kind: exception
 rule: 1.4.11-border-contrast
 rule_version: 1
@@ -9,7 +10,7 @@ scope: tokens
 subject:
   file: example/src/index.css
   tokens: [--input, --background]   # both themes: no theme given
-decision: accept
+verdict: accept
 evidence:
   - "light: --input oklch(0.922 0 0) (#e5e5e5) on --background #ffffff = 1.26:1, needs 3:1"
   - "dark: --input oklch(1 0 0 / 15%) (#2f2f2f) on --background #0a0a0a = 1.47:1, needs 3:1"

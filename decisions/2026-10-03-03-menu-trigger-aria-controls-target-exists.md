@@ -1,6 +1,7 @@
 ---
-format: 2
-id: p-2026-10-03-03
+format: 3
+id: d-2026-10-03-03
+formerly: p-2026-10-03-03
 kind: interpretation
 rule: aria-valid-attr-value
 rule_version: axe-core 4.13.0
@@ -11,7 +12,7 @@ subject:
 match:
   check: aria-valid-attr-value
   selector: "#base-ui-"   # axe reports the trigger by its generated id, base-ui-_r_*_
-decision: not-applicable
+verdict: not-applicable
 evidence:
   - "DropdownMenu › Open: trigger <button aria-haspopup=\"menu\" aria-expanded=\"true\" aria-controls=\"_r_1_\"> — axe: cantTell, 'Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup'"
   - "Checked in the live story on 2026-10-03: document.getElementById('_r_1_') exists, role=menu"

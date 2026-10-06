@@ -29,22 +29,10 @@ const preview: Preview = {
       return <Story />
     },
   ],
-  // Put the story's written-in-advance answer next to axe's report,
-  // so one Vitest JSON holds both (meta.reports).
-  afterEach: async ({ parameters, reporting }) => {
-    if (parameters.expected) {
-      reporting.addReport({
-        type: "expected",
-        version: 1,
-        result: parameters.expected,
-        status: "passed",
-      })
-    }
-  },
   parameters: {
     // Components first; the compliance pages close the sidebar.
     options: {
-      storySort: { order: ["shadcn", "WCAG compliance", ["Overview", "Precedents"]] },
+      storySort: { order: ["shadcn", "WCAG compliance", ["Overview", "Decisions"]] },
     },
     controls: {
       matchers: {

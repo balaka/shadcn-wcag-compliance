@@ -13,7 +13,7 @@ function Overview() {
       <p className="mt-6 text-lg leading-relaxed">
         An accessible product is easier and more obvious to use for more people, so it can earn more. Our design
         system is built on shadcn, and this is its accessibility control: a specialist writes a rule once and records
-        a disputed decision as a precedent. From then on every edit, including an edit made by an agent, is checked
+        a disputed case as a decision. From then on every edit, including an edit made by an agent, is checked
         against those rules and decisions.
       </p>
 
@@ -21,30 +21,32 @@ function Overview() {
       <ol className="mt-3 list-decimal space-y-3 pl-5 leading-relaxed">
         <li>
           Press <b>Run tests</b> (bottom left, with the Accessibility box ticked). Every state of every component is
-          checked in both themes; stories with findings get a warning mark.
+          checked; stories with findings get a warning mark.
         </li>
         <li>
           Open{" "}
           <a className="underline underline-offset-4" href={story("shadcn-input--with-label")} target="_top">
             Input › With Label
           </a>{" "}
-          and the <b>Accessibility</b> tab below it. The field border measures 1.26:1 against the background; the
-          standard asks for 3:1. This is shadcn as installed, nothing changed.
+          and the <b>Accessibility</b> tab below it. Next to axe's findings is our rule,{" "}
+          <code>1.4.11-border-contrast</code>: the field border against the background, measured, with the 3:1 the
+          standard asks for. As shadcn installs, this border fails; the theme here has been fixed to pass, and an
+          agent cannot make it fail again.
         </li>
         <li>
           Open{" "}
           <a className="underline underline-offset-4" href={story("shadcn-button--variants")} target="_top">
             Button › Variants
           </a>
-          . The red button is caught by axe itself. The border above is caught by our rule, in the same tab: axe has
-          no rule for it.
+          . The red button's text is caught by axe itself, in the same tab. Axe has no rule for the field border; that
+          one is ours.
         </li>
         <li>
           Open{" "}
-          <a className="underline underline-offset-4" href={story("wcag-compliance-precedents--register-page", "")} target="_top">
-            Precedents
+          <a className="underline underline-offset-4" href={story("wcag-compliance-decisions--register-page", "")} target="_top">
+            Decisions
           </a>
-          . Decisions a person made where a rule alone could not settle the case: who, when, why, until when. Drafts
+          . Cases a rule alone could not settle, and what a person decided: who, when, why, until when. Drafts
           written by an agent wait there for a person.
         </li>
       </ol>
@@ -62,7 +64,7 @@ function Overview() {
         </li>
         <li>Three outcomes: passed goes to the report; failed is not written; cannot tell goes to a person.</li>
         <li>
-          A person's decision is a precedent card; the checks read it (<code>precedents/</code>).
+          A person's decision is a card; the checks read it (<code>decisions/</code>).
         </li>
       </ol>
 

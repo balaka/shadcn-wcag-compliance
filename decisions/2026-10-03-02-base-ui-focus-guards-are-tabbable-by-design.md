@@ -1,6 +1,7 @@
 ---
-format: 2
-id: p-2026-10-03-02
+format: 3
+id: d-2026-10-03-02
+formerly: p-2026-10-03-02
 kind: interpretation
 rule: aria-hidden-focus
 rule_version: axe-core 4.13.0
@@ -11,7 +12,7 @@ subject:
 match:
   check: focusable-not-tabbable
   selector: data-base-ui-focus-guard
-decision: not-applicable
+verdict: not-applicable
 evidence:
   - "DropdownMenu › Open: 6 × <span aria-hidden=\"true\" tabindex=\"0\" data-base-ui-focus-guard> — axe: cantTell, 'Check that focusable elements are not tabbable in the current state'"
   - "DropdownMenu › Destructive Item Highlighted: the same 6 elements"
