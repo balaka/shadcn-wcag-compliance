@@ -63,7 +63,10 @@ src/
   finding.ts               the one finding format (carries `format: 1`)
   run.ts                   gathers findings from all executors → runs/<stamp>.json,
                            prints what each rule found
-runs/           one file per run + latest.json; nothing server-side
+runs/           one file per run + latest.json; nothing server-side. Run
+                format 2: one line per failed or cantTell finding and per
+                token measurement; every other "passed" is a count per rule
+                (a full run of the design system: 367 KB instead of 12.5 MB)
 example/        clean shadcn (Base UI) + Storybook: the test bench
   src/stories/  stories = the design system as its users get it, state by
                 state; closed to agents (written in a person's window), and

@@ -90,14 +90,37 @@ for (const f of findings) {
   }
 }
 
+// Run format 2 (2026-10-06): with every component in Storybook a run holds
+// some 25 000 results, nearly all "passed" — 12.5 MB a run. A person acts on
+// what failed or could not be told, so those stay one line each, with the
+// token-level measurements of the css executor (a handful, and cited in the
+// docs). Every other "passed" is a count per rule and version, with the
+// number of stories it passed in. (Whether a failure disappeared without a
+// cause is read from the failures of two runs, not from their passes.)
+const keep = (f: Finding) => f.outcome !== "passed" || (!f.subject.story && !!f.subject.file) // token-level: a file, no story
+const passedCounts = new Map<string, { rule: string; ruleVersion: string; executor: string; count: number; stories: number }>()
+const passedStories = new Map<string, Set<string>>()
+for (const f of findings) {
+  if (keep(f)) continue
+  const key = `${f.rule}|${f.ruleVersion}`
+  const row = passedCounts.get(key) ?? { rule: f.rule, ruleVersion: f.ruleVersion, executor: f.executor, count: 0, stories: 0 }
+  row.count++
+  const seen = passedStories.get(key) ?? new Set<string>()
+  seen.add(f.subject.story ?? "")
+  passedStories.set(key, seen)
+  row.stories = seen.size
+  passedCounts.set(key, row)
+}
+
 const stamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19)
 const run = {
-  format: 1,
+  format: 2,
   id: stamp,
   at: new Date().toISOString(),
   inputs: { vitest: vitestPath, css: cssPath },
   summary: Object.fromEntries((["failed", "cantTell", "passed", "inapplicable"] as Outcome[]).map((o) => [o, findings.filter((f) => f.outcome === o).length])),
-  findings,
+  findings: findings.filter(keep),
+  passed: [...passedCounts.values()],
 }
 mkdirSync("runs", { recursive: true })
 writeFileSync(`runs/${stamp}.json`, JSON.stringify(run, null, 2))
