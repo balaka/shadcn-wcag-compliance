@@ -2,8 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite"
 
 // The title page of the compliance section: what this is, and where to look.
 // Links open the Storybook page itself (target _top), not the story frame.
+// They are relative ("./?path=…"): Storybook may live in a folder, as on
+// GitHub Pages (/shadcn-wcag-compliance/), and "/" would leave it.
 
-const story = (id: string, panel = "storybook/a11y/panel") => `/?path=/story/${id}&addonPanel=${panel}`
+const story = (id: string, panel = "storybook/a11y/panel") => `./?path=/story/${id}&addonPanel=${panel}`
 
 function Overview() {
   return (
@@ -25,7 +27,7 @@ function Overview() {
         </li>
         <li>
           Open{" "}
-          <a className="underline underline-offset-4" href={story("shadcn-input--with-label")} target="_top">
+          <a className="underline underline-offset-4" href={story("forms-input--with-label")} target="_top">
             Input › With Label
           </a>{" "}
           and the <b>Accessibility</b> tab below it. Next to axe's findings is our rule,{" "}
@@ -35,8 +37,8 @@ function Overview() {
         </li>
         <li>
           Open{" "}
-          <a className="underline underline-offset-4" href={story("shadcn-button--variants")} target="_top">
-            Button › Variants
+          <a className="underline underline-offset-4" href={story("forms-button--variants-sizes")} target="_top">
+            Button › Variants &amp; Sizes
           </a>
           . The red button's text is caught by axe itself, in the same tab. Axe has no rule for the field border; that
           one is ours.

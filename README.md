@@ -93,7 +93,7 @@ Two of these are the daily life of the people who use hosting control panels: **
 | | Done | Next |
 |---|---|---|
 | **Rules** | standard copy with edition date (1) · the list of every A and AA criterion · rule in ACT format with version (1) | axe's rules only as executors behind our own rule files, each after an exam on the W3C ACT test cases · text contrast and target size through axe; focus ring and status by colour as our own code · behaviour smoke checks on the wrapped components |
-| **Stories** | stories closed to agents; written only in a person's window; a story never switches a check off | the whole design system as documentation stories, states taken from the shadcn examples |
+| **Stories** | the whole design system: 58 components, 445 stories from the official shadcn examples, grouped as in a design system, with Docs, Playground and the open state of every popup · closed to agents; written only in a person's window; a story never switches a check off | Message and MessageScroller with static messages · every story in both themes |
 | **Where it runs** | locally: full run in Storybook + the edit hook | on pull requests: the same check in CI, approvals only in a person's commits |
 | **Mechanism** | three outcomes, one finding format, run history · decisions with a register page in Storybook · approvers list + CODEOWNERS · a decision shows needs review when its rule changes · the gate: fails closed, protects itself and how the checks run, signed by a person | triage: what a person sees first, one token = one finding · the agent attaches the run record to any claim about accessibility · token notation guard |
 | **Delivery** | — | `npm install` + `init`: the section appears in your own Storybook |

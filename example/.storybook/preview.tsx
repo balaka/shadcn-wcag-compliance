@@ -30,9 +30,24 @@ const preview: Preview = {
     },
   ],
   parameters: {
-    // Components first; the compliance pages close the sidebar.
+    // Components first, grouped as in a design system; the compliance pages
+    // close the sidebar.
+    // Components alphabetically inside a group; a component's stories keep
+    // the order of the shadcn example they come from.
     options: {
-      storySort: { order: ["shadcn", "WCAG compliance", ["Overview", "Decisions"]] },
+      storySort: {
+        order: [
+          "Forms", ["Button", "ButtonGroup", "Calendar", "Checkbox", "Combobox", "Field", "Input", "InputGroup", "InputOTP", "Label", "NativeSelect", "RadioGroup", "Select", "Slider", "Switch", "Textarea", "Toggle", "ToggleGroup"],
+          "Overlays", ["AlertDialog", "Command", "ContextMenu", "Dialog", "Drawer", "DropdownMenu", "HoverCard", "Menubar", "Popover", "Sheet", "Toast", "Tooltip"],
+          "Navigation", ["Breadcrumb", "NavigationMenu", "Pagination", "Sidebar", "Tabs"],
+          "Data display", ["Accordion", "Avatar", "Badge", "Card", "Carousel", "Chart", "Collapsible", "Item", "Kbd", "Table"],
+          "Feedback", ["Alert", "Empty", "Progress", "Skeleton", "Spinner"],
+          "Layout", ["AspectRatio", "Resizable", "ScrollArea", "Separator"],
+          "AI", ["Attachment", "Bubble", "Marker", "Questionnaire"],
+          "*",
+          "WCAG compliance", ["Overview", "Decisions"],
+        ],
+      },
     },
     controls: {
       matchers: {

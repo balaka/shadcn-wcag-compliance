@@ -1,14 +1,14 @@
 {
   "format": 1,
-  "signedAt": "2026-10-06T11:48:53.130Z",
+  "signedAt": "2026-10-06T14:45:58.030Z",
   "signedBy": "Yuriy Balaka",
   "files": {
     ".claude/settings.json": "45bbbea62a2023f0f0770b1070a97ed44b7151cf4754555e5464900c3fcaf96a",
     ".github/CODEOWNERS": "8ea9bc6bd43673c6fbcc7f3657f37b7421ad6a9f15479eeb074314718178962c",
     ".github/workflows/storybook-pages.yml": "cdcc270dd298b2e569da6cc28602e15dcce1e628b300bb5d932ce1a03a1fb1a0",
     "example/.storybook/main.ts": "efa429d35204d32506d19e48eba3abaf5055d5a2413974e97acf11d486329d2a",
-    "example/.storybook/preview.tsx": "3ec9232a4a05419464e1c5d18f8504707158b93cbe961a7fac40a2d3985020fd",
-    "example/vite.config.ts": "bb85dc1ec87818ee9302eaa59613d122882e0cc57012904ed4a5b3f39164d273",
+    "example/.storybook/preview.tsx": "ba053817f1861aea2f83ee57ede1177107c501fab8d813dd457aeeb28780ff1d",
+    "example/vite.config.ts": "156ff57a3d5fcd606e190c9b4a890355d65ccf315341c7c2a97807438756d1d4",
     "src/decisions/approve.ts": "5426740cdef4c043d1554cc5f8dfd98b6b9ad31310fd06f38abce2cd4f8ae9f2",
     "src/decisions/approvers.ts": "849374406eac9b836e006d1cdb96292a24458670a164dab43f373e8c510bea2b",
     "src/decisions/load.ts": "52926afb45839bbb6b535008a0fae76be645015aea03badda992ca120fb52e16",
